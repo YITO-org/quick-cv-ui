@@ -1,0 +1,11 @@
+
+.field_lable{
+    font-weight: 700;
+    color:brown
+}
+
+.field_lable::first-letter{
+    text-transform: uppercase;
+}
+
+

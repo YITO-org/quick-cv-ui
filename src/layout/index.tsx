@@ -53,7 +53,7 @@ let Layout:React.FC<any> = (props : any) =>{
           <Header />
           <Sidebar screenSize={width} />
           {/* <ThemeProvider theme={theme}> */}
-          <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <Box component="main" sx={{ flexGrow: 1 , p: 1 }}>
             <Toolbar />
             {props.children}
           </Box>
