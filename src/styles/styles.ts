@@ -5,6 +5,7 @@ import {grey  } from "@mui/material/colors"
 const drawerWidth = 190; // for medium screen and large screen
 const mobileswidth = 250; // for small and extra small screen
 let Grey = grey["800"]
+let Gray2 = grey[400]
 
 // export const sidebarStyles = makeStyles({
 //    root : {
@@ -42,16 +43,13 @@ export const styles = {
 
     // create account and login account screen
   cardPosition : { marginTop : "2%" },
-  loginOrCreateButton : {width : "100%" , marginBottom : 2 }
-
-
+  loginOrCreateButton : {width : "100%" , marginBottom : 2 },
+  
+  
+  
+  // detailes screen
+  input_lable : {'&::first-letter' : {textTransform : 'uppercase'},fontWeight :'700',color : 'black'},
+  detailes_box : {backgroundColor : 'white' , border : 0.5 , borderColor : Gray2 , height :'86vh' , overflow : 'scroll' , scrollbarWidth : 'none'},
+  detailes_resume_box : {backgroundColor : 'white' , border : 0.5 , borderColor : Gray2 , height :'86vh' }
 }
-
-
-
-
-
-
-
-
 

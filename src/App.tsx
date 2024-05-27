@@ -48,6 +48,7 @@ import Otp from "./screens/otp";
 import AuthProvider from "./context/secureContext";
 import { useSelector  , connect } from "react-redux";
 import { storeOrResetTokken } from "./actions";
+import Detailes from "./screens/detailes";
 
 const App : React.FC<any>  = (props)=>{
 
@@ -72,7 +73,7 @@ const App : React.FC<any>  = (props)=>{
 
               <Route path="/resumebuilder" element={<MainApp />}>
                   <Route index path="dashboard" element={ <PR> <Dashboard /> </PR> } />
-                  <Route index path="detailes" element={<Details />} />
+                  <Route index path="detailes" element={ <Detailes /> } />
                   <Route  path="summary" element={<Summary />} />
                   <Route  path="education" element={<Education />} />
               </Route>
@@ -136,13 +137,13 @@ let LandingPage : React.FC = ()=>{
 
 
 
-let Details : React.FC = ()=>{
-  return(
-    <div>
-      Details
-    </div>
-  )
-}
+// let Details : React.FC = ()=>{
+//   return(
+//     <div>
+//       Details
+//     </div>
+//   )
+// }
 
 let Summary : React.FC = ()=>{
   return(
