@@ -12,6 +12,8 @@ import routing from "../routing";
 
 let SidebarList : React.FC<siderbarProps>  = (props:any)=>{
 
+    //  console.log({props})
+
     let navigate = useNavigate()
     let location = useLocation();
     let [routes , setRoutes] = useState<any>(routing);
@@ -65,7 +67,7 @@ useEffect(()=>{
                                             </ListItemIcon>
                                             <ListItemText   primary={
                                                 <Box>
-                                                    <Typography fontWeight={800} fontSize={location.pathname ==  e.path ? 18 : 15} >{e.name}</Typography>
+                                                    <Typography fontWeight={600} fontSize={location.pathname ==  e.path ? 18 : 15} >{e.name}</Typography>
                                                 </Box>
                                             } >
 
@@ -91,9 +93,6 @@ let Icon : React.FC<siderbarIcon> = (props) :any =>{
 }
 
 const mapStateToProps = (state : any ) => ({
-    // risedQueres : state.projectReducer.risedQueres_,
-    // notesAndPartner: state.patientDocumentReducer.notesAndPartner,   
-    
     sidebarData : state.sidebarStore
   });
   

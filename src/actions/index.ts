@@ -1,9 +1,9 @@
 import axios from "axios"
-import { headertypes } from "../interfaces/types"
+// import { headertypes } from "../interfaces/types"
 
-let headers : headertypes = {
-    tokken : localStorage.getItem('tokken')
-}
+// let headers : headertypes = {
+//     tokken : localStorage.getItem('tokken')
+// }
 
 export let setSelectedIndexForSidebar = (index:Number)=>(dispatch:any)=>{
     dispatch({
