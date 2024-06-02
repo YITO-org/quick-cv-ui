@@ -59,6 +59,22 @@ export let logout = ()=>(dispatch:any)=>{
 }
 
 
+export let setInformation = (keyName : string , data : string)=>(dispatch : any)=>{
+    // console.log({keyName , data})
+    return dispatch({
+        type : 'SET_RESUME_INFORMATION',
+        data,
+        keyName
+    })
+}
+
+export let addNewRecord = (data : any , screenName : string , type : string)=>(dispatch : any)=>{
+        return dispatch({
+            type : type,
+            data,
+            screenName 
+        })
+}
 
 
 

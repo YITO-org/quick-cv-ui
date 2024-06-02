@@ -1,6 +1,7 @@
 import { BiSolidDetail } from "react-icons/bi";
 import { ImParagraphLeft } from "react-icons/im";
 import { MdOutlineCastForEducation } from "react-icons/md";
+import { MdWorkHistory } from "react-icons/md";
 
 var routing = [
     {
@@ -17,6 +18,11 @@ var routing = [
         name : 'Education',
         path : "/resumebuilder/education",
         icon : <MdOutlineCastForEducation />
+    },
+    {
+        name : 'History',
+        path : "/resumebuilder/workHistory",
+        icon : <MdWorkHistory />
     }
 ]
 

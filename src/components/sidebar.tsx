@@ -42,7 +42,6 @@ let MobileSidebar : React.FC<siderbarProps> = (props) =>{
     let sidebarOpenOrClose  : any = useSelector((state:any):Boolean=>(state.sidebarStore.mobileSidebarOpenAndClose));
     let dispatch : any = useDispatch()  
 
-    console.log(sidebarOpenOrClose)
 
 
 

@@ -4,6 +4,18 @@
 }
 
 .detailes_font_size {
-    font-size: 0.75rem;   
+    font-size: 0.80rem;   
 }
 
+
+.heading_first_letter:first-letter {
+    text-transform:uppercase;
+}
+
+.heading_font{
+    font-size: smaller;
+}
+
+.heading_line {
+    height: 0.01rem;
+}

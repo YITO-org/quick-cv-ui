@@ -9,7 +9,7 @@ import { otpAuthendation, storeOrResetTokken } from "../actions";
 
 let Otp : React.FC<CreateAndLoginProps>= (props)=>{
 
-    console.log(props.storeUsers)
+   // console.log(props.storeUsers)
 
     let { headerName , buttonName , redirectionScreen , storeUsers } = props
     let nav = useNavigate();
