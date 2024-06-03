@@ -78,8 +78,9 @@ const App : React.FC<any>  = (props)=>{
                   <Route  path="summary" element={<Detailes headerName="Summary" />} />
                   <Route  path="education" element={<CVInfoData headerName="Education" screenName="education" /> } />
                   <Route  path="workHistory" element={<CVInfoData headerName="Work History" screenName="work_history" /> } />
+                  <Route  path="projects" element={<CVInfoData headerName="Projects" screenName="projects" /> } />
+                  <Route  path="addSection" element={<CVInfoData headerName="Add Section" screenName="custome" /> } />
 
-                  // "/resumebuilder/workHistory"
               </Route>
             </Routes>
         </BrowserRouter>

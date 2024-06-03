@@ -51,12 +51,8 @@ let CVInfoData : React.FC<any> = (props)=>{
               <Paper sx={styles.detailes_box}>
                     <Typography sx={{mt : 1 , mb:1 }} textAlign='center' variant='h5' fontWeight='500' >{props.headerName}</Typography>
                      <Button variant='contained' size='small' color='success' onClick={add} startIcon={<MdAddCircle />} sx={{ ml : 1 , mb : 0.5 }} >Add</Button>   
-
-
-                     {
-                        screenName == "education" &&
                         <Box sx={{m:0.9}}>
-                        { cv?.education?.map((e : any  , index : number)=>{
+                        { screenName == "education" &&  cv?.education?.map((e : any  , index : number)=>{
                             return(<Box sx={{border : 2 , borderRadius : 2 , p : 0.8  , borderColor : 'lightgray' , mb : 1.2 }}  key={index}>
                                             <TextField size='small' fullWidth placeholder="School/University" />
                                             <div className="row g-1 mt-1">
@@ -82,8 +78,55 @@ let CVInfoData : React.FC<any> = (props)=>{
                                 )
                             })
                         }
-                    </Box>}
-              
+
+                        { screenName == "work_history" &&  cv?.work_history?.map((e : any  , index : number)=>{
+                            return(<Box sx={{border : 2 , borderRadius : 2 , p : 0.8  , borderColor : 'lightgray' , mb : 1.2 }}  key={index}>
+                                            <TextField size='small' fullWidth placeholder="Employer" />
+                                            <div className="row g-1 mt-1">
+                                                <div className="col"><TextField size='small' sx={{fontSize : "10px"}} fullWidth placeholder="Start Date" /></div>
+                                                <div className="col"><TextField size='small' fullWidth placeholder="End Date" /></div>
+                                            </div>
+
+                                            <TextField size='small' fullWidth placeholder="Role" sx={{mt : 0.5}} />
+
+                                            <TextField size='small' fullWidth placeholder="Location" sx={{mt : 0.5}} />
+
+                                            <Box sx={{p : 0 , mt :0.5 , mb : 0.5}}>
+                                                <textarea name="summary" rows={3} className="form-control" placeholder="Description" id="exampleFormControlTextarea1" />
+                                            </Box>
+
+                                            <div className='row m-2'> 
+                                                <Button variant='contained' size='small' onClick={()=>{remove(index)}} color='error' startIcon={<RiDeleteBin5Line />}>Remove</Button>
+                                            </div>
+
+
+                                    </Box>
+                                )
+                            })
+                        }
+
+                        { screenName == "projects" &&  cv?.projects?.map((e : any  , index : number)=>{
+                            return(<Box sx={{border : 2 , borderRadius : 2 , p : 0.8  , borderColor : 'lightgray' , mb : 1.2 }}  key={index}>
+                                            <TextField size='small' fullWidth placeholder="Project Name" />
+
+                                            <TextField size='small' fullWidth placeholder="Role" sx={{mt : 0.5}} />
+
+                                            <Box sx={{p : 0 , mt :0.5 , mb : 0.5}}>
+                                                <textarea name="summary" rows={3} className="form-control" placeholder="Description" id="exampleFormControlTextarea1" />
+                                            </Box>
+
+                                            <div className='row m-2'> 
+                                                <Button variant='contained' size='small' onClick={()=>{remove(index)}} color='error' startIcon={<RiDeleteBin5Line />}>Remove</Button>
+                                            </div>
+
+
+                                    </Box>
+                                )
+                            })
+                        }
+
+
+                    </Box>
               </Paper>
              </Grid> 
  

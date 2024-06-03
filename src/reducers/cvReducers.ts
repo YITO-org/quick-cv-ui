@@ -21,7 +21,8 @@ const initialValue = {
                      CGP : "" , location : "" , 
                      description : "" }],
     work_history : [{ employer : "", startDate : "" , endDate : "" , role : "" , location : "" , description : "" }],
-    resumeArrangment : [ 'summary' , 'education' , 'work_history']
+    projects : [{'projectName' : '' , 'role' : '' , 'description' : '' }],
+    resumeArrangment : [ 'summary' , 'education' , 'skills' , 'work History' , 'project']
 }
 
 
@@ -53,9 +54,22 @@ education
 work history
 
  employer,
- start date , end date , role
+ startData , endDate , role
  location
  description
+
+
+project
+ 
+ project name,
+ role
+ description
+
+skills
+ 
+ skills name
+ description
+
 
 
 */
