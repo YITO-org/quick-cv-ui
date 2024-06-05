@@ -36,6 +36,11 @@ let CVInfoData : React.FC<any> = (props)=>{
         props.dispatch(addNewRecord(name , screenName , 'ADD_REMOVE_RECORD'));
     }
 
+    let change = (e : any , keyName : string , filedName : string)=>{
+        console.log(e.target.value , keyName , filedName);
+    }
+
+
     return(
         <React.Fragment>
         {/* view Button => display in xs , sm , md screens only */}
@@ -54,7 +59,7 @@ let CVInfoData : React.FC<any> = (props)=>{
                         <Box sx={{m:0.9}}>
                         { screenName == "education" &&  cv?.education?.map((e : any  , index : number)=>{
                             return(<Box sx={{border : 2 , borderRadius : 2 , p : 0.8  , borderColor : 'lightgray' , mb : 1.2 }}  key={index}>
-                                            <TextField size='small' fullWidth placeholder="School/University" />
+                                            <TextField size='small' fullWidth placeholder="School/University" name="School/University" onChange={(e)=>{ change(e , 'education' , "School/University" ) }} />
                                             <div className="row g-1 mt-1">
                                                 <div className="col"><TextField size='small' sx={{fontSize : "10px"}} fullWidth placeholder="Start Date" /></div>
                                                 <div className="col"><TextField size='small' fullWidth placeholder="End Date" /></div>

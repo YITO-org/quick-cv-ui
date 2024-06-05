@@ -17,5 +17,6 @@
 }
 
 .heading_line {
-    height: 0.01rem;
+    height: 1px;
+    background-color: black;
 }

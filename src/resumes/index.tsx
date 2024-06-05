@@ -43,9 +43,49 @@ let Res : React.FC<any> = (props)=>{
     )
 }
 
-let MainCV : React.FC<any> = (props)=>{
+let Summary : React.FC<any> = (props)=>{
+    return(<>{props["summary"]}</>);
+}
 
+let Education : React.FC<any> = (props)=>{
+    console.log(props);
+    return(
+        <React.Fragment>
+            {
+                props?.education?.map((e : any , index : number )=>{
+                    return(
+                        <div>
+                            {e.course}
+                        </div>
+                    )
+                })
+            }
+        </React.Fragment>
+    )
+}
+
+
+
+
+let Heading : React.FC<any> = (props)=>{
+
+    let { heading } = props;
+
+return(
+    <div className={`fw-bold py-2 ${style.heading_first_letter} ${style.heading_font}`}>
+        { heading }
+        <div className={`w-100 ${style.heading_line}`}></div>
+    </div>
+ )
+}
+
+let MainCV : React.FC<any> = (props)=>{
+    
     //console.log(props);
+    let compounds : any = {
+        "summary" : <Summary {...props} />,
+        "education" : <Education {...props} />
+    }
 
     return(
         <div>
@@ -53,26 +93,14 @@ let MainCV : React.FC<any> = (props)=>{
                 props.resumeArrangment.map((e : string , index:number)=>{
                     return (<div key={index}>
                             <Heading heading={e} />
-                              <div className="p-1" >
-                                    <GenerateContent content={props[e]}  />
+                              <div className="p-1">
+                                    {compounds[e]}
                               </div>
                            </div>)
                 })
 
             }
 
-        </div>
-    )
-}
-
-let Heading : React.FC<any> = (props)=>{
-
-        let { heading } = props;
-
-    return(
-        <div className={`fw-bold py-2 ${style.heading_first_letter} ${style.heading_font} `}>
-            { heading }
-            <div className={`w-100 bg-dark ${style.heading_line}`}></div>
         </div>
     )
 }
