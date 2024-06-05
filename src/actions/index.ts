@@ -1,9 +1,9 @@
 import axios from "axios"
-import { headertypes } from "../interfaces/types"
+// import { headertypes } from "../interfaces/types"
 
-let headers : headertypes = {
-    tokken : localStorage.getItem('tokken')
-}
+// let headers : headertypes = {
+//     tokken : localStorage.getItem('tokken')
+// }
 
 export let setSelectedIndexForSidebar = (index:Number)=>(dispatch:any)=>{
     dispatch({
@@ -59,6 +59,22 @@ export let logout = ()=>(dispatch:any)=>{
 }
 
 
+export let setInformation = (keyName : string , data : string)=>(dispatch : any)=>{
+    // console.log({keyName , data})
+    return dispatch({
+        type : 'SET_RESUME_INFORMATION',
+        data,
+        keyName
+    })
+}
+
+export let addNewRecord = (data : any , screenName : string , type : string)=>(dispatch : any)=>{
+        return dispatch({
+            type : type,
+            data,
+            screenName 
+        })
+}
 
 
 

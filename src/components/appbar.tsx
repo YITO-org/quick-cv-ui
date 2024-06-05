@@ -54,7 +54,7 @@ let Header : React.FC<any> = (props) =>{
                             <FaBarsStaggered color="white" />
                         </IconButton>
 
-                        <Typography variant='h6' fontWeight={800} noWrap component="div" sx={{ flexGrow: 1 , display : { xs : 'none' , sm : 'block' } }}>Quick CV</Typography>
+                        <Typography variant='h4'  fontWeight={800} noWrap component="div" sx={{ flexGrow: 1 , display : { xs : 'none' , sm : 'block' } }}>Quick CV</Typography>
                             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
 
                                 {

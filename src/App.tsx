@@ -49,6 +49,7 @@ import AuthProvider from "./context/secureContext";
 import { useSelector  , connect } from "react-redux";
 import { storeOrResetTokken } from "./actions";
 import Detailes from "./screens/detailes";
+import CVInfoData from "./screens/cvInfoData";
 
 const App : React.FC<any>  = (props)=>{
 
@@ -73,9 +74,13 @@ const App : React.FC<any>  = (props)=>{
 
               <Route path="/resumebuilder" element={<MainApp />}>
                   <Route index path="dashboard" element={ <PR> <Dashboard /> </PR> } />
-                  <Route index path="detailes" element={ <Detailes /> } />
-                  <Route  path="summary" element={<Summary />} />
-                  <Route  path="education" element={<Education />} />
+                  <Route index path="detailes" element={ <Detailes headerName="Details"  /> } />
+                  <Route  path="summary" element={<Detailes headerName="Summary" />} />
+                  <Route  path="education" element={<CVInfoData headerName="Education" screenName="education" /> } />
+                  <Route  path="workHistory" element={<CVInfoData headerName="Work History" screenName="work_history" /> } />
+                  <Route  path="projects" element={<CVInfoData headerName="Projects" screenName="projects" /> } />
+                  <Route  path="addSection" element={<CVInfoData headerName="Add Section" screenName="custome" /> } />
+
               </Route>
             </Routes>
         </BrowserRouter>
@@ -145,21 +150,14 @@ let LandingPage : React.FC = ()=>{
 //   )
 // }
 
-let Summary : React.FC = ()=>{
-  return(
-    <div>
-      Summary
-    </div>
-  )
-}
 
-let Education : React.FC = ()=>{
-  return(
-    <div>
-      Education
-    </div>
-  )
-}
+// let Education : React.FC = ()=>{
+//   return(
+//     <div>
+//       Education
+//     </div>
+//   )
+// }
 
 
 const mapStateToProps = (state : any ) => ({
