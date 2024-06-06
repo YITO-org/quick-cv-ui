@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Button, Grid, Paper , Box, Typography, TextField, InputLabel, FormControl } from "@mui/material";
+import { Button, Grid, Paper , Box, Typography, TextField, /* InputLabel, FormControl */ } from "@mui/material";
 import { styles } from "../styles/styles";
 import Res from "../resumes";
 import { connect } from "react-redux";
@@ -10,16 +10,14 @@ import { addNewRecord } from "../actions";
 import { typeOfOfObjects } from "../utils";
 // import { setInformation } from "../actions";
 
-
 let CVInfoData : React.FC<any> = (props)=>{
-
 
     let { cv , screenName } = props;
     // console.log({cv});
 
     let add = ()=>{
 
-        let addRecord = typeOfOfObjects[screenName];
+        let addRecord = {...typeOfOfObjects[screenName]};
         let name = [...cv[screenName]];
         name.push(addRecord);
         props.dispatch(addNewRecord(name , screenName , 'ADD_REMOVE_RECORD'));
@@ -36,8 +34,10 @@ let CVInfoData : React.FC<any> = (props)=>{
         props.dispatch(addNewRecord(name , screenName , 'ADD_REMOVE_RECORD'));
     }
 
-    let change = (e : any , keyName : string , filedName : string)=>{
-        console.log(e.target.value , keyName , filedName);
+    let change = (e : any , index : number)=>{
+        let data = [...props.cv[screenName]];
+        data[index][e.target.name] = e.target.value;
+        props.dispatch(addNewRecord(data , screenName , 'ADD_REMOVE_RECORD'));
     }
 
 
@@ -59,19 +59,19 @@ let CVInfoData : React.FC<any> = (props)=>{
                         <Box sx={{m:0.9}}>
                         { screenName == "education" &&  cv?.education?.map((e : any  , index : number)=>{
                             return(<Box sx={{border : 2 , borderRadius : 2 , p : 0.8  , borderColor : 'lightgray' , mb : 1.2 }}  key={index}>
-                                            <TextField size='small' fullWidth placeholder="School/University" name="School/University" onChange={(e)=>{ change(e , 'education' , "School/University" ) }} />
-                                            <div className="row g-1 mt-1">
-                                                <div className="col"><TextField size='small' sx={{fontSize : "10px"}} fullWidth placeholder="Start Date" /></div>
-                                                <div className="col"><TextField size='small' fullWidth placeholder="End Date" /></div>
-                                                <div className="col"><TextField size='small' fullWidth placeholder="CGPA" /></div>
+                                            <TextField size='small' fullWidth placeholder="School/University" name="School/University" value={e["School/University"]} onChange={(e)=>{ change(e , index ) }} />
+                                            <div className="row g-1 mt-1">                                                 
+                                                <div className="col"><TextField size='small' sx={{fontSize : "10px"}} fullWidth name="startData" value={e["startData"]} placeholder="Start Date" onChange={(e)=>{ change(e , index ) }} /></div>
+                                                <div className="col"><TextField size='small' fullWidth placeholder="End Date" name="endDate" value={e["endDate"]} onChange={(e)=>{ change(e , index ) }} /></div>
+                                                <div className="col"><TextField size='small' fullWidth placeholder="CGPA" name="CGP" value={e["CGP"]} onChange={(e)=>{ change(e , index ) }} /></div>
                                             </div>
 
-                                            <TextField size='small' fullWidth placeholder="Course" sx={{mt : 0.5}} />
+                                            <TextField size='small' fullWidth placeholder="Course" name="course" value={e["course"]} sx={{mt : 0.5}} onChange={(e)=>{ change(e , index ) }} />
 
-                                            <TextField size='small' fullWidth placeholder="Location" sx={{mt : 0.5}} />
+                                            <TextField size='small' fullWidth placeholder="Location" sx={{mt : 0.5}} name="location" value={e["location"]} onChange={(e)=>{ change(e , index ) }} />
 
                                             <Box sx={{p : 0 , mt :0.5 , mb : 0.5}}>
-                                                <textarea name="summary" rows={3} className="form-control" placeholder="Description" id="exampleFormControlTextarea1" />
+                                                <textarea name="description" rows={3} className="form-control" placeholder="Description" id="exampleFormControlTextarea1" value={e["description"]} onChange={(e)=>{ change(e , index ) }} />
                                             </Box>
 
                                             <div className='row m-2'> 
@@ -86,10 +86,10 @@ let CVInfoData : React.FC<any> = (props)=>{
 
                         { screenName == "work_history" &&  cv?.work_history?.map((e : any  , index : number)=>{
                             return(<Box sx={{border : 2 , borderRadius : 2 , p : 0.8  , borderColor : 'lightgray' , mb : 1.2 }}  key={index}>
-                                            <TextField size='small' fullWidth placeholder="Employer" />
+                                            <TextField size='small' fullWidth placeholder="Employer" onChange={(e)=>{ change(e , index ) }} />
                                             <div className="row g-1 mt-1">
-                                                <div className="col"><TextField size='small' sx={{fontSize : "10px"}} fullWidth placeholder="Start Date" /></div>
-                                                <div className="col"><TextField size='small' fullWidth placeholder="End Date" /></div>
+                                                <div className="col"><TextField size='small' sx={{fontSize : "10px"}} fullWidth placeholder="Start Date"  onChange={(e)=>{ change(e , index ) }}/></div>
+                                                <div className="col"><TextField size='small' fullWidth placeholder="End Date" onChange={(e)=>{ change(e , index ) }} /></div>
                                             </div>
 
                                             <TextField size='small' fullWidth placeholder="Role" sx={{mt : 0.5}} />

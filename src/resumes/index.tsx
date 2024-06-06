@@ -44,18 +44,53 @@ let Res : React.FC<any> = (props)=>{
 }
 
 let Summary : React.FC<any> = (props)=>{
-    return(<>{props["summary"]}</>);
+
+    if(!props[props.name]){
+        return;
+    }
+
+    return(<>
+            <Heading heading={props.name} />
+            <div className="p-1">
+                {props[props.name]}
+            </div>
+            </>);
 }
 
 let Education : React.FC<any> = (props)=>{
-    console.log(props);
+
+    let { name } = props;
+
+    React.useEffect(()=>{
+         console.log(props)
+    },[props])
+
+
+    if(!props?.education[0]["School/University"]){
+        return;
+    }
+
     return(
         <React.Fragment>
+            <Heading heading={props.name} />
             {
                 props?.education?.map((e : any , index : number )=>{
+
+                    console.log(e);
+
+                    if(!e["School/University"]){
+                        return;
+                    }
+
                     return(
-                        <div>
-                            {e.course}
+                        <div className="mb-1 px-1" >
+                            <div className="d-flex justify-content-between" style={{fontSize : "13.5px"}} >
+                                <div className="d-flex gap-2"> <div className="fw-bold">{e["School/University"]}</div> <div>{ e['location'] ? e['location'] : ''}</div> </div>
+                                <div style={{fontSize : "13.5px"}}>{ e.startData && e.endDate && e.startData + ' - ' + e.endDate}</div>
+                            </div>
+                            <div style={{fontSize : "12.6px"}}>{e.course ? "Course : " + e.course + '.' : ''}</div>
+                            <div style={{fontSize : "12.6px"}}>{e.CGP ? "CGP : " + e.CGP + '.' : ''}</div>
+                            <div style={{fontSize : "11.2px"}}>{e.description ? e.description + '.' : ''}</div>
                         </div>
                     )
                 })
@@ -72,7 +107,7 @@ let Heading : React.FC<any> = (props)=>{
     let { heading } = props;
 
 return(
-    <div className={`fw-bold py-2 ${style.heading_first_letter} ${style.heading_font}`}>
+    <div className={`fw-bold mt-3 ${style.heading_first_letter} ${style.heading_font}`}>
         { heading }
         <div className={`w-100 ${style.heading_line}`}></div>
     </div>
@@ -81,10 +116,9 @@ return(
 
 let MainCV : React.FC<any> = (props)=>{
     
-    //console.log(props);
     let compounds : any = {
-        "summary" : <Summary {...props} />,
-        "education" : <Education {...props} />
+        "summary" : <Summary {...props} name="summary" />,
+        "education" : <Education {...props} name="education" />
     }
 
     return(
@@ -92,10 +126,7 @@ let MainCV : React.FC<any> = (props)=>{
             {
                 props.resumeArrangment.map((e : string , index:number)=>{
                     return (<div key={index}>
-                            <Heading heading={e} />
-                              <div className="p-1">
-                                    {compounds[e]}
-                              </div>
+                              {compounds[e]}
                            </div>)
                 })
 
