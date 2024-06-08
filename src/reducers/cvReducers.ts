@@ -16,13 +16,14 @@ const initialValue = {
     tempLinkdin : 'krishna@linkdin.com',
     summary : null,
     education  : [{
-                     "School/University" : "" , startData : "" , 
+                     "School/University" : "" , startDate : "" , 
                      endDate : "" , course : "" , 
                      CGP : "" , location : "" , 
                      description : "" }],
     work_history : [{ employer : "", startDate : "" , endDate : "" , role : "" , location : "" , description : "" }],
     projects : [{'projectName' : '' , 'role' : '' , 'description' : '' }],
-    resumeArrangment : [ 'summary' , 'education' , 'skills' , 'work History' , 'project']
+    skills : [{'name' : "" , "skill set" : "" }],
+    resumeArrangment : [ 'summary' , 'skills' ,  'education'  , 'work_history' , 'projects']
 }
 
 
@@ -32,7 +33,7 @@ let cvReducer = (state = initialValue , action : any) : any=>{
         case "SET_RESUME_INFORMATION":
             return {...state , [action.keyName] : action.data};
         case 'ADD_REMOVE_RECORD':
-            console.log({action});
+            // console.log({action});
             return {...state , [action.screenName] : action.data}
         default:
           return state;

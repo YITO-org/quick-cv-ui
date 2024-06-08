@@ -13,7 +13,7 @@ import { typeOfOfObjects } from "../utils";
 let CVInfoData : React.FC<any> = (props)=>{
 
     let { cv , screenName } = props;
-    // console.log({cv});
+
 
     let add = ()=>{
 
@@ -31,6 +31,9 @@ let CVInfoData : React.FC<any> = (props)=>{
         }else{
             name.splice(0,1)
         }
+
+        console.log({name});
+
         props.dispatch(addNewRecord(name , screenName , 'ADD_REMOVE_RECORD'));
     }
 
@@ -61,7 +64,7 @@ let CVInfoData : React.FC<any> = (props)=>{
                             return(<Box sx={{border : 2 , borderRadius : 2 , p : 0.8  , borderColor : 'lightgray' , mb : 1.2 }}  key={index}>
                                             <TextField size='small' fullWidth placeholder="School/University" name="School/University" value={e["School/University"]} onChange={(e)=>{ change(e , index ) }} />
                                             <div className="row g-1 mt-1">                                                 
-                                                <div className="col"><TextField size='small' sx={{fontSize : "10px"}} fullWidth name="startData" value={e["startData"]} placeholder="Start Date" onChange={(e)=>{ change(e , index ) }} /></div>
+                                                <div className="col"><TextField size='small' sx={{fontSize : "10px"}} fullWidth name="startDate" value={e["startDate"]} placeholder="Start Date" onChange={(e)=>{ change(e , index ) }} /></div>
                                                 <div className="col"><TextField size='small' fullWidth placeholder="End Date" name="endDate" value={e["endDate"]} onChange={(e)=>{ change(e , index ) }} /></div>
                                                 <div className="col"><TextField size='small' fullWidth placeholder="CGPA" name="CGP" value={e["CGP"]} onChange={(e)=>{ change(e , index ) }} /></div>
                                             </div>
@@ -86,18 +89,18 @@ let CVInfoData : React.FC<any> = (props)=>{
 
                         { screenName == "work_history" &&  cv?.work_history?.map((e : any  , index : number)=>{
                             return(<Box sx={{border : 2 , borderRadius : 2 , p : 0.8  , borderColor : 'lightgray' , mb : 1.2 }}  key={index}>
-                                            <TextField size='small' fullWidth placeholder="Employer" onChange={(e)=>{ change(e , index ) }} />
+                                            <TextField size='small' fullWidth placeholder="Employer" name="employer" value={e["employer"]}  onChange={(e)=>{ change(e , index ) }} />
                                             <div className="row g-1 mt-1">
-                                                <div className="col"><TextField size='small' sx={{fontSize : "10px"}} fullWidth placeholder="Start Date"  onChange={(e)=>{ change(e , index ) }}/></div>
-                                                <div className="col"><TextField size='small' fullWidth placeholder="End Date" onChange={(e)=>{ change(e , index ) }} /></div>
+                                                <div className="col"><TextField size='small' sx={{fontSize : "10px"}} fullWidth value={e["startDate"]} name="startDate" placeholder="Start Date"  onChange={(e)=>{ change(e , index ) }}/></div>
+                                                <div className="col"><TextField size='small' fullWidth placeholder="End Date" value={e["endDate"]} name="endDate" onChange={(e)=>{ change(e , index ) }} /></div>
                                             </div>
 
-                                            <TextField size='small' fullWidth placeholder="Role" sx={{mt : 0.5}} />
+                                            <TextField size='small' fullWidth name="role" value={e["role"]} placeholder="Role" sx={{mt : 0.5}} onChange={(e)=>{ change(e , index ) }} />
 
-                                            <TextField size='small' fullWidth placeholder="Location" sx={{mt : 0.5}} />
+                                            <TextField size='small' fullWidth name="location" value={e["location"]} placeholder="Location" sx={{mt : 0.5}} onChange={(e)=>{ change(e , index ) }} />
 
                                             <Box sx={{p : 0 , mt :0.5 , mb : 0.5}}>
-                                                <textarea name="summary" rows={3} className="form-control" placeholder="Description" id="exampleFormControlTextarea1" />
+                                                <textarea name="description" rows={3} value={e["description"]} className="form-control" placeholder="Description" id="exampleFormControlTextarea1" onChange={(e)=>{ change(e , index ) }} />
                                             </Box>
 
                                             <div className='row m-2'> 
@@ -112,12 +115,12 @@ let CVInfoData : React.FC<any> = (props)=>{
 
                         { screenName == "projects" &&  cv?.projects?.map((e : any  , index : number)=>{
                             return(<Box sx={{border : 2 , borderRadius : 2 , p : 0.8  , borderColor : 'lightgray' , mb : 1.2 }}  key={index}>
-                                            <TextField size='small' fullWidth placeholder="Project Name" />
+                                            <TextField size='small' fullWidth placeholder="Project Name" value={e["projectName"]} name="projectName" onChange={(e)=>{ change(e , index ) }} />
 
-                                            <TextField size='small' fullWidth placeholder="Role" sx={{mt : 0.5}} />
+                                            <TextField size='small' fullWidth name="role" placeholder="Role" sx={{mt : 0.5}} value={e['role']} onChange={(e)=>{ change(e , index ) }} />
 
                                             <Box sx={{p : 0 , mt :0.5 , mb : 0.5}}>
-                                                <textarea name="summary" rows={3} className="form-control" placeholder="Description" id="exampleFormControlTextarea1" />
+                                                <textarea name="description" rows={3} className="form-control" placeholder="Role and Responsibilities" value={e['description']} id="exampleFormControlTextarea1" onChange={(e)=>{ change(e , index ) }} />
                                             </Box>
 
                                             <div className='row m-2'> 
@@ -130,6 +133,23 @@ let CVInfoData : React.FC<any> = (props)=>{
                             })
                         }
 
+                        { screenName == "skills" &&  cv?.skills?.map((e : any  , index : number)=>{
+                              return(<Box sx={{border : 2 , borderRadius : 2 , p : 0.8  , borderColor : 'lightgray' , mb : 1.2 }}  key={index}>
+                                            <TextField size='small' fullWidth placeholder="Name" value={e["name"]} name="name" onChange={(e)=>{ change(e , index ) }} />
+
+                                            <Box sx={{p : 0 , mt :0.5 , mb : 0.5}}>
+                                                <textarea name="skill set" rows={3} className="form-control" placeholder="Skill Set" value={e['skill set']} id="exampleFormControlTextarea1" onChange={(e)=>{ change(e , index ) }} />
+                                            </Box>
+
+                                            <div className='row m-2'> 
+                                                <Button variant='contained' size='small' onClick={()=>{remove(index)}} color='error' startIcon={<RiDeleteBin5Line />}>Remove</Button>
+                                            </div>
+
+
+                                    </Box>
+                                )
+                            })
+                        }
 
                     </Box>
               </Paper>
