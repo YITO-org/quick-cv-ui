@@ -23,7 +23,9 @@ const initialValue = {
     work_history : [{ employer : "", startDate : "" , endDate : "" , role : "" , location : "" , description : "" }],
     projects : [{'projectName' : '' , 'role' : '' , 'description' : '' }],
     skills : [{'name' : "" , "skill set" : "" }],
-    resumeArrangment : [ 'summary' , 'skills' ,  'education'  , 'work_history' , 'projects']
+    resumeArrangment : [ 'summary' , 'skills' ,  'education'  , 'work_history' , 'projects'],
+    templates:['template-1' , 'template-2'],
+    selectedTemplate : 'template-2'
 }
 
 

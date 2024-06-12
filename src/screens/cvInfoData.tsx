@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Button, Grid, Paper , Box, Typography, TextField, /* InputLabel, FormControl */ } from "@mui/material";
+import { Button, Grid, Paper , Box, Typography, TextField, FormControl , MenuItem , InputLabel, Select, /* InputLabel, FormControl */ } from "@mui/material";
 import { styles } from "../styles/styles";
 import Res from "../resumes";
 import { connect } from "react-redux";
@@ -43,6 +43,7 @@ let CVInfoData : React.FC<any> = (props)=>{
         props.dispatch(addNewRecord(data , screenName , 'ADD_REMOVE_RECORD'));
     }
 
+    console.log({ cv });
 
     return(
         <React.Fragment>
@@ -58,7 +59,11 @@ let CVInfoData : React.FC<any> = (props)=>{
              <Grid xs={12} sm={12} md={12}  lg={5} xl={5}>
               <Paper sx={styles.detailes_box}>
                     <Typography sx={{mt : 1 , mb:1 }} textAlign='center' variant='h5' fontWeight='500' >{props.headerName}</Typography>
-                     <Button variant='contained' size='small' color='success' onClick={add} startIcon={<MdAddCircle />} sx={{ ml : 1 , mb : 0.5 }} >Add</Button>   
+                        {
+                            props.headerName != "Template" &&
+                            <Button variant='contained' size='small' color='success' onClick={add} startIcon={<MdAddCircle />} sx={{ ml : 1 , mb : 0.5 }} >Add</Button>   
+                        }
+                    
                         <Box sx={{m:0.9}}>
                         { screenName == "education" &&  cv?.education?.map((e : any  , index : number)=>{
                             return(<Box sx={{border : 2 , borderRadius : 2 , p : 0.8  , borderColor : 'lightgray' , mb : 1.2 }}  key={index}>
@@ -149,6 +154,24 @@ let CVInfoData : React.FC<any> = (props)=>{
                                     </Box>
                                 )
                             })
+                        }
+
+
+                        {
+                            screenName == "template" &&
+                            <Box>
+                                    <FormControl fullWidth>
+                                        <InputLabel>Resume Template</InputLabel>
+                                        <Select label="Resume Template" onChange={(e)=>{console.log(e.target.value)}} >
+                                            {
+                                                cv?.templates?.map((e:string,index:number)=>(<MenuItem key={index} value={e}>{e}</MenuItem>))
+                                            }
+                                        </Select>
+
+                                        <Button variant='contained' sx={{mt : '5%'}} color='error'>clear</Button>
+
+                                    </FormControl>
+                            </Box>
                         }
 
                     </Box>

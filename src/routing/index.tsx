@@ -4,6 +4,7 @@ import { MdOutlineCastForEducation } from "react-icons/md";
 import { MdWorkHistory } from "react-icons/md";
 import { FaDiagramProject } from "react-icons/fa6";
 import { GiSkills } from "react-icons/gi";
+import { ImInsertTemplate } from "react-icons/im";
 // import { RiPlayListAddLine } from "react-icons/ri";
 
 var routing = [
@@ -36,7 +37,14 @@ var routing = [
         name : 'Skills',
         path : "/resumebuilder/skills",
         icon : <GiSkills />
-    }
+    },
+    {
+        name : 'Template',
+        path : "/resumebuilder/template",
+        icon : <ImInsertTemplate />
+    },
+
+
     // {
     //     name : 'Add Section',
     //     path : "/resumebuilder/summary",

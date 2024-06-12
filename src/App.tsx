@@ -80,6 +80,7 @@ const App : React.FC<any>  = (props)=>{
                   <Route  path="workHistory" element={<CVInfoData headerName="Work History" screenName="work_history" /> } />
                   <Route  path="projects" element={<CVInfoData headerName="Projects" screenName="projects" /> } />
                   <Route  path="skills" element={<CVInfoData headerName="Skills" screenName="skills" /> } />
+                  <Route  path="template" element={<CVInfoData headerName="Template" screenName="template" /> } />
                   {/* <Route  path="addSection" element={<CVInfoData headerName="Add Section" screenName="custome" /> } /> */}
 
               </Route>
