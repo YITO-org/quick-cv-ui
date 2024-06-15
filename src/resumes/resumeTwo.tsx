@@ -3,11 +3,13 @@ import { Box, Paper } from "@mui/material";
 import { connect } from "react-redux";
 import React, { useEffect } from "react";
 import { styles } from "../styles/styles";
-import { getPdf } from "../actions";
 import "../styles/resumeOne.css";
+import { getPdf } from "../actions";
 
-let ResumeOne : React.FC<any> = (props)=>{
+
+let ResumeTwo : React.FC<any> = (props)=>{
     
+    const {cv} = props;
 
     useEffect(()=>{
         props.dispatch({
@@ -45,20 +47,18 @@ let ResumeOne : React.FC<any> = (props)=>{
         removeSpecialChar(data);
     }
 
-    const {cv} = props;
-
     return(
         <Box>
             <Paper sx={styles.detailes_resume_box}>
             <div id="template">
 
                 {/* details */}
-                <div className="container-fluid p-3">
-                    <div className="d-flex flex-column align-items-start">
+                <div className="container-fluid p-5">
+                    <div className="d-flex flex-column align-items-center">
                         {/* name */}
                       <div className="fs-5 fw-normal">{cv.name || cv.tempName}</div>
                         {/* cv */}
-                        <div  className={`lh-sm detailes_font_size`}>
+                        <div  className={`lh-sm text-center detailes_font_size`}>
                             <div>{cv.designation || cv.tempDesignation}</div>
                             <div>{cv.phoneNumber || cv.tempPhoneNumber}</div>
                             <div>{cv.email || cv.tempEmail}</div>
@@ -113,6 +113,8 @@ let Education : React.FC<any> = (props)=>{
             {
                 props?.education?.map((e : any , index : number )=>{
 
+
+
                     if(!e["School/University"]){
                         return;
                     }
@@ -138,7 +140,7 @@ let Projects : React.FC<any> = (props)=>{
     let { name } = props;
 
     useEffect(()=>{
-
+        
     },[props])
 
 
@@ -155,12 +157,13 @@ let Projects : React.FC<any> = (props)=>{
             {
                 props?.projects?.map((e : any , index : number )=>{
 
+
                     if(!e["projectName"]){
                         return;
                     }
 
                     return(
-                        <div className="mb-1 px-1" >
+                        <div className="mb-1 px-1" key={index} >
                             <div className="d-flex justify-content-between" style={{fontSize : "13.5px"}} >
                                 <div className="d-flex gap-2"> <div className="fw-bold">{e["projectName"]}</div></div>
                             </div>
@@ -189,7 +192,7 @@ let Skills : React.FC<any> = (props)=>{
     let { name } = props;
     
     useEffect(()=>{
-
+        console.log(props.skills)
     },[])
 
     if(props.skills.length == 0){
@@ -278,7 +281,7 @@ let Heading : React.FC<any> = (props)=>{
 return(
     <div className={`fw-bold mt-3 heading_first_letter heading_font`}>
         { heading }
-        <div className={`w-100 heading_line`}></div>
+        <div className={`w-100`} style={{ height : "1px" , backgroundColor : 'black' }} ></div>
     </div>
  )
 }
@@ -345,8 +348,7 @@ const mapStateToProps = (state : any ) => ({
     cv : state.cvReducer
   });
   
-  export default connect(mapStateToProps, (dispatch:any) => ({ dispatch }))(ResumeOne);
-
+export default connect(mapStateToProps, (dispatch:any) => ({ dispatch }))(ResumeTwo);
 
 //   name : null,
 //   tempName : 'krishna',
@@ -363,6 +365,5 @@ const mapStateToProps = (state : any ) => ({
 //   linkdin : null,
 //   tempLinkdin : 'krishna@linkdin.com',
 //   summary : null
-
 
 

@@ -1,4 +1,4 @@
-
+// test new
 import React from "react";
 import { Button, Grid, Paper , Box, Typography, TextField, FormControl , MenuItem , InputLabel, Select, /* InputLabel, FormControl */ } from "@mui/material";
 import { styles } from "../styles/styles";
@@ -8,7 +8,8 @@ import { MdAddCircle } from "react-icons/md";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { addNewRecord } from "../actions";
 import { typeOfOfObjects } from "../utils";
-// import { setInformation } from "../actions";
+import { setInformation } from "../actions";
+import { BiSolidDownload } from "react-icons/bi";
 
 let CVInfoData : React.FC<any> = (props)=>{
 
@@ -32,7 +33,7 @@ let CVInfoData : React.FC<any> = (props)=>{
             name.splice(0,1)
         }
 
-        console.log({name});
+        
 
         props.dispatch(addNewRecord(name , screenName , 'ADD_REMOVE_RECORD'));
     }
@@ -43,7 +44,12 @@ let CVInfoData : React.FC<any> = (props)=>{
         props.dispatch(addNewRecord(data , screenName , 'ADD_REMOVE_RECORD'));
     }
 
-    console.log({ cv });
+    // console.log({ cv });
+
+
+    let selectTempleate = (e : any):void=>{
+        props.dispatch(setInformation(e.target.name , e.target.value))
+    }
 
     return(
         <React.Fragment>
@@ -162,13 +168,13 @@ let CVInfoData : React.FC<any> = (props)=>{
                             <Box>
                                     <FormControl fullWidth>
                                         <InputLabel>Resume Template</InputLabel>
-                                        <Select label="Resume Template" onChange={(e)=>{console.log(e.target.value)}} >
+                                        <Select name="selectedTemplate" label="Resume Template" value={cv.selectedTemplate} onChange={(e)=>{ selectTempleate(e) /* console.log(e.target.value) */ }} >
                                             {
                                                 cv?.templates?.map((e:string,index:number)=>(<MenuItem key={index} value={e}>{e}</MenuItem>))
                                             }
                                         </Select>
 
-                                        <Button variant='contained' sx={{mt : '5%'}} color='error'>clear</Button>
+                                        <Button variant='contained' sx={{mt : '5%'}} color='primary' startIcon={<BiSolidDownload />} onClick={()=>{ cv.downloadFunction()}} > Download </Button>
 
                                     </FormControl>
                             </Box>

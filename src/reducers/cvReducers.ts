@@ -24,19 +24,23 @@ const initialValue = {
     projects : [{'projectName' : '' , 'role' : '' , 'description' : '' }],
     skills : [{'name' : "" , "skill set" : "" }],
     resumeArrangment : [ 'summary' , 'skills' ,  'education'  , 'work_history' , 'projects'],
-    templates:['template-1' , 'template-2'],
-    selectedTemplate : 'template-2'
+    templates:['Template-1' , 'Template-2'],
+    selectedTemplate : '',
+    defaultTemplate : 'Template-1',
+    downloadFunction : ()=>{}
 }
 
 
 let cvReducer = (state = initialValue , action : any) : any=>{
-    // console.log(action)
+    // console.log(action) new
     switch(action.type){
         case "SET_RESUME_INFORMATION":
             return {...state , [action.keyName] : action.data};
         case 'ADD_REMOVE_RECORD':
             // console.log({action});
             return {...state , [action.screenName] : action.data}
+        case 'DOWNLOAD_FUNCTION':
+            return {...state , "downloadFunction" : action.method };
         default:
           return state;
     }

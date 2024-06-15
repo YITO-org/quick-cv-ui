@@ -6,7 +6,7 @@ import Sidebar from "../components/sidebar";
 import {
   Breakpoint,
   Theme,
-//  ThemeProvider,
+//  ThemeProvider, new
   useTheme,
   // createTheme,
 } from '@mui/material/styles';
@@ -39,7 +39,6 @@ let Layout:React.FC<any> = (props : any) =>{
   const width = useWidth();
   
   useEffect(()=>{
-     console.log(width)
 
     // dispatch hook
 

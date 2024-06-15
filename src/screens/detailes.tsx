@@ -1,3 +1,4 @@
+// test
 import React from "react";
 import { Button, Grid, Paper , Box, Typography, TextField, InputLabel  } from "@mui/material";
 import { styles } from "../styles/styles";
@@ -28,7 +29,7 @@ let Detailes : React.FC<any> = (props)=>{
                     <Grid xs={12} sm={12} md={12} lg={5} xl={5}>
                             <Paper   sx={styles.detailes_box}>
                                 <Typography sx={{mt : 1 , mb:1 }} textAlign='center' variant='h5' fontWeight='500' >{props.headerName}</Typography>
-                                {
+                                {  
                                    props.headerName == "Details" &&
                                         <Box sx={{p : 2}}>
                                             {
@@ -49,7 +50,7 @@ let Detailes : React.FC<any> = (props)=>{
                                 }    
                             </Paper>
                     </Grid> 
- 
+
                     <Grid lg={6.9} xl={6.9} sx={{display : {sm : 'none' , xs : 'none' , md : 'none' , lg: 'block' , xl: 'block'}}} >
                         <Res />
                     </Grid>

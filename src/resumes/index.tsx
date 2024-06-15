@@ -4,16 +4,31 @@ import React, { useEffect } from "react";
 // import { styles } from "../styles/styles";
 // import style from "../styles/resumeOne.module.css";
 import ResumeOne from "./resumeOne";
+import ResumeTwo from "./resumeTwo";
 
 
-// @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-let Res : React.FC<any> = ( /* props */ )=>{
+// @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap'); new
+let Res : React.FC<any> = (  props  )=>{
     
-    // const {cv} = props;
+     const {cv} = props;
+
+     useEffect(()=>{
+
+     },[])
+
+
+    let template : any = {
+        "Template-1" : <ResumeOne />,
+        "Template-2" : <ResumeTwo />
+    }
+
 
     return(
         <div>
-            <ResumeOne />
+
+            {
+                template[cv.selectedTemplate || cv.defaultTemplate]
+            }
         </div>
     )
 }
