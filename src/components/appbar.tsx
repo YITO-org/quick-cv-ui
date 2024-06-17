@@ -13,6 +13,8 @@ let Header : React.FC<any> = (props) =>{
     let Grey = grey["800"]
     let Yellow = yellow["800"]
 
+    let {screenSize} = props;
+    // alert(screenSize);
 
     let sidebarOpenOrClose  : any = useSelector((state:any):Boolean=>(state.sidebarStore.mobileSidebarOpenAndClose));
     let selector :any = useSelector((state:any)=>state.storeUsers);
@@ -54,7 +56,10 @@ let Header : React.FC<any> = (props) =>{
                             <FaBarsStaggered color="white" />
                         </IconButton>
 
-                        <Typography variant='h4'  fontWeight={800} noWrap component="div" sx={{ flexGrow: 1 , display : { xs : 'none' , sm : 'block' } }}>Quick CV</Typography>
+                        <Typography variant={(screenSize == "md" || screenSize == "sm" || screenSize == "xs") ? "h6" : "h4"}  fontWeight={800} noWrap component="div" 
+                            // sx={{ flexGrow: 1 , display : { xs : 'none' , sm : 'block' } }}
+                                sx={{flexGrow : 1}}
+                            >Quick CV</Typography>
                             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
 
                                 {
@@ -65,11 +70,11 @@ let Header : React.FC<any> = (props) =>{
                                 }
 
 
-                            <Button color='info' variant='contained' size='small' sx={{ backgroundColor : Yellow  }}>
+                            {/* <Button color='info' variant='contained' size='small' sx={{ backgroundColor : Yellow  }}>
                                 <Typography variant='body1' component='div'  fontWeight={700} sx={{ color : 'black' , ':hover' : { color : 'white'}}} >
                                     Donate
                                 </Typography>
-                            </Button>
+                            </Button> */}
 
                             <Menu
                                     id="menu-appbar"

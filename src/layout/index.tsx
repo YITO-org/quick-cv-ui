@@ -49,7 +49,7 @@ let Layout:React.FC<any> = (props : any) =>{
     <React.Fragment>
       <Box sx={styles.root}>
         <CssBaseline />
-          <Header />
+          <Header screenSize={width} />
           <Sidebar screenSize={width} />
           {/* <ThemeProvider theme={theme}> */}
           <Box component="main" sx={{ flexGrow: 1 , p: 1 }}>
