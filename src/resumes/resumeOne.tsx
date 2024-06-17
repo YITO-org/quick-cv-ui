@@ -35,9 +35,20 @@ let ResumeOne : React.FC<any> = (props)=>{
             "template" : cv.selectedTemplate || cv.defaultTemplate
         }
 
-        props.dispatch(getPdf(htmlData));
+        props.dispatch(getPdf(htmlData , resposseCallBack));
 
     }    
+
+    async function resposseCallBack(response:any){
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'Resume.pdf');
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+
+    }
 
 
     function DownloadPdf(){

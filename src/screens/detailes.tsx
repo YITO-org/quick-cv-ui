@@ -1,4 +1,3 @@
-// test
 import React from "react";
 import { Button, Grid, Paper , Box, Typography, TextField, InputLabel  } from "@mui/material";
 import { styles } from "../styles/styles";
@@ -8,7 +7,6 @@ import { setInformation } from "../actions";
 // import styles from "../styles/detailes.module.css";
 
 let Detailes : React.FC<any> = (props)=>{
-
 
     let { cv } = props;
 
@@ -22,8 +20,8 @@ let Detailes : React.FC<any> = (props)=>{
             <Box sx={{ mb : 1 ,  display : { lg :'none' , xl : 'none' }}}>
                 <Box sx={{display : 'flex' , justifyContent : 'flex-end'}} >
                     <Button size='large' variant='contained' color='success'>View Resume</Button>
-                </Box>
             </Box>
+                </Box>
 
                 <Grid container  columnGap={1} >
                     <Grid xs={12} sm={12} md={12} lg={5} xl={5}>

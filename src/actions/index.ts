@@ -77,8 +77,8 @@ export let addNewRecord = (data : any , screenName : string , type : string)=>(d
 }
 
 
-export let getPdf = (data:any  )=>(dispatch:any)=>{
-    console.log(data)
+export let getPdf = (data:any , callBack : any)=>(dispatch:any)=>{
+    // console.log(data)
     // return axios.get<any>("/pdf" , {params : {name : 'surya' , age : '25'}}).then((res:any)=>{
     //     console.log(res.data)
     // }).catch((err:any)=>{
@@ -86,15 +86,37 @@ export let getPdf = (data:any  )=>(dispatch:any)=>{
     // }).finally(()=>{
 
     // })
-    return axios.post<any>('http://localhost:4000/generatePdf',data)
-  .then(response => {
-    // Handle successful response
-    console.log(response.data); // Output the retrieved data
-  })
-  .catch(error => {
-    // Handle error
-    console.error('Error fetching data:', error);
-  });
+    
+    
+    
+//     return axios.post<any>('http://localhost:4000/generatePdf',data)
+//   .then(response => {
+//     callBack(response)
+//     // Handle successful response
+//    // console.log(response.data); // Output the retrieved data
+    
+// })
+//   .catch(error => {
+//     // Handle error
+//     console.error('Error fetching data:', error);
+//   });
+
+    axios({
+        url : 'http://localhost:4000/generatePdf',
+        method : 'POST',
+        responseType : 'blob',
+        data
+    }).then(response => {
+            callBack(response)
+            // Handle successful response
+           // console.log(response.data); // Output the retrieved data
+            
+        })
+          .catch(error => {
+            // Handle error
+            console.error('Error fetching data:', error);
+          });
+
 }
 
 
