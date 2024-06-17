@@ -4,22 +4,29 @@ import { styles } from "../styles/styles";
 import Res from "../resumes";
 import { connect } from "react-redux";
 import { setInformation } from "../actions";
+import { useNavigate } from "react-router-dom";
 // import styles from "../styles/detailes.module.css";
 
 let Detailes : React.FC<any> = (props)=>{
 
     let { cv } = props;
+    let nav = useNavigate();
 
     let change = (e  : any /* React.ChangeEvent<HTMLInputElement>*/)=>{
         props.dispatch(setInformation(e.target.name , e.target.value))
     }
+
+    let viewResume = ()=>{
+        nav("/resumebuilder/ViewResume")
+    }
+
 
     return(
         <React.Fragment>
             {/* view Button => display in xs , sm , md screens only */}
             <Box sx={{ mb : 1 ,  display : { lg :'none' , xl : 'none' }}}>
                 <Box sx={{display : 'flex' , justifyContent : 'flex-end'}} >
-                    <Button size='large' variant='contained' color='success'>View Resume</Button>
+                    <Button size='small' variant='contained' color='success' onClick={viewResume}>View Resume</Button>
             </Box>
                 </Box>
 

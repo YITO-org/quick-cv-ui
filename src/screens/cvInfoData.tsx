@@ -3,6 +3,7 @@ import React from "react";
 import { Button, Grid, Paper , Box, Typography, TextField, FormControl , MenuItem , InputLabel, Select, /* InputLabel, FormControl */ } from "@mui/material";
 import { styles } from "../styles/styles";
 import Res from "../resumes";
+import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { MdAddCircle } from "react-icons/md";
 import { RiDeleteBin5Line } from "react-icons/ri";
@@ -14,6 +15,7 @@ import { BiSolidDownload } from "react-icons/bi";
 let CVInfoData : React.FC<any> = (props)=>{
 
     let { cv , screenName } = props;
+    let nav = useNavigate();
 
 
     let add = ()=>{
@@ -51,12 +53,17 @@ let CVInfoData : React.FC<any> = (props)=>{
         props.dispatch(setInformation(e.target.name , e.target.value))
     }
 
+    let viewResume = ()=>{
+        nav("/resumebuilder/ViewResume")
+    }
+
+
     return(
         <React.Fragment>
         {/* view Button => display in xs , sm , md screens only */}
             <Box sx={{ mb : 1 ,  display : { lg :'none' , xl : 'none' }}}>
                 <Box sx={{display : 'flex' , justifyContent : 'flex-end'}} >
-                    <Button size='large' variant='contained' color='success'>View Resume</Button>
+                    <Button size='small' variant='contained' color='success' onClick={viewResume} >View Resume</Button>
                 </Box>
             </Box>
 
