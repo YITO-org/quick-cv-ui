@@ -4,7 +4,7 @@ const initialValue = {
     tempName : 'krishna',
     designation : null,
     tempDesignation : 'Software Engineers',
-    dob : '',
+    DOB : '',
     tempDob : '09-Jan-1998',
     phoneNumber : null,
     tempPhoneNumber : 12345678910,

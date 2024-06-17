@@ -31,7 +31,7 @@ let Detailes : React.FC<any> = (props)=>{
                                    props.headerName == "Details" &&
                                         <Box sx={{p : 2}}>
                                             {
-                                                ['name' , 'designation' , 'dob' , 'phoneNumber' , 'email' , 'github' , 'linkdin'].map((e,index)=>(
+                                                ['name' , 'designation' , 'DOB' , 'phoneNumber' , 'email' , 'github' , 'linkdin'].map((e,index)=>(
                                                     <Box key={index}>
                                                         <InputLabel sx={styles.input_lable}>{e}</InputLabel>
                                                         <TextField type="text" size='small' placeholder={e} name={e} value={cv[e]}  onChange={change} sx={{marginBottom : 2 , width : '100%'}} />
