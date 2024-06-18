@@ -5,12 +5,13 @@ import { MdWorkHistory } from "react-icons/md";
 import { FaDiagramProject } from "react-icons/fa6";
 import { GiSkills } from "react-icons/gi";
 import { ImInsertTemplate } from "react-icons/im";
+import { AiOutlineUnorderedList } from "react-icons/ai";
 // import { RiPlayListAddLine } from "react-icons/ri";
 
 var routing = [
     {
         name : 'Details',
-        path : "/resumebuilder/detailes",
+        path : "/resumebuilder/detaileGiSkillss",
         icon : <BiSolidDetail /> // ()=>{ return <BiSolidDetail /> }
     },
     {
@@ -37,6 +38,11 @@ var routing = [
         name : 'Skills',
         path : "/resumebuilder/skills",
         icon : <GiSkills />
+    },
+    {
+        name : 'Ordering',
+        path : "/resumebuilder/ordering",
+        icon : <AiOutlineUnorderedList />
     },
     {
         name : 'Template',
