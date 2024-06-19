@@ -11,7 +11,7 @@ import { AiOutlineUnorderedList } from "react-icons/ai";
 var routing = [
     {
         name : 'Details',
-        path : "/resumebuilder/detaileGiSkillss",
+        path : "/resumebuilder/detailes",
         icon : <BiSolidDetail /> // ()=>{ return <BiSolidDetail /> }
     },
     {
