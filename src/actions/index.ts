@@ -76,30 +76,15 @@ export let addNewRecord = (data : any , screenName : string , type : string)=>(d
         })
 }
 
+export let setLoader = ()=>(dispatch:any)=>{
+    dispatch({ type : 'SET_LOADER'})
+}
+
+export let clearLoader = ()=>(dispatch:any)=>{
+    dispatch({ type : 'CLEAR_LOADER'})
+}
 
 export let getPdf = (data:any , callBack : any)=>(dispatch:any)=>{
-    // console.log(data)
-    // return axios.get<any>("/pdf" , {params : {name : 'surya' , age : '25'}}).then((res:any)=>{
-    //     console.log(res.data)
-    // }).catch((err:any)=>{
-    //     console.log(err)
-    // }).finally(()=>{
-
-    // })
-    
-    
-    
-//     return axios.post<any>('http://localhost:4000/generatePdf',data)
-//   .then(response => {
-//     callBack(response)
-//     // Handle successful response
-//    // console.log(response.data); // Output the retrieved data
-    
-// })
-//   .catch(error => {
-//     // Handle error
-//     console.error('Error fetching data:', error);
-//   });
 
     axios({
         url : 'http://localhost:4000/generatePdf',

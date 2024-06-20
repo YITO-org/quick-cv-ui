@@ -1,8 +1,5 @@
-
 import React , {useEffect} from "react"
-import { Box , CssBaseline, Toolbar } from "@mui/material"
-import Header from "../components/appbar";
-import Sidebar from "../components/sidebar";
+import { Backdrop, Box , CircularProgress, CssBaseline, Toolbar, Typography } from "@mui/material"
 import {
   Breakpoint,
   Theme,
@@ -10,6 +7,9 @@ import {
   useTheme,
   // createTheme,
 } from '@mui/material/styles';
+import {useSelector} from 'react-redux';
+import Header from "../components/appbar";
+import Sidebar from "../components/sidebar";
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 type BreakpointOrNull = Breakpoint | null;
@@ -38,6 +38,13 @@ let Layout:React.FC<any> = (props : any) =>{
 
   const width = useWidth();
   
+  const selector = useSelector((sel:any)=>sel.loderReducer);
+
+  // console.log(selector);
+
+  // let [openLoader , setOpenLoader] = React.useState(false);
+
+  
   useEffect(()=>{
 
     // dispatch hook
@@ -54,6 +61,19 @@ let Layout:React.FC<any> = (props : any) =>{
           {/* <ThemeProvider theme={theme}> */}
           <Box component="main" sx={{ flexGrow: 1 , p: 1 }}>
             <Toolbar />
+              <Box>
+                <Backdrop
+                  sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                  open={selector.loader}
+                  onClick={()=>{}}
+                  >
+                      <Box sx={{ display : 'flex' , flexDirection : 'column'}}>
+                       <CircularProgress color='inherit' />
+                       <Typography>Loading</Typography>
+                      </Box>
+
+                  </Backdrop>
+              </Box>
             {props.children}
           </Box>
           {/* </ThemeProvider> */}

@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 // import FileDownload from "js-file-download";
 import { styles } from "../styles/styles";
 import "../styles/resumeOne.css";
-import { getPdf } from "../actions";
+import { clearLoader, getPdf } from "../actions";
 
 
 let ResumeTwo : React.FC<any> = (props)=>{
@@ -51,6 +51,7 @@ let ResumeTwo : React.FC<any> = (props)=>{
         document.body.appendChild(link);
         link.click();
         link.remove();
+        props.dispatch(clearLoader())
 
     }
 

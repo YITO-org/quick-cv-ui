@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { MdAddCircle } from "react-icons/md";
 import { RiDeleteBin5Line } from "react-icons/ri";
-import { addNewRecord } from "../actions";
+import { addNewRecord, setLoader } from "../actions";
 import { typeOfOfObjects } from "../utils";
 import { setInformation } from "../actions";
 import { BiSolidDownload } from "react-icons/bi";
@@ -181,7 +181,7 @@ let CVInfoData : React.FC<any> = (props)=>{
                                             }
                                         </Select>
 
-                                        <Button variant='contained' sx={{mt : '5%'}} color='primary' startIcon={<BiSolidDownload />} onClick={()=>{ cv.downloadFunction()}} > Download </Button>
+                                        <Button variant='contained' sx={{mt : '5%'}} color='primary' startIcon={<BiSolidDownload />} onClick={()=>{ props.dispatch(setLoader()); cv.downloadFunction()}} > Download </Button>
 
                                     </FormControl>
                             </Box>

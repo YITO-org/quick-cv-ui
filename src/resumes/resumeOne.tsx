@@ -3,7 +3,7 @@ import { Box, Paper } from "@mui/material";
 import { connect } from "react-redux";
 import React, { useEffect } from "react";
 import { styles } from "../styles/styles";
-import { getPdf } from "../actions";
+import { clearLoader, getPdf } from "../actions";
 import "../styles/resumeOne.css";
 
 let ResumeOne : React.FC<any> = (props)=>{
@@ -47,7 +47,7 @@ let ResumeOne : React.FC<any> = (props)=>{
         document.body.appendChild(link);
         link.click();
         link.remove();
-
+        props.dispatch(clearLoader())
     }
 
 
