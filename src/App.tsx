@@ -41,7 +41,7 @@
 
 
 import React, { useEffect } from "react";
-import {BrowserRouter, Route, Routes , Link, Outlet, Navigate} from "react-router-dom";
+import {BrowserRouter, Route, Routes , Outlet, Navigate} from "react-router-dom";
 import Layout from "./layout";
 import CreateAndLoginAccount from "./screens/createAccount";
 import Otp from "./screens/otp";
@@ -51,6 +51,7 @@ import { storeOrResetTokken } from "./actions";
 import Detailes from "./screens/detailes";
 import CVInfoData from "./screens/cvInfoData";
 import ViewResume from "./screens/viewResume";
+import LandingPage from "./screens/landingPage"
 
 const App : React.FC<any>  = (props)=>{
 
@@ -139,15 +140,15 @@ let Dashboard = ()=>{
 }
 
 
-let LandingPage : React.FC = ()=>{
-  return(
-    <div>
-      <Link to="/resumebuilder/detailes">sun</Link>
-      <br />
-      <Link to="/createaccount">Create account</Link>
-    </div>
-  )
-}
+// let LandingPage : React.FC = ()=>{
+//   return(
+//     <div>
+//       <Link to="/resumebuilder/detailes">sun</Link>
+//       <br />
+//       <Link to="/createaccount">Create account</Link>
+//     </div>
+//   )
+// }
 
 
 

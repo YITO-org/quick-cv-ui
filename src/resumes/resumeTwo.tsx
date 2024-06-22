@@ -114,7 +114,7 @@ let Summary : React.FC<any> = (props)=>{
 
 let Education : React.FC<any> = (props)=>{
 
-    let { name } = props;
+    // let { name } = props;
 
 
     if(props.education.length == 0){
@@ -137,7 +137,7 @@ let Education : React.FC<any> = (props)=>{
                     }
 
                     return(
-                        <div className="mb-1 px-1" >
+                        <div className="mb-1 px-1" key={index} >
                             <div className="d-flex justify-content-between" style={{fontSize : "13.5px"}} >
                                 <div className="d-flex gap-2"> <div className="fw-bold">{e["School/University"]}</div> <div>{ e['location'] ? e['location'] : ''}</div> </div>
                                 <div style={{fontSize : "13.5px"}}>{ e.startDate && e.endDate && e.startDate + ' - ' + e.endDate}</div>
@@ -154,7 +154,7 @@ let Education : React.FC<any> = (props)=>{
 }
 
 let Projects : React.FC<any> = (props)=>{
-    let { name } = props;
+    // let { name } = props;
 
     useEffect(()=>{
         
@@ -206,7 +206,7 @@ let Projects : React.FC<any> = (props)=>{
 
 let Skills : React.FC<any> = (props)=>{
 
-    let { name } = props;
+    // let { name } = props;
     
     useEffect(()=>{
         console.log(props.skills)
@@ -253,7 +253,7 @@ let Skills : React.FC<any> = (props)=>{
 
 let WorkHistory : React.FC<any> = (props)=>{
     
-    let { name } = props;
+    // let { name } = props;
 
 
     if(props.work_history.length == 0){
@@ -329,36 +329,36 @@ let MainCV : React.FC<any> = (props)=>{
 }
 
 
-let GenerateContent : React.FC<any> = (props)=>{
+// let GenerateContent : React.FC<any> = (props)=>{
 
-    let { content } = props;
-//    console.log({content})
+//     let { content } = props;
+// //    console.log({content})
 
-    let flag : boolean = content && Array.isArray(content) &&  content.length && content.length > 0 ? true : false;
+//     let flag : boolean = content && Array.isArray(content) &&  content.length && content.length > 0 ? true : false;
 
-    return(
-        <div>
-            {
-                flag == true ?
-                <GenerateContentArrayContent content={content} /> : content
+//     return(
+//         <div>
+//             {
+//                 flag == true ?
+//                 <GenerateContentArrayContent content={content} /> : content
                     
-            }
-            {/* { content } */}
-        </div>
-    )
-}
+//             }
+//             {/* { content } */}
+//         </div>
+//     )
+// }
 
 
-let GenerateContentArrayContent : React.FC<any> = (props) => {
+// let GenerateContentArrayContent : React.FC<any> = (props) => {
     
-    // console.log(props);
+//     // console.log(props);
 
-    return(
-        <div>
-            done
-        </div>
-    )
-}
+//     return(
+//         <div>
+//             done
+//         </div>
+//     )
+// }
 
 
 const mapStateToProps = (state : any ) => ({

@@ -110,6 +110,7 @@ export let getPdf = (data:any , callBack : any)=>(dispatch:any)=>{
         })
           .catch(error => {
             // Handle error
+            dispatch({ type : 'CLEAR_LOADER'})
             console.error('Error fetching data:', error);
           });
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { AppBar , Box, Button, IconButton, Menu, MenuItem, Toolbar, Typography } from "@mui/material";
-import {grey , yellow } from "@mui/material/colors";
+import { AppBar , Box, IconButton, Menu, MenuItem, Toolbar, Typography } from "@mui/material";
+import {grey /*, yellow*/ } from "@mui/material/colors";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { CgProfile } from "react-icons/cg";
 import {  useDispatch, useSelector , connect } from "react-redux";
@@ -11,7 +11,7 @@ import { logout } from "../actions";
 
 let Header : React.FC<any> = (props) =>{
     let Grey = grey["800"]
-    let Yellow = yellow["800"]
+    // let Yellow = yellow["800"]
 
     let {screenSize} = props;
     // alert(screenSize);
