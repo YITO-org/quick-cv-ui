@@ -67,7 +67,7 @@ let ResumeTwo : React.FC<any> = (props)=>{
             <div id="template">
 
                 {/* details */}
-                <div className="container-fluid p-5">
+                <div className="container-fluid p-3">
                     <div className="d-flex flex-column align-items-center">
                         {/* name */}
                       <div className="fs-5 fw-normal">{cv.name || cv.tempName}</div>
