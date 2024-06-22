@@ -50,6 +50,7 @@ export const styles = {
   // detailes screen
   input_lable : {'&::first-letter' : {textTransform : 'uppercase'},fontWeight :'700',color : 'black'},
   detailes_box : {backgroundColor : 'white' , border : 0.5 , borderColor : Gray2 , height :'86vh' , overflow : 'scroll' , scrollbarWidth : 'none'},
-  detailes_resume_box : {backgroundColor : 'white' , border : 0.5 , borderColor : Gray2 , height :'86vh' , overflow : 'scroll' , scrollbarWidth : 'none'}
+  detailes_resume_box : {backgroundColor : 'white' , border : 0.5 , borderColor : Gray2 , height :'86vh' , overflow : 'scroll' , scrollbarWidth : 'none'},
+  ordering_text : { backgroundColor : 'lightblue' , textAlign : 'center' , width : 150 , borderRadius : 2 , p : 0.5  }
 }
 

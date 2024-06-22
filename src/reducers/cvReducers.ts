@@ -41,6 +41,8 @@ let cvReducer = (state = initialValue , action : any) : any=>{
             return {...state , [action.screenName] : action.data}
         case 'DOWNLOAD_FUNCTION':
             return {...state , "downloadFunction" : action.method };
+        case 'RESUME_ARRANGMENT':
+            return {...state  , resumeArrangment : action.data }
         default:
           return state;
     }

@@ -5,6 +5,16 @@ import axios from "axios"
 //     tokken : localStorage.getItem('tokken')
 // }
 
+export let setLoader = ()=>(dispatch:any)=>{
+    dispatch({ type : 'SET_LOADER'})
+}
+
+export let clearLoader = ()=>(dispatch:any)=>{
+    dispatch({ type : 'CLEAR_LOADER'})
+}
+
+
+
 export let setSelectedIndexForSidebar = (index:Number)=>(dispatch:any)=>{
     dispatch({
         type : "SIDEBAR_SELECTED_INDEX",
@@ -76,13 +86,14 @@ export let addNewRecord = (data : any , screenName : string , type : string)=>(d
         })
 }
 
-export let setLoader = ()=>(dispatch:any)=>{
-    dispatch({ type : 'SET_LOADER'})
+export const resumeRearrangment = (data : string[])=>(dispatch : any)=>{
+    return dispatch({
+        type : 'RESUME_ARRANGMENT',
+        data : data
+    })
 }
 
-export let clearLoader = ()=>(dispatch:any)=>{
-    dispatch({ type : 'CLEAR_LOADER'})
-}
+
 
 export let getPdf = (data:any , callBack : any)=>(dispatch:any)=>{
 
@@ -104,10 +115,4 @@ export let getPdf = (data:any , callBack : any)=>(dispatch:any)=>{
 
 }
 
-
-
-
-// export let getResumes = ()=>(dispatch : any)=>{
-//     return axios.post<any>("apis/getResumes", [{}] , headers)
-// new }
 
