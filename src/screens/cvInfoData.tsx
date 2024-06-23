@@ -154,7 +154,7 @@ let CVInfoData : React.FC<any> = (props)=>{
 
                         { screenName == "skills" &&  cv?.skills?.map((e : any  , index : number)=>{
                               return(<Box sx={{border : 2 , borderRadius : 2 , p : 0.8  , borderColor : 'lightgray' , mb : 1.2 }}  key={index}>
-                                            <TextField size='small' fullWidth placeholder="Name" value={e["name"]} name="name" onChange={(e)=>{ change(e , index ) }} />
+                                            <TextField size='small' fullWidth placeholder="Skill Title" value={e["name"]} name="name" onChange={(e)=>{ change(e , index ) }} />
 
                                             <Box sx={{p : 0 , mt :0.5 , mb : 0.5}}>
                                                 <textarea name="skill set" rows={3} className="form-control" placeholder="Skill Set" value={e['skill set']} id="exampleFormControlTextarea1" onChange={(e)=>{ change(e , index ) }} />
