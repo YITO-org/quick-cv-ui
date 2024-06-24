@@ -109,7 +109,7 @@ let Summary : React.FC<any> = (props)=>{
             {/* <div className={`p-1 fw-normal summary_styles`} style={{fontSize : '13px'}}>
                 {props[props.name]}
             </div> */}
-            <div style={{fontSize : "12px"}} dangerouslySetInnerHTML={{ __html : props[props.name]  }} ></div>
+            <div style={{fontSize : "12px"}} className="react-text-editer mt-3"  dangerouslySetInnerHTML={{ __html : props[props.name]  }} ></div>
             </>);
 }
 

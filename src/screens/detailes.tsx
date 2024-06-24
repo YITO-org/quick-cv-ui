@@ -18,12 +18,12 @@ const modules : any = {
 		[
 			{ list: 'ordered' },
 			{ list: 'bullet' },
-			{ indent: '-1' },
-			{ indent: '+1' }
+			// { indent: '-1' },
+			// { indent: '+1' }
 		]
 		//['link', 'image', 'video'],
 		// ['clean']
-	]
+	],
 }
 
 

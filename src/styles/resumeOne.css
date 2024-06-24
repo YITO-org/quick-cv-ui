@@ -29,3 +29,8 @@
     height: 1px;
     background-color: black;
 }
+
+
+.react-text-editer p {
+    line-height: 0.1px;
+} 
