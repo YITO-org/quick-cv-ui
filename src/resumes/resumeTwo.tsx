@@ -106,9 +106,10 @@ let Summary : React.FC<any> = (props)=>{
 
     return(<>
             <Heading heading={props.name} />
-            <div className={`p-1 fw-normal summary_styles`} style={{fontSize : '13px'}}>
+            {/* <div className={`p-1 fw-normal summary_styles`} style={{fontSize : '13px'}}>
                 {props[props.name]}
-            </div>
+            </div> */}
+            <div style={{fontSize : "12px"}} dangerouslySetInnerHTML={{ __html : props[props.name]  }} ></div>
             </>);
 }
 

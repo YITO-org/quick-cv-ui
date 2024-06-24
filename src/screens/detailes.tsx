@@ -1,11 +1,31 @@
 import React from "react";
 import { Button, Grid, Paper , Box, Typography, TextField, InputLabel  } from "@mui/material";
-import { styles } from "../styles/styles";
-import Res from "../resumes";
-import { connect } from "react-redux";
-import { setInformation } from "../actions";
 import { useNavigate } from "react-router-dom";
+import ReactQuill from 'react-quill';
+import { connect } from "react-redux";
+import Res from "../resumes";
+import { setInformation } from "../actions";
+import { styles } from "../styles/styles";
+import 'react-quill/dist/quill.snow.css';
 // import styles from "../styles/detailes.module.css";
+
+
+const modules : any = {
+	toolbar: [
+		// [{ header: '1' }, { header: '2' }, { font: [] }],
+		// [{ size: [] }],
+		['bold', 'italic', 'underline'],
+		[
+			{ list: 'ordered' },
+			{ list: 'bullet' },
+			{ indent: '-1' },
+			{ indent: '+1' }
+		]
+		//['link', 'image', 'video'],
+		// ['clean']
+	]
+}
+
 
 let Detailes : React.FC<any> = (props)=>{
 
@@ -15,6 +35,16 @@ let Detailes : React.FC<any> = (props)=>{
     let change = (e  : any /* React.ChangeEvent<HTMLInputElement>*/)=>{
         props.dispatch(setInformation(e.target.name , e.target.value))
     }
+
+    //const [convertedText, setConvertedText] = React.useState<string>('')
+
+	let setText = (e : any) => {
+        if(e == "<p><br></p>") {
+            props.dispatch(setInformation('summary' , '' ))
+		}else{
+            props.dispatch(setInformation('summary' , e))
+		}
+	}
 
     let viewResume = ()=>{
         nav("/resumebuilder/ViewResume")
@@ -50,7 +80,16 @@ let Detailes : React.FC<any> = (props)=>{
                                 {
                                     props.headerName == "Summary" &&
                                     <Box sx={{p : 2}}>
-                                        <textarea name="summary" rows={15} className="form-control" placeholder="Write About Youself..." value={cv["summary"]} onChange={change}  id="exampleFormControlTextarea1" />
+                                        <ReactQuill
+                                            theme="snow"
+                                            // value={convertedText}
+                                            value={cv["summary"]}
+                                            onChange={setText}
+                                            placeholder="Write About Youself..."
+                                            modules={modules}
+                                            style={{ height : '20rem' , minHeight: '20rem' }}
+			                             />
+                                        {/* <textarea name="summary" rows={15} className="form-control" placeholder="Write About Youself..." value={cv["summary"]} onChange={change}  id="exampleFormControlTextarea1" /> */}
                                     </Box>
                                 }    
                             </Paper>
