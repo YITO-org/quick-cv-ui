@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography , Button, AppBar, Container} from "@mui/material";
+import { Box, Typography , Button, AppBar, Container, Grid} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 let LandingPage : React.FC = ()=>{
@@ -50,14 +50,25 @@ let LandingPage : React.FC = ()=>{
           </AppBar>
           
 
-                <Container maxWidth='xl' >
-                    <Box sx={{ display : 'flex' , justifyContent : 'left' , mt : '5%' }} >
+                <Container maxWidth='xl'>
+                    {/* <Box sx={{ display : 'flex' , justifyContent : 'left' , mt : '5%' }} >
                           <Box>
                             <Typography variant='h6'>Create your ATC friendly resume, Just in five minutes.</Typography>
                             <Typography variant='h4' >Free and Open Source resume builder.</Typography>
                             <Button variant='contained'  sx={{mt : 1 , backgroundColor : 'black' , fontWeight : '800' }} onClick={redirect}>GET STARTED</Button>
                         </Box>
-                    </Box>
+                    </Box> */}
+                    <Grid container spacing={2} alignItems="center">
+                      <Grid item xs={8} sm={8} md={8} lg={5} xl={5} >
+                      <Box sx={{ display : 'flex' , justifyContent : 'left' , mt : '5%' }} >
+                          <Box>
+                            <Typography variant='h6'>Create your ATC friendly resume, Just in five minutes.</Typography>
+                            <Typography variant='h4' >Free and Open Source resume builder.</Typography>
+                            <Button variant='contained'  sx={{mt : 1 , backgroundColor : 'black' , fontWeight : '800' }} onClick={redirect}>GET STARTED</Button>
+                        </Box>
+                    </Box> 
+                      </Grid>
+                    </Grid>
             </Container>
 
         </React.Fragment>

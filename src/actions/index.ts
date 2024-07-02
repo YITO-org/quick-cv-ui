@@ -1,4 +1,5 @@
 import axios from "axios"
+import url from "./url"
 // import { headertypes } from "../interfaces/types"
 
 // let headers : headertypes = {
@@ -98,7 +99,7 @@ export const resumeRearrangment = (data : string[])=>(dispatch : any)=>{
 export let getPdf = (data:any , callBack : any)=>(dispatch:any)=>{
 
     axios({
-        url : 'http://localhost:4000/generatePdf',
+        url : `${url}/generatePdf`,
         method : 'POST',
         responseType : 'blob',
         data
@@ -117,3 +118,9 @@ export let getPdf = (data:any , callBack : any)=>(dispatch:any)=>{
 }
 
 
+export let seeData = ()=>(dispatch:any)=>{
+    axios.post<any>(`${url}/seedata`)
+    .then((res)=>{console.log(res,dispatch)})
+    .catch((err)=>{console.log('err', err)})
+    .finally(()=>{console.log('data')});
+}
