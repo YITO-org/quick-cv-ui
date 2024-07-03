@@ -7,11 +7,30 @@ import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { MdAddCircle } from "react-icons/md";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import ReactQuill from 'react-quill';
 import { addNewRecord, setLoader } from "../actions";
 import { typeOfOfObjects } from "../utils";
 import { setInformation } from "../actions";
 import { BiSolidDownload } from "react-icons/bi";
 import Ordering from "./ordering";
+import 'react-quill/dist/quill.snow.css';
+
+
+const modules : any = {
+	toolbar: [
+		// [{ header: '1' }, { header: '2' }, { font: [] }],
+		// [{ size: [] }],
+		['bold', 'italic', 'underline'],
+		[
+			{ list: 'ordered' },
+			{ list: 'bullet' },
+			// { indent: '-1' },
+			// { indent: '+1' }
+		]
+		//['link', 'image', 'video'],
+		// ['clean']
+	],
+}
 
 let CVInfoData : React.FC<any> = (props)=>{
 
@@ -44,6 +63,12 @@ let CVInfoData : React.FC<any> = (props)=>{
     let change = (e : any , index : number)=>{
         let data = [...props.cv[screenName]];
         data[index][e.target.name] = e.target.value;
+        props.dispatch(addNewRecord(data , screenName , 'ADD_REMOVE_RECORD'));
+    }
+
+    let htmlTextChange = (e : any , name : any , index : number)=>{
+        let data = [...props.cv[screenName]];
+        data[index][name] = e == "<p><br></p>" ? '' : e;
         props.dispatch(addNewRecord(data , screenName , 'ADD_REMOVE_RECORD'));
     }
 
@@ -118,8 +143,21 @@ let CVInfoData : React.FC<any> = (props)=>{
 
                                             <TextField size='small' fullWidth name="location" value={e["location"]} placeholder="Location" sx={{mt : 0.5}} onChange={(e)=>{ change(e , index ) }} />
 
-                                            <Box sx={{p : 0 , mt :0.5 , mb : 0.5}}>
-                                                <textarea name="description" rows={3} value={e["description"]} className="form-control" placeholder="Description" id="exampleFormControlTextarea1" onChange={(e)=>{ change(e , index ) }} />
+                                            <Box sx={{p : 0 , mt :0.5 , mb : 6}}>
+
+                                            <ReactQuill
+                                            theme="snow"
+                                            // value={convertedText}
+                                            value={e["description"]}
+                                           // onChange={setText}
+                                           onChange={(e:any)=>{htmlTextChange(e , 'description' , index)}}
+                                            placeholder="Write About Youself..."
+                                            modules={modules}
+                                            style={{ height : '10rem' , minHeight: '10rem' }}
+			                             />
+
+                                                {/* <textarea name="description" rows={3} value={e["description"]} className="form-control" 
+                                                placeholder="Description" id="exampleFormControlTextarea1" onChange={(e)=>{ change(e , index ) }} /> */}
                                             </Box>
 
                                             <div className='row m-2'> 
@@ -138,8 +176,22 @@ let CVInfoData : React.FC<any> = (props)=>{
 
                                             <TextField size='small' fullWidth name="role" placeholder="Role" sx={{mt : 0.5}} value={e['role']} onChange={(e)=>{ change(e , index ) }} />
 
-                                            <Box sx={{p : 0 , mt :0.5 , mb : 0.5}}>
-                                                <textarea name="description" rows={3} className="form-control" placeholder="Role and Responsibilities" value={e['description']} id="exampleFormControlTextarea1" onChange={(e)=>{ change(e , index ) }} />
+                                            <Box sx={{p : 0 , mt :0.5 , mb : 6}}>
+
+                                            <ReactQuill
+                                                theme="snow"
+                                                // value={convertedText}
+                                                value={e["description"]}
+                                                 // onChange={setText}
+                                                onChange={(e:any)=>{htmlTextChange(e , 'description' , index)}}
+                                                placeholder="Write About Project..."
+                                                modules={modules}
+                                                style={{ height : '10rem' , minHeight: '10rem' }}
+			                             />
+
+                                                {/* <textarea name="description" rows={3} className="form-control" 
+                                                    placeholder="Role and Responsibilities" value={e['description']} 
+                                                    id="exampleFormControlTextarea1" onChange={(e)=>{ change(e , index ) }} /> */}
                                             </Box>
 
                                             <div className='row m-2'> 
