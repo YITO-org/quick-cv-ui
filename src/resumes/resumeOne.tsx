@@ -189,7 +189,7 @@ let Projects : React.FC<any> = (props)=>{
                                 <>
                                     <div style={{fontSize : "12.6px"}} className="fw-bold"> description: </div>
                                     {/* <div style={{fontSize : "12px"}}>{ e.description }</div> */}
-                                    <div style={{fontSize : "12px"}} className="react-text-editer mt-3"  dangerouslySetInnerHTML={{ __html : e.description  }} ></div>
+                                    <div style={{fontSize : "12px"}} className="react-text-editer mt-2"  dangerouslySetInnerHTML={{ __html : e.description  }} ></div>
                                 </>
                               }
                             
@@ -283,10 +283,9 @@ let WorkHistory : React.FC<any> = (props)=>{
                             <div style={{fontSize : "12.6px"}}>{e.role ? "Role : " + e.role + '.' : ''}</div>
                             {/* <div style={{fontSize : "11.2px"}}>{e.description ? e.description + '.' : ''}</div> */}
 
-                            <div style={{fontSize : "12px"}}>{ e.description }</div>
+                            {/* <div style={{fontSize : "12px"}}>{ e.description }</div> */}
 
-                            <div style={{fontSize : "12px"}} className="react-text-editer mt-3"  dangerouslySetInnerHTML={{ __html : e.description  }} ></div>
-                            
+                            <div style={{fontSize : "12px"}} className="react-text-editer mt-2"  dangerouslySetInnerHTML={{ __html : e.description  }} ></div>
                         </div>
                     )
                 })

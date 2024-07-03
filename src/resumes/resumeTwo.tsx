@@ -109,7 +109,7 @@ let Summary : React.FC<any> = (props)=>{
             {/* <div className={`p-1 fw-normal summary_styles`} style={{fontSize : '13px'}}>
                 {props[props.name]}
             </div> */}
-            <div style={{fontSize : "12px"}} dangerouslySetInnerHTML={{ __html : props[props.name]  }} ></div>
+            <div style={{fontSize : "12px"}} className="react-text-editer mt-3" dangerouslySetInnerHTML={{ __html : props[props.name]  }} ></div>
             </>);
 }
 
@@ -191,7 +191,8 @@ let Projects : React.FC<any> = (props)=>{
                                 e.description &&
                                 <>
                                     <div style={{fontSize : "12.6px"}} className="fw-bold"> Role And Responsibilities: </div>
-                                    <div style={{fontSize : "12px"}}>{ e.description }</div>
+                                    {/* <div style={{fontSize : "12px"}}>{ e.description }</div> */}
+                                    <div style={{fontSize : "12px"}} className="react-text-editer mt-2"  dangerouslySetInnerHTML={{ __html : e.description  }} ></div>
                                 </>
                               }
                             
@@ -283,7 +284,9 @@ let WorkHistory : React.FC<any> = (props)=>{
                                 <div style={{fontSize : "13.5px"}}>{ e.startDate && e.endDate && e.startDate + ' - ' + e.endDate}</div>
                             </div>
                             <div style={{fontSize : "12.6px"}}>{e.role ? "Role : " + e.role + '.' : ''}</div>
-                            <div style={{fontSize : "11.2px"}}>{e.description ? e.description + '.' : ''}</div>
+                            {/* <div style={{fontSize : "11.2px"}}>{e.description ? e.description + '.' : ''}</div> */}
+
+                            <div style={{fontSize : "12px"}} className="react-text-editer mt-2"  dangerouslySetInnerHTML={{ __html : e.description  }} ></div>
                         </div>
                     )
                 })
