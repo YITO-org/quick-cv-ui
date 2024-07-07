@@ -99,7 +99,7 @@ export const resumeRearrangment = (data : string[])=>(dispatch : any)=>{
 export let getPdf = (data:any , callBack : any)=>(dispatch:any)=>{
 
     axios({
-        url : `${url}/generatePdf`,
+        url : `/apis/generatePdf`,
         method : 'POST',
         responseType : 'blob',
         data
