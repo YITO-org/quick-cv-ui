@@ -107,4 +107,4 @@ let stateToProps = (state:any) => ({
     cv : state.cvReducer
 })
 
-export default connect( stateToProps , (dispatch:any)=>({dispatch}))(Detailes);
+export default connect(stateToProps , (dispatch:any)=>({dispatch}))(Detailes);

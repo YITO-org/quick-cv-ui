@@ -1,8 +1,8 @@
 const initialValues : any = {
     users : [],
     userId : null,
-    userTokken : null
-
+    userTokken : null,
+    resumes : []
 };
 
 const storeUsers = (state = initialValues , action:any) => {
@@ -18,6 +18,9 @@ const storeUsers = (state = initialValues , action:any) => {
             return state;
         case "RESET_USER_INFORMATION":
             state = initialValues;
+            return state;
+        case "GET_RESUMES" :
+            state = {...state , resumes : action.resumes}
             return state;
         default:
             return state;    
