@@ -10,6 +10,12 @@ let config = {
 
 export let getResumes = ()=>(dispatch:any)=>{
   dispatch(setLoader())
+  console.log(localStorage.getItem("tokken"));
+  let config = {
+    headers : {
+      "Authorization" : localStorage.getItem("tokken")
+    }
+  }
   return axios.post<any>('/apis/getResumes' , {} , config)
         .then((res)=>{
           dispatch({
@@ -29,6 +35,36 @@ export let getResumes = ()=>(dispatch:any)=>{
           },800)
         })
 }
+
+
+export const createMyResume = (resumeName : any , callBack : any)=>(dispatch:any)=>{
+  return axios.post<any>('/apis/createResume' , {resumeName} , config).then((res)=>{
+    callBack(res);
+  })
+  .catch((err)=>{
+    // console.log(err)
+    callBack(err);
+  }).finally(()=>{
+    dispatch(clearLoader())
+  })
+}
+
+// export let editResume = (id:number)=>(dispatch:any)=>{
+//   alert(id);
+// }
+
+
+export let deleteResume = (resumeId : number , resumeName : string , callBack : any)=>(dispatch:any)=>{
+  return axios.post<any>('/apis/deleteResume' , {resumeId , resumeName} , config).then((res)=>{
+    callBack(res)
+  }).catch((err)=>{
+    callBack(err)
+  }).finally(()=>{
+    dispatch(clearLoader())
+  })
+}
+
+
 
 
 

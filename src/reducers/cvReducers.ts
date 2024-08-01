@@ -7,7 +7,7 @@ const initialValue = {
     DOB : '',
     tempDob : '09-Jan-1998',
     phoneNumber : null,
-    tempPhoneNumber : 12345678910,
+    tempPhoneNumber : "12345678910",
     email : null,
     tempEmail : 'krishna@email.com',
     github : null,

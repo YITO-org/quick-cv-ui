@@ -44,6 +44,11 @@ let Header : React.FC<any> = (props) =>{
 
     }
 
+    const moveToHomePage = ()=>{
+        nav("/");
+    }
+
+
     return(
         <React.Fragment>
                 <AppBar
@@ -58,7 +63,7 @@ let Header : React.FC<any> = (props) =>{
 
                         <Typography variant={(screenSize == "md" || screenSize == "sm" || screenSize == "xs") ? "h6" : "h4"}  fontWeight={800} noWrap component="div" 
                             // sx={{ flexGrow: 1 , display : { xs : 'none' , sm : 'block' } }}
-                                sx={{flexGrow : 1}}
+                                sx={{flexGrow : 1 , cursor : 'pointer' }} onClick={moveToHomePage}
                             >Quick CV</Typography>
                             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
 

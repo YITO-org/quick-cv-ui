@@ -10,6 +10,10 @@ let LandingPage : React.FC = ()=>{
     nav("/resumebuilder/detailes")
   }
 
+  let redirectTOSignUp = ()=>{
+    nav("/createaccount")
+  }
+
   
   // return(
   //     <React.Fragment>
@@ -59,12 +63,13 @@ let LandingPage : React.FC = ()=>{
                         </Box>
                     </Box> */}
                     <Grid container spacing={2} alignItems="center">
-                      <Grid item xs={8} sm={8} md={8} lg={5} xl={5} >
+                      <Grid item xs={10} sm={10} md={10} lg={5} xl={5} >
                       <Box sx={{ display : 'flex' , justifyContent : 'left' , mt : '5%' }} >
                           <Box>
                             <Typography variant='h6'>Create your ATC friendly resume, Just in five minutes.</Typography>
                             <Typography variant='h4' >Free and Open Source resume builder.</Typography>
-                            <Button variant='contained'  sx={{mt : 1 , backgroundColor : 'black' , fontWeight : '800' }} onClick={redirect}>GET STARTED</Button>
+                            <Button variant='contained'  sx={{mt : 2 , backgroundColor : 'black' , fontWeight : '800' }} onClick={redirect}>GET STARTED</Button>
+                            <Button variant='contained'  sx={{mt : 2 , ml : 2, backgroundColor : 'black' , fontWeight : '800' }} onClick={redirectTOSignUp}>Create Account</Button>
                         </Box>
                     </Box> 
                       </Grid>

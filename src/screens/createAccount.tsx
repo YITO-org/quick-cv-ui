@@ -46,8 +46,8 @@ let CreateAndLoginAccount : React.FC<CreateAndLoginProps>= (props)=>{
                         nav("/otp")
                     },2000)
                 }else if(res.data.message == "login success"){
-                    localStorage.setItem("tokken" , res.data.tokken);
-                    props.dispatch(storeOrResetTokken(res.data.tokken))
+                    localStorage.setItem("tokken" , res.data.id);
+                    props.dispatch(storeOrResetTokken(res.data.id))
                     setTimeout(()=>{
                         nav("/resumebuilder/dashboard")
                     },2000)
