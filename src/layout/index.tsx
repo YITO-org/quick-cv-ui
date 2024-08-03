@@ -20,7 +20,7 @@ const styles = {
 }
 
 
-function useWidth() {
+export function useWidth() {
   const theme: Theme = useTheme();
   const keys: readonly Breakpoint[] = [...theme.breakpoints.keys].reverse();
   return (
