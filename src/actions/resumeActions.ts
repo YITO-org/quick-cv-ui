@@ -38,6 +38,12 @@ export let getResumes = ()=>(dispatch:any)=>{
 
 
 export const createMyResume = (resumeName : any , callBack : any)=>(dispatch:any)=>{
+  let config = {
+    headers : {
+      "Authorization" : localStorage.getItem("tokken")
+    }
+  };
+
   return axios.post<any>('/apis/createResume' , {resumeName} , config).then((res)=>{
     callBack(res);
   })
@@ -55,6 +61,13 @@ export const createMyResume = (resumeName : any , callBack : any)=>(dispatch:any
 
 
 export let deleteResume = (resumeId : number , resumeName : string , callBack : any)=>(dispatch:any)=>{
+
+  let config = {
+    headers : {
+      "Authorization" : localStorage.getItem("tokken")
+    }
+  }
+
   return axios.post<any>('/apis/deleteResume' , {resumeId , resumeName} , config).then((res)=>{
     callBack(res)
   }).catch((err)=>{
@@ -63,6 +76,26 @@ export let deleteResume = (resumeId : number , resumeName : string , callBack : 
     dispatch(clearLoader())
   })
 }
+
+export let editResume = (resumeId : number)=>(dispatch : any)=>{
+  let config = {
+    headers : {
+      "Authorization" : localStorage.getItem("tokken")
+    }
+  }
+  return axios.post<any>('/apis/getEditResume' , {resumeId} , config).then((res)=>{
+    dispatch({
+        type : 'GET_RESUME_FROM_SERVICE',
+        resumeData : res.data.data
+    });
+  }).catch((err)=>{
+
+  }).finally(()=>{
+
+  })
+}
+
+
 
 
 

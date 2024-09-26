@@ -52,8 +52,8 @@ export default connect(mapStateToProps, (dispatch:any) => ({ dispatch }))(Res);
 //   tempEmail : 'krishna@email.com',
 //   github : null,
 //   tempGithub : 'krishna@github.com',
-//   linkdin : null,
-//   tempLinkdin : 'krishna@linkdin.com',
+//   linkedin : null,
+//   templinkedin : 'krishna@linkedin.com',
 //   summary : null
 
 

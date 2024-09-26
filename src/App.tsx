@@ -62,11 +62,13 @@ const App : React.FC<any>  = (props)=>{
 
 let PR :React.FC<any> = (props)=>{
     
-  let selector :any = useSelector((state:any)=>state.storeUsers);
+  let selector :any = localStorage.getItem("tokken"); 
+  //useSelector((state:any)=>state.storeUsers);
     
+  console.log({selector});
   return <div>
     {
-      selector?.userTokken ? props.children : <Navigate to='/login' replace />
+      selector ? props.children : <Navigate to='/login' replace />
     }
   </div>
 

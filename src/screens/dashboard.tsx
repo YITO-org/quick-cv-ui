@@ -1,12 +1,12 @@
 "use client"
 import React , { useEffect ,  useState } from "react";
 import { connect } from "react-redux";
-import { createMyResume, deleteResume, getResumes  } from "../actions/resumeActions";
+import { createMyResume, deleteResume, editResume, getResumes  } from "../actions/resumeActions";
 import { Box, Card, CardHeader, Container, Stack , Avatar, CardActions, Button, Paper, Dialog, DialogTitle ,  DialogActions  , DialogContent , TextField } from "@mui/material";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { MdAddCircle } from "react-icons/md";
-import {red} from "@mui/material/colors";
+import {red , blue } from "@mui/material/colors";
 import toast from 'react-simple-toasts';
 import 'react-simple-toasts/dist/theme/info.css';
 import 'react-simple-toasts/dist/theme/success.css';
@@ -59,6 +59,10 @@ let Dashboard : React.FC<any> = (props)=>{
 //        console.log(resumeName);
     }
 
+    const func_editResume = (e:any):void => {
+        props.dispatch(editResume(e.id));
+    }
+
     const deleteRes = (resumeId : number , resumeName : string) => {
         props.dispatch(setLoader());
         props.dispatch(deleteResume(resumeId , resumeName , responsiveCallBack));
@@ -79,7 +83,7 @@ let Dashboard : React.FC<any> = (props)=>{
                                     <Card variant='outlined'>
                                         <CardHeader 
                                             avatar={
-                                                <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                                                <Avatar sx={{ bgcolor: (index + 1 ) % 2 == 0 ? red[500] : blue[500] }} aria-label="recipe">
                                                 {index + 1}
                                               </Avatar>
                                             }
@@ -87,7 +91,7 @@ let Dashboard : React.FC<any> = (props)=>{
                                             subheader={"Created : " + dateConvertion(e?.createdAt)}
                                         />
                                         <CardActions sx={{ml:2}} >
-                                                <Button variant='contained' size='small' color='info' startIcon={<FaEdit />}>Edit</Button>
+                                                <Button variant='contained' size='small' color='info' onClick={()=>{func_editResume(e)}} startIcon={<FaEdit />}>Edit</Button>
                                                 <Button variant='contained' size='small' color='error' startIcon={<MdDelete />} onClick={()=>{deleteRes(e.id , e.resumeName)}} >Delete</Button>
                                                 {/* <Button variant='contained' size='small' color='error' startIcon={<IoDuplicate />} > duplicate </Button> */}
                                         </CardActions>

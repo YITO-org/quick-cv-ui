@@ -12,8 +12,8 @@ const initialValue = {
     tempEmail : 'krishna@email.com',
     github : null,
     tempGithub : 'krishna@github.com',
-    linkdin : null,
-    tempLinkdin : 'krishna@linkdin.com',
+    linkedin : null,
+    templinkedin : 'krishna@linkedin.com',
     summary : null,
     education  : [{
                      "School/University" : "" , startDate : "" , 
@@ -27,6 +27,8 @@ const initialValue = {
     templates:['Template-1' , 'Template-2'],
     selectedTemplate : '',
     defaultTemplate : 'Template-1',
+    resumeId : null,
+    custome : null,
     downloadFunction : ()=>{}
 }
 
@@ -42,7 +44,28 @@ let cvReducer = (state = initialValue , action : any) : any=>{
         case 'DOWNLOAD_FUNCTION':
             return {...state , "downloadFunction" : action.method };
         case 'RESUME_ARRANGMENT':
-            return {...state  , resumeArrangment : action.data }
+            return {...state  , resumeArrangment : action.data };
+        case 'GET_RESUME_FROM_SERVICE':
+            // console.log(action);
+             return {...state , 
+                name : action?.resumeData?.name ? action.resumeData.name : state.name,
+                designation : action?.resumeData?.designation ? action.resumeData.designation : state.designation,
+                DOB : action?.resumeData?.dob ? action.resumeData.dob : state.DOB,
+                email : action?.resumeData?.email ? action.resumeData.email : state.email,
+               resumeId : action?.resumeData?.resumeId ? action.resumeData.resumeId : state.resumeId,
+
+    "phoneNumber": action?.resumeData?.phoneNumber ? action?.resumeData?.phoneNumber : state.phoneNumber,
+    "github" : action?.resumeData?.github ? action?.resumeData?.github : state.github,
+    "linkedin" : action?.resumeData?.linkedin ? action?.resumeData?.linkedin : state.linkedin,
+
+    "summary" : action?.resumeData?.summary ? action?.resumeData?.summary : state.summary,
+
+    // "skills" : action?.resumeData?.skills ? JSON.parse(action?.resumeData?.skills) : state.summary,
+    // "education" : action?.resumeData?.education ? JSON.parse(action?.resumeData?.education) : state.education,
+    // "work_history" : action?.resumeData?.work_history ? JSON.parse(action?.resumeData?.work_history) : state.work_history,
+    // "projects" : action?.resumeData?.projects ? JSON.parse(action?.resumeData?.projects) : state.projects,
+    // "custome" : action?.resumeData?.custome ? JSON.parse(action?.resumeData?.custome) : state.custome,
+    };
         default:
           return state;
     }
@@ -82,3 +105,27 @@ skills
 
 
 */
+
+// {
+//     "id": 6,
+//     "userId": 11,
+//     "resumeId": 19,
+//     "name": "Krishna",
+//     "designation": "Software Engineer",
+//     "dob": "1998-01-09",
+//     "phoneNumber": "1234567890",
+//     "email": "krishna@emial.com",
+//     "github": null,
+//     "linkedin": null,
+//     "summary": null,
+//     "skills": null,
+//     "education": null,
+//     "work_history": null,
+//     "projects": null,
+//     "custome": null,
+//     "createdAt": "2024-07-28T17:31:23.519Z",
+//     "updatedAt": "2024-07-28T17:31:23.519Z"
+// }
+
+
+

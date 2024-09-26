@@ -78,10 +78,10 @@ let ResumeTwo : React.FC<any> = (props)=>{
                             <div>{cv.email || cv.tempEmail}</div>
                             <div> DOB : {cv.DOB || cv.tempDob}</div>
                             <div className="fst-italic fw-bolder text-body">
-                                {/* {cv.github || cv.tempGithub} | {cv.linkdin || cv.tempLinkdin} */}
-                                {( cv && cv.github)} {(cv.github && cv.linkdin && "|")} {(cv && cv.linkdin)}
+                                {/* {cv.github || cv.tempGithub} | {cv.linkedin || cv.templinkedin} */}
+                                {( cv && cv.github)} {(cv.github && cv.linkedin && "|")} {(cv && cv.linkedin)}
                                 </div>
-                            {/* <div>{cv.linkdin || cv.tempLinkdin}</div> */}
+                            {/* <div>{cv.linkedin || cv.templinkedin}</div> */}
                         </div>
 
                     </div>
@@ -383,8 +383,8 @@ export default connect(mapStateToProps, (dispatch:any) => ({ dispatch }))(Resume
 //   tempEmail : 'krishna@email.com',
 //   github : null,
 //   tempGithub : 'krishna@github.com',
-//   linkdin : null,
-//   tempLinkdin : 'krishna@linkdin.com',
+//   linkedin : null,
+//   templinkedin : 'krishna@linkedin.com',
 //   summary : null
 
 
