@@ -1,8 +1,6 @@
 // projectName,
 //  role
 //  description
-
-
 export const typeOfOfObjects : any = {
     'education' : { "school/university" : "" , "startData" : "" , "endDate" : "" , "course" : "" , "CGP" : "" , "location" : "" , "description" : ""},
     'work_history' : { "employer" : "", "startDate" : "" , "endDate" : "" , "role" : "" , "location" : "" , "description" : "" },
@@ -10,3 +8,30 @@ export const typeOfOfObjects : any = {
     'skills' : {'name' : "" , "skill set" : "" }
 };
 
+export const resumeInfoConvertJsonToString : any = (cv : any ) : any=>{
+    //console.log(cv);
+    let conertData = {...cv};
+
+     conertData = {
+        "name" : conertData.name,
+        "designation" : conertData.designation,
+        "phoneNumber" : conertData.phoneNumber,
+        "email" : conertData.email,
+        "dob" : conertData.DOB,
+
+        "github" : conertData.github,
+        "linkedin" : conertData.linkedin,
+
+        "summary" : conertData.summary,
+        
+        "skills" : JSON.stringify(conertData.skills),
+        "education" : JSON.stringify(conertData.education),
+        "work_history" : JSON.stringify(conertData.work_history),
+        "projects" : JSON.stringify(conertData.projects),
+        "resumeId" : conertData.resumeId
+
+    };
+   
+    //  console.log(conertData);
+    return conertData;
+}

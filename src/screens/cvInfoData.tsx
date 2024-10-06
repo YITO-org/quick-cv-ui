@@ -9,11 +9,12 @@ import { MdAddCircle } from "react-icons/md";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import ReactQuill from 'react-quill';
 import { addNewRecord, setLoader } from "../actions";
-import { typeOfOfObjects } from "../utils";
+import { resumeInfoConvertJsonToString, typeOfOfObjects } from "../utils";
 import { setInformation } from "../actions";
 import { BiSolidDownload } from "react-icons/bi";
 import Ordering from "./ordering";
 import 'react-quill/dist/quill.snow.css';
+import { updateResume } from "../actions/resumeActions";
 
 
 const modules : any = {
@@ -81,6 +82,15 @@ let CVInfoData : React.FC<any> = (props)=>{
 
     let viewResume = ()=>{
         nav("/resumebuilder/ViewResume")
+    }
+
+    let saveAndDownload = ()=>{
+        let {cv} = props; 
+        props.dispatch(setLoader()); 
+       if(cv.resumeId){
+           props.dispatch(updateResume(resumeInfoConvertJsonToString(cv)))
+       }
+       cv.downloadFunction();
     }
 
 
@@ -233,9 +243,7 @@ let CVInfoData : React.FC<any> = (props)=>{
                                                 cv?.templates?.map((e:string,index:number)=>(<MenuItem key={index} value={e}>{e}</MenuItem>))
                                             }
                                         </Select>
-
-                                        <Button variant='contained' sx={{mt : '5%'}} color='primary' startIcon={<BiSolidDownload />} onClick={()=>{ props.dispatch(setLoader()); cv.downloadFunction()}} > Download </Button>
-
+                                        <Button variant='contained' sx={{mt : '5%'}} color='primary' startIcon={<BiSolidDownload />} onClick={saveAndDownload}>Download </Button>
                                     </FormControl>
                             </Box>
                         }

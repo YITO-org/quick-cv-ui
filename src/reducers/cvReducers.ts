@@ -33,8 +33,43 @@ const initialValue = {
 }
 
 
+const resetValue = {
+    name : null,
+    tempName : 'krishna',
+    designation : null,
+    tempDesignation : 'Software Engineers',
+    DOB : '',
+    tempDob : '09-Jan-1998',
+    phoneNumber : null,
+    tempPhoneNumber : "12345678910",
+    email : null,
+    tempEmail : 'krishna@email.com',
+    github : null,
+    tempGithub : 'krishna@github.com',
+    linkedin : null,
+    templinkedin : 'krishna@linkedin.com',
+    summary : null,
+    education  : [{
+                     "School/University" : "" , startDate : "" , 
+                     endDate : "" , course : "" , 
+                     CGP : "" , location : "" , 
+                     description : "" }],
+    work_history : [{ employer : "", startDate : "" , endDate : "" , role : "" , location : "" , description : "" }],
+    projects : [{'projectName' : '' , 'role' : '' , 'description' : '' }],
+    skills : [{'name' : "" , "skill set" : "" }],
+    resumeArrangment : [ 'summary' , 'skills' ,  'education'  , 'work_history' , 'projects'],
+    templates:['Template-1' , 'Template-2'],
+    selectedTemplate : '',
+    defaultTemplate : 'Template-1',
+    resumeId : null,
+    custome : null,
+    downloadFunction : ()=>{}
+}
+
+
+
 let cvReducer = (state = initialValue , action : any) : any=>{
-    // console.log(action) new
+    //  console.log( "resumeData" , action.resumeData);
     switch(action.type){
         case "SET_RESUME_INFORMATION":
             return {...state , [action.keyName] : action.data};
@@ -48,11 +83,11 @@ let cvReducer = (state = initialValue , action : any) : any=>{
         case 'GET_RESUME_FROM_SERVICE':
             // console.log(action);
              return {...state , 
-                name : action?.resumeData?.name ? action.resumeData.name : state.name,
-                designation : action?.resumeData?.designation ? action.resumeData.designation : state.designation,
-                DOB : action?.resumeData?.dob ? action.resumeData.dob : state.DOB,
-                email : action?.resumeData?.email ? action.resumeData.email : state.email,
-               resumeId : action?.resumeData?.resumeId ? action.resumeData.resumeId : state.resumeId,
+                "name" : action?.resumeData?.name ? action.resumeData.name : state.name,
+                "designation" : action?.resumeData?.designation ? action.resumeData.designation : state.designation,
+                "DOB" : action?.resumeData?.dob ? action.resumeData.dob : state.DOB,
+                "email" : action?.resumeData?.email ? action.resumeData.email : state.email,
+               "resumeId" : action?.resumeData?.resumeId ? action.resumeData.resumeId : state.resumeId,
 
     "phoneNumber": action?.resumeData?.phoneNumber ? action?.resumeData?.phoneNumber : state.phoneNumber,
     "github" : action?.resumeData?.github ? action?.resumeData?.github : state.github,
@@ -60,12 +95,15 @@ let cvReducer = (state = initialValue , action : any) : any=>{
 
     "summary" : action?.resumeData?.summary ? action?.resumeData?.summary : state.summary,
 
-    // "skills" : action?.resumeData?.skills ? JSON.parse(action?.resumeData?.skills) : state.summary,
-    // "education" : action?.resumeData?.education ? JSON.parse(action?.resumeData?.education) : state.education,
-    // "work_history" : action?.resumeData?.work_history ? JSON.parse(action?.resumeData?.work_history) : state.work_history,
-    // "projects" : action?.resumeData?.projects ? JSON.parse(action?.resumeData?.projects) : state.projects,
+     "skills" : action?.resumeData?.skills ? JSON.parse(action?.resumeData?.skills) : state.skills,
+     "education" : action?.resumeData?.education ? JSON.parse(action?.resumeData?.education) : state.education,
+     "work_history" : action?.resumeData?.work_history ? JSON.parse(action?.resumeData?.work_history) : state.work_history,
+     "projects" : action?.resumeData?.projects ? JSON.parse(action?.resumeData?.projects) : state.projects,
     // "custome" : action?.resumeData?.custome ? JSON.parse(action?.resumeData?.custome) : state.custome,
     };
+        case "ORGINAL_STATE":
+            state = resetValue;
+            return state;
         default:
           return state;
     }

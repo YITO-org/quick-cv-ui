@@ -1,7 +1,8 @@
 "use client"
 import React , { useEffect ,  useState } from "react";
 import { connect } from "react-redux";
-import { createMyResume, deleteResume, editResume, getResumes  } from "../actions/resumeActions";
+import { useNavigate } from "react-router-dom";
+import { createMyResume, deleteResume, editResume, getResumes, gotoOrginalState  } from "../actions/resumeActions";
 import { Box, Card, CardHeader, Container, Stack , Avatar, CardActions, Button, Paper, Dialog, DialogTitle ,  DialogActions  , DialogContent , TextField } from "@mui/material";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
@@ -17,10 +18,11 @@ let Dashboard : React.FC<any> = (props)=>{
     
     let [openCreateResumeModel , setCreateResumeModel] = useState(false);
     let [resumeName , setResumeName] = useState<string | null>(null);
+    let nav = useNavigate();
 
     useEffect(()=>{
-        // console.log(props); 
-        props.dispatch(getResumes())
+        props.dispatch(getResumes());
+        props.dispatch(gotoOrginalState());
     },[]);
 
     function responsiveCallBack(res:any){
@@ -60,7 +62,13 @@ let Dashboard : React.FC<any> = (props)=>{
     }
 
     const func_editResume = (e:any):void => {
-        props.dispatch(editResume(e.id));
+        props.dispatch(editResume(e.id , redirectionCallBack));
+    }
+
+    const redirectionCallBack = (res : any)=>{
+        if(res.status == 200){
+            nav('/resumebuilder/detailes');
+        }
     }
 
     const deleteRes = (resumeId : number , resumeName : string) => {
