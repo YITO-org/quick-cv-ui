@@ -187,9 +187,9 @@ let Projects : React.FC<any> = (props)=>{
                               {
                                 e.description &&
                                 <>
-                                    <div style={{fontSize : "12.6px"}} className="fw-bold"> description: </div>
+                                    {/* <div style={{fontSize : "12.6px"}} className="fw-bold"> description: </div> */}
                                     {/* <div style={{fontSize : "12px"}}>{ e.description }</div> */}
-                                    <div style={{fontSize : "12px"}} className="react-text-editer mt-2"  dangerouslySetInnerHTML={{ __html : e.description  }} ></div>
+                                    <div style={{fontSize : "12px"}} className="react-text-editer mx-1"  dangerouslySetInnerHTML={{ __html : e.description  }} ></div>
                                 </>
                               }
                             

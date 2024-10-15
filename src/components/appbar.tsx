@@ -7,6 +7,7 @@ import { CgProfile } from "react-icons/cg";
 import {  useDispatch, useSelector , connect } from "react-redux";
 import { styles } from "../styles/styles";
 import { logout } from "../actions";
+import { gotoOrginalState } from "../actions/resumeActions";
 
 
 let Header : React.FC<any> = (props) =>{
@@ -39,6 +40,7 @@ let Header : React.FC<any> = (props) =>{
 
     const logout_ = ()=>{
         props.dispatch(logout())
+        props.dispatch(gotoOrginalState())
         localStorage.removeItem('tokken')
         nav("/")
 

@@ -31,6 +31,12 @@
 }
 
 
-.react-text-editer p {
+/* .react-text-editer p {
     line-height: 0.1px;
-} 
+}  */
+
+.react-text-editer p {
+    margin-bottom: 1px;
+}
+
+

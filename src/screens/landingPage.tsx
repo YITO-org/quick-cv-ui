@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Box, Typography , Button, AppBar, Container, Grid} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import {useWidth} from "../layout";

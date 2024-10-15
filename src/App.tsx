@@ -12,6 +12,7 @@ import CVInfoData from "./screens/cvInfoData";
 import ViewResume from "./screens/viewResume";
 import LandingPage from "./screens/landingPage"
 import Dashboard from "./screens/dashboard";
+import LandingPage2 from "./screens/landingPage2";
 
 const App : React.FC<any>  = (props)=>{
 
@@ -29,7 +30,10 @@ const App : React.FC<any>  = (props)=>{
       <AuthProvider>
         <BrowserRouter>
             <Routes>
-              <Route path="/" element={<LandingPage />}></Route>
+              <Route path="/" element={
+              // <LandingPage />
+                <LandingPage2 />
+            }></Route>
               <Route path="/createaccount" element={<CreateAndLoginAccount headerName="Create Account" buttonName="Create" redirectionScreen="/login" />}></Route>
               <Route path="/login" element={<CreateAndLoginAccount headerName="Login" buttonName="Login" redirectionScreen="/createaccount" />}></Route>
               <Route path="/otp" element={<Otp headerName="OTP" buttonName="Submit" redirectionScreen="/resumebuilder"  />} />
