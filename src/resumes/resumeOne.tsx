@@ -74,13 +74,28 @@ let ResumeOne : React.FC<any> = (props)=>{
                             <div>{cv.phoneNumber || cv.tempPhoneNumber}</div>
                             <div>{cv.email || cv.tempEmail}</div>
                             <div> DOB : {cv.DOB || cv.tempDob}</div>
-                            <div className="fst-italic fw-bolder text-body">
-                                {/* {cv.github || cv.tempGithub} | 
-                                {cv.linkedin || cv.templinkedin} */}
-                                
+                            
+                            {/* <div className="fst-italic fw-bolder text-body">
                                 {( cv && cv.github)} {(cv.github && cv.linkedin && "|")} {(cv && cv.linkedin)}
+                            </div> */}
+
+                            <div className="d-flex gap-1">
                                 
-                                </div>
+                                {
+                                    cv && cv.linkedin &&
+                                    <a href={cv.linkedin} target="_blank">Linkedin</a>
+                                }
+
+                                {
+                                    cv && cv.linkedin && cv.github &&
+                                    "|"
+                                }
+                                {
+                                    cv && cv.github &&
+                                    <a href={cv.github} target="_blank">Github</a>
+                                }
+                            </div>
+
                             {/* <div>{cv.linkedin || cv.templinkedin}</div> */}
                         </div>
 

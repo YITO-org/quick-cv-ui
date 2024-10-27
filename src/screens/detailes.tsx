@@ -20,8 +20,8 @@ const modules : any = {
 			{ list: 'bullet' },
 			// { indent: '-1' },
 			// { indent: '+1' }
-		]
-		//['link', 'image', 'video'],
+		],
+		['link' /*, 'image', 'video' */ ],
 		// ['clean']
 	],
 }

@@ -13,8 +13,8 @@ import { resumeInfoConvertJsonToString, typeOfOfObjects } from "../utils";
 import { setInformation } from "../actions";
 import { BiSolidDownload } from "react-icons/bi";
 import Ordering from "./ordering";
-import 'react-quill/dist/quill.snow.css';
 import { updateResume } from "../actions/resumeActions";
+import 'react-quill/dist/quill.snow.css';
 
 
 const modules : any = {
@@ -27,8 +27,8 @@ const modules : any = {
 			{ list: 'bullet' },
 			// { indent: '-1' },
 			// { indent: '+1' }
-		]
-		//['link', 'image', 'video'],
+		],
+		['link'/*, 'image', 'video'*/],
 		// ['clean']
 	],
 }

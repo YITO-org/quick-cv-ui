@@ -77,11 +77,28 @@ let ResumeTwo : React.FC<any> = (props)=>{
                             <div>{cv.phoneNumber || cv.tempPhoneNumber}</div>
                             <div>{cv.email || cv.tempEmail}</div>
                             <div> DOB : {cv.DOB || cv.tempDob}</div>
-                            <div className="fst-italic fw-bolder text-body">
-                                {/* {cv.github || cv.tempGithub} | {cv.linkedin || cv.templinkedin} */}
+                            
+                            {/* <div className="fst-italic fw-bolder text-body">
                                 {( cv && cv.github)} {(cv.github && cv.linkedin && "|")} {(cv && cv.linkedin)}
-                                </div>
+                                </div> */}
                             {/* <div>{cv.linkedin || cv.templinkedin}</div> */}
+                            
+                            <div className="">
+                                {
+                                    cv && cv.linkedin &&
+                                    <a href={cv.linkedin} target="_blank" className="m-2">Linkedin</a>
+                                }
+
+                                {
+                                    cv && cv.linkedin && cv.github &&
+                                    "|"
+                                }
+                                {
+                                    cv && cv.github &&
+                                    <a href={cv.github} target="_blank" className="m-2">Github</a>
+                                }
+                            </div>
+
                         </div>
 
                     </div>
