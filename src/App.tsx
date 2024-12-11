@@ -31,8 +31,8 @@ const App : React.FC<any>  = (props)=>{
         <BrowserRouter>
             <Routes>
               <Route path="/" element={
-              // <LandingPage />
-                <LandingPage2 />
+              <LandingPage />
+                // <LandingPage2 />
             }></Route>
               <Route path="/createaccount" element={<CreateAndLoginAccount headerName="Create Account" buttonName="Create" redirectionScreen="/login" />}></Route>
               <Route path="/login" element={<CreateAndLoginAccount headerName="Login" buttonName="Login" redirectionScreen="/createaccount" />}></Route>
