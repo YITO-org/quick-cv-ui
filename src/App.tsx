@@ -5,14 +5,14 @@ import Layout from "./layout";
 import CreateAndLoginAccount from "./screens/createAccount";
 import Otp from "./screens/otp";
 import AuthProvider from "./context/secureContext";
-import { useSelector  , connect } from "react-redux";
+import { /*useSelector  ,*/ connect } from "react-redux";
 import { storeOrResetTokken } from "./actions";
 import Detailes from "./screens/detailes";
 import CVInfoData from "./screens/cvInfoData";
 import ViewResume from "./screens/viewResume";
 import LandingPage from "./screens/landingPage"
 import Dashboard from "./screens/dashboard";
-import LandingPage2 from "./screens/landingPage2";
+//import LandingPage2 from "./screens/landingPage2";
 
 const App : React.FC<any>  = (props)=>{
 
