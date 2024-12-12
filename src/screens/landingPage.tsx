@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import {useWidth} from "../layout";
+import { connect } from "react-redux";
+// import {useWidth} from "../layout";
 import hairingimg from "../assets/hairingimg.avif";
 
-let LandingPage : React.FC = ()=>{
+let LandingPage : React.FC<any> = (props)=>{
+
+
+  useEffect(()=>{
+  },[])
   
   let nav = useNavigate();
-
+  
   let redirect = ()=>{
-    nav("/resumebuilder/detailes")
+    if(props.user.userTokken){
+      nav("/resumebuilder/dashboard");
+    }else{
+      nav("/resumebuilder/detailes");
+    }
   }
 
   let redirectTOSignUp = ()=>{
@@ -82,7 +91,15 @@ let LandingPage : React.FC = ()=>{
       )
 
   }
-export default LandingPage;
+
+  const mapStateToProps = (state : any ) => ({
+    cv : state.cvReducer,
+    user: state.storeUsers
+  });
+
+
+  
+export default connect(mapStateToProps, (dispatch:any) => ({ dispatch }))(LandingPage);
 
 
 

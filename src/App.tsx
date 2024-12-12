@@ -12,6 +12,7 @@ import CVInfoData from "./screens/cvInfoData";
 import ViewResume from "./screens/viewResume";
 import LandingPage from "./screens/landingPage"
 import Dashboard from "./screens/dashboard";
+import axios from "axios";
 //import LandingPage2 from "./screens/landingPage2";
 
 const App : React.FC<any>  = (props)=>{
@@ -19,9 +20,28 @@ const App : React.FC<any>  = (props)=>{
 
   useEffect(()=>{
     if(localStorage.getItem("tokken")){
-      props.dispatch(storeOrResetTokken(localStorage.getItem("tokken")))
+      checkAuthendation()
     }
   },[])
+  
+  let checkAuthendation = async ()=>{
+
+    let config = {
+      headers : { "Authorization" : localStorage.getItem("tokken")}
+    }
+    
+    try{
+      let result = await axios.post('/apis/checkValiedUserOrNot' , {} , config);
+      if(result.status == 200){
+         props.dispatch(storeOrResetTokken(localStorage.getItem("tokken")))
+      }
+    }catch(e){
+      localStorage.removeItem("tokken")
+      props.dispatch(storeOrResetTokken(null));
+    }
+    
+  }
+
 
 
 
