@@ -63,14 +63,15 @@ let Detailes : React.FC<any> = (props)=>{
                 <Grid container  columnGap={1} >
                     <Grid xs={12} sm={12} md={12} lg={5} xl={5}>
                             <Paper   sx={styles.detailes_box}>
-                                <Typography sx={{mt : 1 , mb:1 }} textAlign='center' variant='h5' fontWeight='500' >{props.headerName}</Typography>
+                                <Typography sx={{mt : 1 /* , mb:0.5 */ }} textAlign='center' variant='h5' fontWeight='500' >{props.headerName}</Typography>
                                 {  
                                    props.headerName == "Details" &&
                                         <Box sx={{p : 2}}>
                                             {
                                                 ['name' , 'designation' , 'DOB' , 'phoneNumber' , 'email' , 'github' , 'linkedin'].map((e,index)=>(
                                                     <Box key={index}>
-                                                        <InputLabel sx={styles.input_lable}>{e}</InputLabel>
+                                                        <InputLabel  sx={styles.input_lable}
+                                                        >{e}</InputLabel>
                                                         <TextField type="text" size='small' placeholder={e} name={e} value={cv[e]}  onChange={change} sx={{marginBottom : 2 , width : '100%'}} />
                                                     </Box>
                                                 ))

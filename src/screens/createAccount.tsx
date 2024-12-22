@@ -86,13 +86,13 @@ let CreateAndLoginAccount : React.FC<CreateAndLoginProps>= (props)=>{
 
     return(
         <React.Fragment>
-            <Box sx={styles.cardPosition} >
-              <Grid container spacing={1} justifyContent="center" alignItems="center">
-              <Grid item  xs={12} sm={10} md={6} lg={4} xl={4}>
+            {/* <Box sx={styles.cardPosition} > */}
+              <Grid container spacing={1} justifyContent="center" alignItems="center" sx={{ minHeight : '100vh' }} >
+              {/* <Grid item  xs={12} sm={10} md={6} lg={4} xl={4}> */}
                 {/* <Card>
                     <CardContent> */}
-                    <Paper sx={{ p : 4 , borderRadius : 5 }} elevation={15} >
-                    <Typography variant='h4' component="div" align="center" fontWeight={600} sx={{marginBottom : 2}} >{ headerName }</Typography>
+                    <Paper sx={{ p : 4 , borderRadius : 3 }} elevation={20} >
+                    <Typography variant='h5' component="div" align="center" fontWeight={600} sx={{marginBottom : 2}} >{ headerName }</Typography>
                         {
                             alertMessage &&
                             <Stack sx={{width : '100%' , mb : 1 }} spacing={2}>
@@ -126,17 +126,17 @@ let CreateAndLoginAccount : React.FC<CreateAndLoginProps>= (props)=>{
                             </Button>
 
                             <Box sx={{display : 'flex' , flexDirection : 'column' , alignItems : 'center' , gap : 1 }} >
-                                <Typography color='blue' onClick={()=>navgate(redirectionScreen)} >{redirectionScreen == "/login" ? "Login" : "Create Account"}</Typography>
-                                <Typography color='blue'>Forget Password</Typography>
+                                <Typography sx={{ cursor : 'pointer' }}  color='blue' onClick={()=>navgate(redirectionScreen)} >{redirectionScreen == "/login" ? "Login" : "Create Account"}</Typography>
+                                <Typography sx={{ cursor : 'pointer' }} color='blue'>Forget Password</Typography>
                             </Box>
 
                         </Box>
                      </Paper>
                     {/* </CardContent>
                 </Card> */}
-              </Grid>
-              </Grid>
-            </Box>
+              {/* </Grid> */}
+              </Grid> 
+            {/* </Box> */}
         </React.Fragment>
     )
 }
