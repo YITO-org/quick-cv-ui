@@ -1,43 +1,44 @@
 
 export interface siderbarIcon {
-    icon : {} | any
-    selected : Boolean
+    icon: {} | any
+    selected: Boolean
 }
 
 
 export interface sidebarReduxProps {
-    mobileSidebarOpenAndClose : boolean
-    selectedIndex : Number
+    mobileSidebarOpenAndClose: boolean
+    selectedIndex: Number
 }
 
 export interface siderbarProps {
-    screenSize : String
-    sidebarData? : sidebarReduxProps
+    screenSize: String
+    sidebarData?: sidebarReduxProps
 }
 
 export interface CreateAndLoginProps {
-    headerName : string
-    buttonName : string
-    redirectionScreen? : string
-    storeUsers? : any
-    dispatch? : any
+    headerName: string
+    buttonName: string
+    redirectionScreen?: string
+    storeUsers?: any
+    dispatch?: any
 }
- 
+
 export interface CreateAndLoginRequestObj {
-    email : string | null
-    password : string | null
+    name?: string | null
+    email: string | null
+    password: string | null
 }
 
 export interface AuthContextType {
     isAuthenticated: boolean
-    tokken : string
+    tokken: string
     login: () => void // Function to change the state to authenticated
-    logout: () => void 
-    storeTokken: (value:string) => void
+    logout: () => void
+    storeTokken: (value: string) => void
 }
 
 export interface headertypes {
-    tokken : string | null
+    tokken: string | null
 }
 
 
