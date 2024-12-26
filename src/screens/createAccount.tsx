@@ -94,16 +94,6 @@ let CreateAndLoginAccount: React.FC<CreateAndLoginProps> = (props) => {
       setAlertMessageColor("error");
       removeAlertMessage();
     }
-    // else if(!email && !password && !name || !email || !password||!name){
-    //     setAlertMessage("Please enter email, password and Name")
-    //     setAlertMessageColor("error")
-    //     removeAlertMessage()
-    // }
-    // else if(buttonName == "Login"){
-    //     // login serives
-    //     // this.props.d
-
-    // }
     else {
       // create account and login
       props.dispatch(
@@ -228,38 +218,6 @@ let CreateAndLoginAccount: React.FC<CreateAndLoginProps> = (props) => {
     </React.Fragment>
   );
 };
-
-// import React from 'react';
-// import { Card, CardContent, CardMedia, Typography, Grid, useMediaQuery, useTheme } from '@mui/material';
-
-// const CreateAccount = () : React.FC => {
-//   // Use MUI's theme to determine screen size
-//   const theme = useTheme();
-//   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-
-//   return (
-//     <Grid container spacing={2}>
-//       <Grid item xs={12} sm={6} md={4}>
-//         <Card>
-//           <CardMedia
-//             component="img"
-//             height="140"
-//             image="https://via.placeholder.com/150" // Sample image
-//             alt="Card image"
-//           />
-//           <CardContent>
-//             <Typography variant="h5" component="div">
-//               Responsive Card
-//             </Typography>
-//             <Typography variant="body2" color="text.secondary">
-//               This is a simple card with a responsive layout.
-//             </Typography>
-//           </CardContent>
-//         </Card>
-//       </Grid>
-//     </Grid>
-//   );
-// };
 
 const mapStateToProps = (state: any) => ({
   // risedQueres : state.projectReducer.risedQueres_,

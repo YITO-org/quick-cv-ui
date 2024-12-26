@@ -3,6 +3,7 @@ import { Button, Grid, Paper , Box, Typography, TextField, InputLabel  } from "@
 import { useNavigate } from "react-router-dom";
 import ReactQuill from 'react-quill';
 import { connect } from "react-redux";
+import { IoIosArrowDroprightCircle } from "react-icons/io";
 import Res from "../resumes";
 import { setInformation } from "../actions";
 import { styles } from "../styles/styles";
@@ -29,7 +30,7 @@ const modules : any = {
 
 let Detailes : React.FC<any> = (props)=>{
 
-    let { cv } = props;
+    let { cv , nextButton } = props;
     let nav = useNavigate();
 
     let change = (e  : any /* React.ChangeEvent<HTMLInputElement>*/)=>{
@@ -88,11 +89,19 @@ let Detailes : React.FC<any> = (props)=>{
                                             onChange={setText}
                                             placeholder="Write About Youself..."
                                             modules={modules}
-                                            style={{ height : '20rem' , minHeight: '20rem' }}
+                                            style={{ height : '20rem' , minHeight: '20rem' , marginBottom : 35 }}
 			                             />
                                         {/* <textarea name="summary" rows={15} className="form-control" placeholder="Write About Youself..." value={cv["summary"]} onChange={change}  id="exampleFormControlTextarea1" /> */}
                                     </Box>
                                 }    
+
+                {
+                    //  next button
+                    nextButton &&
+                    <Box sx={{ textAlign : 'center' , marginBottom : 1  }} >
+                        <Button sx={{width : '95%' }} variant="contained" color="secondary" startIcon={ <IoIosArrowDroprightCircle /> } onClick={()=>{nav("/resumebuilder/" + nextButton)}} > <Typography fontWeight='bold' variant="body1" >Next</Typography> </Button>
+                    </Box>
+                }
                             </Paper>
                     </Grid> 
 

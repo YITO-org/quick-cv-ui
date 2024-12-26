@@ -60,16 +60,16 @@ const App : React.FC<any>  = (props)=>{
 
               <Route path="/resumebuilder" element={<MainApp />}>
                   <Route index path="dashboard" element={ <PR> <Dashboard /> </PR> } />
-                  <Route index path="detailes" element={ <Detailes headerName="Details"  /> } />
-                  <Route  path="summary" element={<Detailes headerName="Summary" />} />
-                  <Route  path="education" element={<CVInfoData headerName="Education" screenName="education" /> } />
-                  <Route  path="workHistory" element={<CVInfoData headerName="Work History" screenName="work_history" /> } />
-                  <Route  path="projects" element={<CVInfoData headerName="Projects" screenName="projects" /> } />
-                  <Route  path="skills" element={<CVInfoData headerName="Skills" screenName="skills" /> } />
+                  <Route index path="detailes" element={ <Detailes headerName="Details" nextButton="summary" /> } />
+                  <Route  path="summary" element={<Detailes headerName="Summary" nextButton="education" />} />
+                  <Route  path="education" element={<CVInfoData headerName="Education" screenName="education" nextButton="workHistory" /> } />
+                  <Route  path="workHistory" element={<CVInfoData headerName="Work History" screenName="work_history" nextButton="projects" /> } />
+                  <Route  path="projects" element={<CVInfoData headerName="Projects" screenName="projects" nextButton="skills"  /> } />
+                  <Route  path="skills" element={<CVInfoData headerName="Skills" screenName="skills" nextButton="ordering" /> } />
+                  <Route  path="ordering" element={<CVInfoData headerName="Re-Ordering" screenName="ordering" nextButton="template" /> } />
                   <Route  path="template" element={<CVInfoData headerName="Template" screenName="template" /> } />
                   {/* <Route  path="ordering" element={<CVInfoData headerName="Template" screenName="template" /> } /> */}
 
-                  <Route  path="ordering" element={<CVInfoData headerName="Re-Ordering" screenName="ordering" /> } />
                   <Route  path="ViewResume" element={<ViewResume/>} />
                   
 

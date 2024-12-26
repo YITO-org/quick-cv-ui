@@ -31,7 +31,7 @@ let Ordering : React.FC<any> = (props)=>{
 
     return(
         <React.Fragment>
-            <Box sx={{display : 'flex' , flexDirection : 'column' , gap : 1.5  , alignItems : 'center' , mt : '10%' }} >
+            <Box sx={{display : 'flex' , flexDirection : 'column' , gap : 1.5  , alignItems : 'center' , mt : '4%' , mb : '4%'}} >
             {
                 order.map((e,index)=><Box sx={styles.ordering_text}  key={index} 
                                            draggable 

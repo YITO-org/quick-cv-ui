@@ -2,6 +2,7 @@
 import React from "react";
 import { Button, Grid, Paper , Box, Typography, TextField, FormControl , MenuItem , InputLabel, Select, /* InputLabel, FormControl */ } from "@mui/material";
 import { styles } from "../styles/styles";
+import { IoIosArrowDroprightCircle } from "react-icons/io";
 import Res from "../resumes";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
@@ -35,7 +36,7 @@ const modules : any = {
 
 let CVInfoData : React.FC<any> = (props)=>{
 
-    let { cv , screenName } = props;
+    let { cv , screenName , nextButton  } = props;
     let nav = useNavigate();
 
 
@@ -51,7 +52,7 @@ let CVInfoData : React.FC<any> = (props)=>{
     let remove = (index : number)=>{
         let name = [...cv[screenName]];
         if(index > 0){
-            name.splice(name.length - index , 1)
+            name.splice(/*name.length - */ index , 1)
         }else{
             name.splice(0,1)
         }
@@ -252,6 +253,14 @@ let CVInfoData : React.FC<any> = (props)=>{
                             screenName == "ordering" &&
                             <Ordering />
                         }
+
+                        {
+                                            //  next button
+                                            nextButton &&
+                                            <Box sx={{ textAlign : 'center' , marginBottom : 1  }} >
+                                                <Button sx={{width : '95%' }} variant="contained" color="secondary" startIcon={ <IoIosArrowDroprightCircle /> } onClick={()=>{nav("/resumebuilder/" + nextButton)}} > <Typography fontWeight='bold' variant="body1" >Next</Typography> </Button>
+                                            </Box>
+                         }
 
                     </Box>
               </Paper>
