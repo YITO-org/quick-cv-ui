@@ -43,17 +43,12 @@ const App : React.FC<any>  = (props)=>{
   }
 
 
-
-
   return (
     <React.Fragment>
       <AuthProvider>
         <BrowserRouter>
             <Routes>
-              <Route path="/" element={
-              <LandingPage />
-                // <LandingPage2 />
-            }></Route>
+              <Route path="/" element={<LandingPage />}></Route>
               <Route path="/createaccount" element={<CreateAndLoginAccount headerName="Create Account" buttonName="Create" redirectionScreen="/login" />}></Route>
               <Route path="/login" element={<CreateAndLoginAccount headerName="Login" buttonName="Login" redirectionScreen="/createaccount" />}></Route>
               <Route path="/otp" element={<Otp headerName="OTP" buttonName="Submit" redirectionScreen="/resumebuilder"  />} />
