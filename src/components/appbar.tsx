@@ -55,7 +55,7 @@ let Header : React.FC<any> = (props) =>{
         <React.Fragment>
                 <AppBar
                     position='fixed'
-                    sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 , backgroundColor : Grey }}
+                    sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 , backgroundColor : /*Grey*/ "#3C4B64" }}
                     elevation={5}
                 >
                     <Toolbar>

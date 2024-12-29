@@ -10,15 +10,24 @@ import {
   Paper,
   Stack,
   Alert,
+  InputAdornment,
+  duration,
 } from "@mui/material";
+import { IoEye , IoEyeOff  } from "react-icons/io5";
 import {
   CreateAndLoginProps,
   CreateAndLoginRequestObj,
 } from "../interfaces/types";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
+import toast from 'react-simple-toasts';
 import { styles } from "../styles/styles";
 import { clearUser, createAccount, storeOrResetTokken } from "../actions";
+import 'react-simple-toasts/dist/theme/info.css';
+import 'react-simple-toasts/dist/theme/success.css';
+import 'react-simple-toasts/dist/theme/dark.css';
+import '../styles/toastfy.css';
+// import 'react-simple-toasts/dist/theme/.css';
 
 let CreateAndLoginAccount: React.FC<CreateAndLoginProps> = (props) => {
   let { headerName, buttonName, redirectionScreen } = props;
@@ -28,9 +37,8 @@ let CreateAndLoginAccount: React.FC<CreateAndLoginProps> = (props) => {
   let [email, setEmail] = React.useState<string | null>("");
   let [password, setPassword] = React.useState<string | null>("");
   let [alertMessage, setAlertMessage] = React.useState<String | null>("");
-  let [alertMessageColor, setAlertMessageColor] = React.useState<String | any>(
-    ""
-  );
+  let [alertMessageColor, setAlertMessageColor] = React.useState<String | any>("");
+  let [showPassword , setShowPassword] = React.useState<Boolean>(true)
 
   //let x :any = document.cookie && document.cookie.split("=").length > 0 && document.cookie.split("=")[1]
 
@@ -40,6 +48,7 @@ let CreateAndLoginAccount: React.FC<CreateAndLoginProps> = (props) => {
     setPassword("");
     setAlertMessage("");
     setAlertMessageColor("");
+    setShowPassword(true)
     props.dispatch(clearUser());
   }, [buttonName]);
 
@@ -56,8 +65,12 @@ let CreateAndLoginAccount: React.FC<CreateAndLoginProps> = (props) => {
 
   function responceCallBack(res: any): void {
     if (res.status >= 200 && res.status <= 299) {
-      setAlertMessageColor("success");
-      setAlertMessage(res.data.message);
+
+      // setAlertMessageColor("success");
+      // setAlertMessage(res.data.message);
+
+      toast(res.data.message , {theme : 'success'})
+      
       if (
         res.data.message ==
           "Account created succefully,Please check your email to Active your account." ||
@@ -74,25 +87,26 @@ let CreateAndLoginAccount: React.FC<CreateAndLoginProps> = (props) => {
         }, 2000);
       }
     } else {
-      setAlertMessageColor("error");
-      setAlertMessage(res.data.message);
+      toast(res.data.message , { duration : 1500 , position : 'top-center' ,  theme : 'my-toast-fail'  })
+      // setAlertMessageColor("error");
+      // setAlertMessage(res.data.message);
     }
-    removeAlertMessage();
+    // removeAlertMessage();
   }
 
   const createOrLoginAccount = () => {
     let data: CreateAndLoginRequestObj = { email, password, name };
 
     if (
-      (buttonName == "Login" &&
-        ((!email && !password) || !email || !password)) || // login
+      (buttonName == "Login" && ((!email && !password) || !email || !password)) || // login
       (buttonName == "Create" && (!name || !email || !password))
     ) {
-      setAlertMessage(
-        buttonName == "Login" ? "Please enter Email and Password" : "Please enter Email , Password and Name"
-      );
-      setAlertMessageColor("error");
-      removeAlertMessage();
+      // setAlertMessage(
+      //   buttonName == "Login" ? "Please enter Email and Password" : "Please enter Email , Password and Name"
+      // );
+      // setAlertMessageColor("error");
+      // removeAlertMessage();
+      toast(buttonName == "Login" ? "Please enter Email and Password" : "Please enter Email, Password and Name" , { position : 'top-center' ,  duration : 1500 , theme : "my-toast-fail" }  )
     }
     else {
       // create account and login
@@ -170,7 +184,7 @@ let CreateAndLoginAccount: React.FC<CreateAndLoginProps> = (props) => {
 
             <InputLabel>Password</InputLabel>
             <TextField
-              type="password"
+              type={showPassword ? "password" : "text"}
               size="small"
               placeholder="Password"
               fullWidth={true}
@@ -178,6 +192,13 @@ let CreateAndLoginAccount: React.FC<CreateAndLoginProps> = (props) => {
               sx={{ marginBottom: 2 }}
               onChange={(e) => {
                 setPassword(e.target.value);
+              }}
+              InputProps={{
+                endAdornment : (
+                  <InputAdornment position="end">
+                    {showPassword ? <IoEye onClick={()=>{setShowPassword(false)}} style={{cursor : 'default'}} /> : <IoEyeOff onClick={()=>{setShowPassword(true)}} style={{cursor : 'default'}} />}
+                  </InputAdornment>
+                )
               }}
             />
             <Button

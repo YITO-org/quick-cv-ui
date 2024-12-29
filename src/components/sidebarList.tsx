@@ -169,11 +169,11 @@ useEffect(()=>{
                         paddingTop={0.5}
                         paddingBottom={0.5}
                         margin={0.2}
-                        width={178}
+                        width={"97%"}
                         paddingLeft={1}
                         borderRadius={1}
                         bgcolor={location.pathname ==  e.path ? 'white' : ''}
-                        sx={{cursor : 'pointer' , ":hover" : {bgcolor : location.pathname !=  e.path ? '#757575' : '' }}}
+                        sx={{cursor : 'pointer' , ":hover" : {bgcolor : location.pathname !=  e.path ? '#44597B' : '' }  }}
                         onClick={()=>{selectRoute(index , e.path)}}
                         >
                             <Box color={location.pathname ==  e.path ? 'black' : 'white'}>{e.icon}</Box>

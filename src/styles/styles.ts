@@ -26,7 +26,7 @@ export const styles = {
    drowerStyles : {
       width: drawerWidth,
       flexShrink: 0,
-      [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' , backgroundColor : Grey },
+      [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' , backgroundColor : "#3C4B64" /*Grey*/ },
     },
     sidebarListColor : { color : 'white'} , 
     sidebarListSelectedColor : { color : 'black' , backgroundColor : 'whitesmoke'  ,  ':hover' : { color : 'black' , backgroundColor : 'white'} },
@@ -34,7 +34,7 @@ export const styles = {
     mobileDrowerStyles : {
       width: drawerWidth,
       flexShrink: 0,
-      [`& .MuiDrawer-paper`]: { width: mobileswidth, boxSizing: 'border-box' , backgroundColor : Grey },
+      [`& .MuiDrawer-paper`]: { width: mobileswidth, boxSizing: 'border-box' , backgroundColor : /* Grey */ "#3C4B64" },
     },
 
    // appbar styles

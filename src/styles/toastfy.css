@@ -1,0 +1,7 @@
+
+.my-toast-fail {
+    background-color: rgba(252, 4, 41, 0.9);
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 3px;
+  }
