@@ -17,7 +17,7 @@ const storeUsers = (state = initialValues , action:any) => {
             state = {...state , userTokken : action.tokken  }
             return state;
         case "RESET_USER_INFORMATION":
-            state = initialValues;
+            state = {users : [],userId : null,userTokken : null,resumes : [] };
             return state;
         case "GET_RESUMES" :
             state = {...state , resumes : action.resumes}

@@ -13,6 +13,7 @@ import ViewResume from "./screens/viewResume";
 import LandingPage from "./screens/landingPage"
 import Dashboard from "./screens/dashboard";
 import axios from "axios";
+import {ProtectedRoutes_col , ProtectedRoutes_dashboard } from "./middlewares/authentication";
 //import LandingPage2 from "./screens/landingPage2";
 
 const App : React.FC<any>  = (props)=>{
@@ -22,16 +23,23 @@ const App : React.FC<any>  = (props)=>{
     if(localStorage.getItem("tokken")){
       checkAuthendation()
     }
+     // alert(localStorage.getItem("tokken"));
+    // alert("surya");
   },[])
   
   let checkAuthendation = async ()=>{
 
+    // console.log(localStorage.getItem("tokken"))
+
+    let tokken = localStorage.getItem("tokken")
+
     let config = {
-      headers : { "Authorization" : localStorage.getItem("tokken")}
+      headers : { "Authorization" : tokken}
     }
     
     try{
       let result = await axios.post('/apis/checkValiedUserOrNot' , {} , config);
+      console.log({result});
       if(result.status == 200){
          props.dispatch(storeOrResetTokken(localStorage.getItem("tokken")))
       }
@@ -48,13 +56,13 @@ const App : React.FC<any>  = (props)=>{
       <AuthProvider>
         <BrowserRouter>
             <Routes>
-              <Route path="/" element={<LandingPage />}></Route>
-              <Route path="/createaccount" element={<CreateAndLoginAccount headerName="Create Account" buttonName="Create" redirectionScreen="/login" />}></Route>
-              <Route path="/login" element={<CreateAndLoginAccount headerName="Login" buttonName="Login" redirectionScreen="/createaccount" />}></Route>
-              <Route path="/otp" element={<Otp headerName="OTP" buttonName="Submit" redirectionScreen="/resumebuilder"  />} />
+              <Route path="/" element={ <ProtectedRoutes_col> <LandingPage /> </ProtectedRoutes_col> }></Route>
+              <Route path="/createaccount" element={ <ProtectedRoutes_col> <CreateAndLoginAccount headerName="Create Account" buttonName="Create" redirectionScreen="/login" /></ProtectedRoutes_col> }></Route>
+              <Route path="/login" element={ <ProtectedRoutes_col> <CreateAndLoginAccount headerName="Login" buttonName="Login" redirectionScreen="/createaccount" /> </ProtectedRoutes_col> }></Route>
+              <Route path="/otp" element={ <ProtectedRoutes_col> <Otp headerName="OTP" buttonName="Submit" redirectionScreen="/login"  /> </ProtectedRoutes_col> } />
 
               <Route path="/resumebuilder" element={<MainApp />}>
-                  <Route index path="dashboard" element={ <PR> <Dashboard /> </PR> } />
+                  <Route index path="dashboard" element={ <ProtectedRoutes_dashboard> <Dashboard /> </ProtectedRoutes_dashboard> } />
                   <Route index path="detailes" element={ <Detailes headerName="Details" nextButton="summary" /> } />
                   <Route  path="summary" element={<Detailes headerName="Summary" nextButton="education" />} />
                   <Route  path="education" element={<CVInfoData headerName="Education" screenName="education" nextButton="workHistory" /> } />
@@ -78,22 +86,6 @@ const App : React.FC<any>  = (props)=>{
   )
 }
 
-
-let PR :React.FC<any> = (props)=>{
-    
-  let selector :any = localStorage.getItem("tokken"); 
-  //useSelector((state:any)=>state.storeUsers);
-    
-  console.log({selector});
-  return <div>
-    {
-      selector ? props.children : <Navigate to='/login' replace />
-    }
-  </div>
-
-
-}
-
 // main App
 let MainApp : React.FC = ()=>{
   return(
@@ -106,8 +98,6 @@ let MainApp : React.FC = ()=>{
 }
 
 const mapStateToProps = (state : any ) => ({
-  // risedQueres : state.projectReducer.risedQueres_,
-  // notesAndPartner: state.patientDocumentReducer.notesAndPartner,    
   sidebarData : state.sidebarStore
 });
 

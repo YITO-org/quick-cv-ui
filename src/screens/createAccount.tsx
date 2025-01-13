@@ -11,7 +11,6 @@ import {
   Stack,
   Alert,
   InputAdornment,
-  duration,
 } from "@mui/material";
 import { IoEye , IoEyeOff  } from "react-icons/io5";
 import {
@@ -38,7 +37,8 @@ let CreateAndLoginAccount: React.FC<CreateAndLoginProps> = (props) => {
   let [password, setPassword] = React.useState<string | null>("");
   let [alertMessage, setAlertMessage] = React.useState<String | null>("");
   let [alertMessageColor, setAlertMessageColor] = React.useState<String | any>("");
-  let [showPassword , setShowPassword] = React.useState<Boolean>(true)
+  let [showPassword , setShowPassword] = React.useState<Boolean>(true);
+  let [loginOrCreateAccountButtonDisible , setLoginOrCreateAccountButtonDisible] = React.useState<Boolean | any>(false);
 
   //let x :any = document.cookie && document.cookie.split("=").length > 0 && document.cookie.split("=")[1]
 
@@ -48,28 +48,21 @@ let CreateAndLoginAccount: React.FC<CreateAndLoginProps> = (props) => {
     setPassword("");
     setAlertMessage("");
     setAlertMessageColor("");
-    setShowPassword(true)
-    props.dispatch(clearUser());
+    setShowPassword(true);
+    // props.dispatch(clearUser());
   }, [buttonName]);
 
   let navgate = (path: string | any): void => {
     nav(path);
   };
 
-  function removeAlertMessage() {
-    setTimeout(() => {
-      setAlertMessage("");
-      setAlertMessageColor("");
-    }, 9000);
-  }
 
   function responceCallBack(res: any): void {
     if (res.status >= 200 && res.status <= 299) {
+      setLoginOrCreateAccountButtonDisible(false);
 
-      // setAlertMessageColor("success");
-      // setAlertMessage(res.data.message);
 
-      toast(res.data.message , {theme : 'success'})
+      toast(res.data.message , { duration : 1500 , position : 'top-center' ,  theme : 'success'})
       
       if (
         res.data.message ==
@@ -88,10 +81,9 @@ let CreateAndLoginAccount: React.FC<CreateAndLoginProps> = (props) => {
       }
     } else {
       toast(res.data.message , { duration : 1500 , position : 'top-center' ,  theme : 'my-toast-fail'  })
-      // setAlertMessageColor("error");
-      // setAlertMessage(res.data.message);
+
+      setLoginOrCreateAccountButtonDisible(false);
     }
-    // removeAlertMessage();
   }
 
   const createOrLoginAccount = () => {
@@ -101,15 +93,11 @@ let CreateAndLoginAccount: React.FC<CreateAndLoginProps> = (props) => {
       (buttonName == "Login" && ((!email && !password) || !email || !password)) || // login
       (buttonName == "Create" && (!name || !email || !password))
     ) {
-      // setAlertMessage(
-      //   buttonName == "Login" ? "Please enter Email and Password" : "Please enter Email , Password and Name"
-      // );
-      // setAlertMessageColor("error");
-      // removeAlertMessage();
       toast(buttonName == "Login" ? "Please enter Email and Password" : "Please enter Email, Password and Name" , { position : 'top-center' ,  duration : 1500 , theme : "my-toast-fail" }  )
     }
     else {
       // create account and login
+      setLoginOrCreateAccountButtonDisible(true);
       props.dispatch(
         createAccount(
           buttonName == "Login" ? "apis/login" : "apis/createaccount",
@@ -206,6 +194,8 @@ let CreateAndLoginAccount: React.FC<CreateAndLoginProps> = (props) => {
               color="secondary"
               sx={styles.loginOrCreateButton}
               onClick={createOrLoginAccount}
+              disabled={loginOrCreateAccountButtonDisible}
+              
             >
               <Typography fontWeight={800}>{buttonName}</Typography>
             </Button>
