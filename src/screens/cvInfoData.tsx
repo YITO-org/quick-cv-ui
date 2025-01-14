@@ -87,6 +87,9 @@ let CVInfoData : React.FC<any> = (props)=>{
 
     let saveAndDownload = ()=>{
         let {cv} = props; 
+
+        console.log({cv});
+
         props.dispatch(setLoader()); 
        if(cv.resumeId){
            props.dispatch(updateResume(resumeInfoConvertJsonToString(cv)))

@@ -28,7 +28,8 @@ export const resumeInfoConvertJsonToString : any = (cv : any ) : any=>{
         "education" : JSON.stringify(conertData.education),
         "work_history" : JSON.stringify(conertData.work_history),
         "projects" : JSON.stringify(conertData.projects),
-        "resumeId" : conertData.resumeId
+        "resumeId" : conertData.resumeId,
+        "template" : conertData.selectedTemplate
 
     };
    
