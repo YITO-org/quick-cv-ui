@@ -105,7 +105,7 @@ import { Toolbar /*, List , ListItem , ListItemButton , ListItemText,*/ , Typogr
 //import routing from "../routing";
 import { BiSolidDetail } from "react-icons/bi";
 import { siderbarProps /*, siderbarIcon*/ } from "../interfaces/types"
-import { styles } from "../styles/styles";
+// import { styles } from "../styles/styles";
 import { connect , useSelector } from "react-redux";
 import { setSelectedIndexForSidebar } from "../actions";
 import routing from "../routing";

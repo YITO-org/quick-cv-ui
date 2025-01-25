@@ -1,6 +1,6 @@
 "use client"
 import React , { useEffect } from "react";
-import { editResume } from "../actions/resumeActions";
+// import { editResume } from "../actions/resumeActions";
 import { connect } from "react-redux";
 // import { connect } from "react-redux";
 
@@ -14,7 +14,7 @@ let ResumeCard : React.FC<any> = (props)=>{
 
     const edit = ()=>{
         // alert(props.id);
-        props.dispatch(editResume(props.id))
+      //  props.dispatch(editResume(props.id))
     }
 
     const deleteResume = ()=>{

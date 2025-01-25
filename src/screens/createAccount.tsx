@@ -1,16 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import {
-  Box,
-  Button,
-  /* Card, CardContent,*/ Grid,
-  InputLabel,
-  TextField,
-  Typography,
-  Paper,
-  Stack,
-  Alert,
-  InputAdornment,
+  Box,Button,Grid,InputLabel,TextField,Typography,Paper,Stack,Alert,InputAdornment
 } from "@mui/material";
 import { IoEye , IoEyeOff  } from "react-icons/io5";
 import {
@@ -21,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import toast from 'react-simple-toasts';
 import { styles } from "../styles/styles";
-import { clearUser, createAccount, storeOrResetTokken } from "../actions";
+import { createAccount, storeOrResetTokken } from "../actions";
 import 'react-simple-toasts/dist/theme/info.css';
 import 'react-simple-toasts/dist/theme/success.css';
 import 'react-simple-toasts/dist/theme/dark.css';

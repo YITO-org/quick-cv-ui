@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect } from "react";
-import {BrowserRouter, Route, Routes , Outlet, Navigate} from "react-router-dom";
+import {BrowserRouter, Route, Routes , Outlet} from "react-router-dom";
 import Layout from "./layout";
 import CreateAndLoginAccount from "./screens/createAccount";
 import Otp from "./screens/otp";

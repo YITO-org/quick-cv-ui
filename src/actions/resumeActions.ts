@@ -2,11 +2,11 @@
 import axios from "axios";
 import { clearLoader, setLoader } from ".";
 
-let config = {
-  headers : {
-    "Authorization" : localStorage.getItem("tokken")
-  }
-}
+// let config = {
+//   headers : {
+//     "Authorization" : localStorage.getItem("tokken")
+//   }
+// }
 
 export let getResumes = ()=>(dispatch:any)=>{
   dispatch(setLoader())
@@ -55,12 +55,29 @@ export const createMyResume = (resumeName : any , callBack : any)=>(dispatch:any
   })
 }
 
-// export let editResume = (id:number)=>(dispatch:any)=>{
-//   alert(id);
-// }
+export const createMyCloneResume = (resumeId : number | any, newResumeName : string | any , callBack : any)=>(dispatch : any)=> {
+  console.log(dispatch)
+  let config = {
+    headers : {
+      "Authorization" : localStorage.getItem("tokken")
+    }
+  };
 
 
-export let deleteResume = (resumeId : number , resumeName : string , callBack : any)=>(dispatch:any)=>{
+  return axios.post<any>('/apis/cloneResume',{resumeId , newResumeName} , config)
+        .then((res)=>{
+          callBack(res);
+        })
+        .catch((err)=>{
+          callBack(err);
+        })
+        .finally(()=>{
+
+        })
+}
+
+
+export let deleteResume = (resumeId : number | null , resumeName : string | null , callBack : any)=>(dispatch:any)=>{
 
   let config = {
     headers : {
@@ -77,6 +94,15 @@ export let deleteResume = (resumeId : number , resumeName : string , callBack : 
   })
 }
 
+export let editResumeTesting = (resumeData : any) => (dispatch : any)=>{
+  dispatch({
+    type : 'GET_RESUME_FROM_SERVICE',
+    resumeData : resumeData
+});
+}
+
+
+
 export let editResume = (resumeId : number , callback : any)=>(dispatch : any)=>{
   let config = {
     headers : {
@@ -90,7 +116,7 @@ export let editResume = (resumeId : number , callback : any)=>(dispatch : any)=>
     });
     callback(res);
   }).catch((err)=>{
-
+    console.log({err})
   }).finally(()=>{
 
   })
@@ -104,6 +130,7 @@ export const gotoOrginalState = ()=>(dispatch : any)=>{
 }
 
 export const updateResume = (cv : any)=>(dispatch : any)=>{
+  console.log(dispatch);
   let config = {
     headers : {
       "Authorization" : localStorage.getItem("tokken")
@@ -114,6 +141,7 @@ export const updateResume = (cv : any)=>(dispatch : any)=>{
    // callBack(res)
    console.log(res);
   }).catch((err)=>{
+    console.log(err);
     //callBack(err)
   }).finally(()=>{
     // dispatch(clearLoader())

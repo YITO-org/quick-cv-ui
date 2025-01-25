@@ -4,7 +4,7 @@
 import {grey  } from "@mui/material/colors"
 const drawerWidth = 190; // for medium screen and large screen
 const mobileswidth = 250; // for small and extra small screen
-let Grey = grey["800"]
+// let Grey = grey["800"]
 let Gray2 = grey[400]
 
 // export const sidebarStyles = makeStyles({
