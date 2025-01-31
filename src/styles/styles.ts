@@ -48,7 +48,7 @@ export const styles = {
   
   
   // detailes screen
-  input_lable : {'&::first-letter' : {textTransform : 'uppercase'},fontWeight :'450',/*color : 'gray' */},
+  input_lable : { /* '&::first-letter' : {textTransform : 'uppercase'}, */fontWeight :'450',/*color : 'gray' */},
   detailes_box : {backgroundColor : 'white' , border : 0.5 , borderColor : Gray2 , height :'86vh' , overflow : 'scroll' , scrollbarWidth : 'none'},
   detailes_resume_box : {backgroundColor : 'white' , border : 0.5 , borderColor : Gray2 , height :'86vh' , overflow : 'scroll' , scrollbarWidth : 'none'},
   ordering_text : {display : 'flex' , flexDirection : 'column' , gap : 1.5  , alignItems : 'center' , mt : '4%' , mb : '4%'}

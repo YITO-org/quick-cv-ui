@@ -69,11 +69,12 @@ let Detailes : React.FC<any> = (props)=>{
                                    props.headerName == "Details" &&
                                         <Box sx={{p : 2}}>
                                             {
-                                                ['name' , 'designation' , 'DOB' , 'phoneNumber' , 'email' , 'github' , 'linkedin'].map((e,index)=>(
+                                                [/*'name'*/ {'displayNameAndPlaceholder' : 'Name' , orginalName : 'name' }  , {displayNameAndPlaceholder : 'Designation' , orginalName : 'designation' } , {displayNameAndPlaceholder : 'DOB' , orginalName : 'DOB' } , {displayNameAndPlaceholder : 'Phone Number' , orginalName : 'phoneNumber' }  , {displayNameAndPlaceholder : 'Email' , orginalName : 'email' }  , {displayNameAndPlaceholder : 'Github' , orginalName : 'github' } , {displayNameAndPlaceholder : 'Linkedin' , orginalName : 'linkedin' } ].map((e,index)=>(
                                                     <Box key={index}>
-                                                        <InputLabel  sx={styles.input_lable}
-                                                        >{e}</InputLabel>
-                                                        <TextField type="text" size='small' placeholder={e} name={e} value={cv[e]}  onChange={change} sx={{marginBottom : 2 , width : '100%'}} />
+                                                        <InputLabel  
+                                                         sx={styles.input_lable}
+                                                        >{e['displayNameAndPlaceholder']}</InputLabel>
+                                                        <TextField type="text" size='small' placeholder={e['displayNameAndPlaceholder']} name={e.orginalName} value={cv[e.orginalName]}  onChange={change} sx={{marginBottom : 2 , width : '100%'}} />
                                                     </Box>
                                                 ))
                                             }
