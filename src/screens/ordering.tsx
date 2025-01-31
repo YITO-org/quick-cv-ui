@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import {connect} from "react-redux";
 import { styles } from "../styles/styles";
 import { resumeRearrangment } from "../actions";
+import { TfiLayoutGrid2 } from "react-icons/tfi";
 
 let Ordering : React.FC<any> = (props)=>{
 
@@ -31,14 +32,16 @@ let Ordering : React.FC<any> = (props)=>{
 
     return(
         <React.Fragment>
-            <Box sx={{display : 'flex' , flexDirection : 'column' , gap : 1.5  , alignItems : 'center' , mt : '4%' , mb : '4%'}} >
+            <Box sx={styles.ordering_text} >
             {
-                order.map((e,index)=><Box sx={styles.ordering_text}  key={index} 
+                order.map((e,index)=><Box sx={{display : 'flex' , alignItems : 'center' ,  gap : 1 ,   backgroundColor : 'lightblue' , textAlign : 'center' , width : 180 , borderRadius : 2 , p : 0.5}}  key={index} 
                                            draggable 
                                            onDragStart={()=>(dragField.current = index)}
                                            onDragEnter={()=>(dragOverField.current = index)}
                                            onDragEnd={()=>{reOrder()}}
-                                          ><Typography fontWeight={600} sx={styles.input_lable}>{filterSpecialCharacter(e)}</Typography></Box>)
+                                          >
+                                            <TfiLayoutGrid2 style={{marginLeft : 12}} />
+                                            <Typography fontWeight={600} sx={styles.input_lable}>{filterSpecialCharacter(e)}</Typography></Box>)
             }
             </Box>
         </React.Fragment>

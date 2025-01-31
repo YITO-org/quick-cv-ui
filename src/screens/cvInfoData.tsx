@@ -113,7 +113,7 @@ let CVInfoData : React.FC<any> = (props)=>{
               <Paper sx={styles.detailes_box}>
                     <Typography sx={{mt : 1 , mb:1 }} textAlign='center' variant='h5' fontWeight='500' >{props.headerName}</Typography>
                         {
-                            props.headerName != "Template" && props.headerName != "Re-Ordering" &&
+                            props.headerName != "Template" && props.headerName != "Ordering" &&
                             <Button variant='contained' size='small' color='success' onClick={add} startIcon={<MdAddCircle />} sx={{ ml : 1 , mb : 0.5 }} >Add</Button>   
                         }
                     

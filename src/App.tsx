@@ -39,7 +39,7 @@ const App : React.FC<any>  = (props)=>{
     
     try{
       let result = await axios.post('/apis/checkValiedUserOrNot' , {} , config);
-      console.log({result});
+      // console.log({result});
       if(result.status == 200){
          props.dispatch(storeOrResetTokken(localStorage.getItem("tokken")))
       }
@@ -69,7 +69,7 @@ const App : React.FC<any>  = (props)=>{
                   <Route  path="workHistory" element={<CVInfoData headerName="Work History" screenName="work_history" nextButton="projects" /> } />
                   <Route  path="projects" element={<CVInfoData headerName="Projects" screenName="projects" nextButton="skills"  /> } />
                   <Route  path="skills" element={<CVInfoData headerName="Skills" screenName="skills" nextButton="ordering" /> } />
-                  <Route  path="ordering" element={<CVInfoData headerName="Re-Ordering" screenName="ordering" nextButton="template" /> } />
+                  <Route  path="ordering" element={<CVInfoData headerName="Ordering" screenName="ordering" nextButton="template" /> } />
                   <Route  path="template" element={<CVInfoData headerName="Template" screenName="template" /> } />
                   {/* <Route  path="ordering" element={<CVInfoData headerName="Template" screenName="template" /> } /> */}
 
