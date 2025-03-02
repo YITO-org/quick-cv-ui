@@ -37,3 +37,30 @@ export const resumeInfoConvertJsonToString : any = (cv : any ) : any=>{
     //  console.log(conertData);
     return conertData;
 }
+
+
+// email validation
+export let fieldValidation = (value : string | null , type : string) : boolean  => {
+
+  if(!value){
+    return false;
+  }
+
+  if(type == 'email'){
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(value)
+  }
+
+  return false
+  
+
+  // if(type == 'email'){
+  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  //   return emailRegex.test(value);
+  // }
+  
+  // return true;
+
+
+}
+

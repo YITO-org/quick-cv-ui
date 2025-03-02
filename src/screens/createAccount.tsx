@@ -17,6 +17,7 @@ import 'react-simple-toasts/dist/theme/info.css';
 import 'react-simple-toasts/dist/theme/success.css';
 import 'react-simple-toasts/dist/theme/dark.css';
 import '../styles/toastfy.css';
+import { fieldValidation } from "../utils";
 // import 'react-simple-toasts/dist/theme/.css';
 
 let CreateAndLoginAccount: React.FC<CreateAndLoginProps> = (props) => {
@@ -79,12 +80,19 @@ let CreateAndLoginAccount: React.FC<CreateAndLoginProps> = (props) => {
 
   const createOrLoginAccount = () => {
     let data: CreateAndLoginRequestObj = { email, password, name };
+    
+
+    
 
     if (
       (buttonName == "Login" && ((!email && !password) || !email || !password)) || // login
-      (buttonName == "Create" && (!name || !email || !password))
+      (buttonName == "Create" && (!name || !email || !password)) // create-account
     ) {
-      toast(buttonName == "Login" ? "Please enter Email and Password" : "Please enter Email, Password and Name" , { position : 'top-center' ,  duration : 1500 , theme : "my-toast-fail" }  )
+      toast(buttonName == "Login" ? "Please enter Email and Password" : "Please enter Email, Password and Name" , 
+        { position : 'top-center' ,  duration : 1500 , theme : "my-toast-fail" }  )
+    }
+    else if(!fieldValidation(email , 'email')){
+      toast( 'Please enter valid Email.' , { position: 'top-center', duration: 1500, theme: "my-toast-fail" })
     }
     else {
       // create account and login
