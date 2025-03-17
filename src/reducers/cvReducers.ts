@@ -29,7 +29,8 @@ const initialValue = {
     defaultTemplate : 'Template-1',
     resumeId : null,
     custome : null,
-    downloadFunction : ()=>{}
+    downloadFunction : ()=>{},
+    holdCustomeAccordianNumber : 0 
 }
 
 
@@ -63,7 +64,8 @@ const resetValue = {
     defaultTemplate : 'Template-1',
     resumeId : null,
     custome : null,
-    downloadFunction : ()=>{}
+    downloadFunction : ()=>{},
+    holdCustomeAccordianNumber : 0
 }
 
 
@@ -106,8 +108,11 @@ let cvReducer = (state = initialValue , action : any) : any=>{
     // "custome" : action?.resumeData?.custome ? JSON.parse(action?.resumeData?.custome) : state.custome,
     };
         case "ORGINAL_STATE":
-            state = resetValue;
-            return state;
+            // state = resetValue;
+            // return state;
+            return resetValue;
+        case "HOLD_ACCORDION_STATE":
+        return { ...state, holdCustomeAccordianNumber: action.holdCustomeAccordianNumber }
         default:
           return state;
     }
@@ -148,7 +153,7 @@ skills
 
 */
 
-console.log('surya teja-1');
+// console.log('surya teja-1');
 
 // {
 //     "id": 6,

@@ -109,6 +109,7 @@ import { siderbarProps /*, siderbarIcon*/ } from "../interfaces/types"
 import { connect , useSelector } from "react-redux";
 import { setSelectedIndexForSidebar } from "../actions";
 import routing from "../routing";
+import { holdCustomeAccordianNumber } from "../actions/resumeActions";
 
 
 let SidebarList : React.FC<siderbarProps>  = (props:any)=>{
@@ -174,7 +175,7 @@ useEffect(()=>{
                         borderRadius={1}
                         bgcolor={location.pathname ==  e.path ? 'white' : ''}
                         sx={{cursor : 'pointer' , ":hover" : {bgcolor : location.pathname !=  e.path ? '#44597B' : '' }  }}
-                        onClick={()=>{selectRoute(index , e.path)}}
+                        onClick={()=>{selectRoute(index , e.path); props.dispatch(holdCustomeAccordianNumber(0)) }}
                         >
                             <Box color={location.pathname ==  e.path ? 'black' : 'white'}>{e.icon}</Box>
                                <Typography variant="body1" mt={0.25} color={location.pathname ==  e.path ? 'black' : 'white'}  >{e.name}</Typography>

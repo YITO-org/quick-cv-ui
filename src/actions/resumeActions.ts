@@ -150,4 +150,10 @@ export const updateResume = (cv : any)=>(dispatch : any)=>{
 
 }
 
+export let holdCustomeAccordianNumber = (accordianValue : number | boolean)=>(dispatch : any)=>{
+  dispatch({
+    type: 'HOLD_ACCORDION_STATE',
+    holdCustomeAccordianNumber: accordianValue
+  })
+}
 
