@@ -2,7 +2,7 @@
 import React from "react";
 import {Navigate} from "react-router-dom";
 
-// col stands form c=>create account , o => otp , l => login
+// col stands form c=>create account , o => otp , l => login , screens
 
 export let ProtectedRoutes_col : React.FC<any> = ({children})=>{
 

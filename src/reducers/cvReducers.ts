@@ -1,7 +1,7 @@
 
 const initialValue = {
     name : null,
-    tempName : 'krishna',
+    tempName : 'Krishna',
     designation : null,
     tempDesignation : 'Software Engineers',
     DOB : '',

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect  } from "react";
 import {
   Box,Button,Grid,InputLabel,TextField,Typography,Paper,Stack,Alert,InputAdornment
 } from "@mui/material";
@@ -21,7 +21,7 @@ import { fieldValidation } from "../utils";
 // import 'react-simple-toasts/dist/theme/.css';
 
 let CreateAndLoginAccount: React.FC<CreateAndLoginProps> = (props) => {
-  let { headerName, buttonName, redirectionScreen } = props;
+  let { headerName, buttonName, redirectionScreen, forgetPasswordScreen } = props;
   let nav = useNavigate();
 
   let [name, setName] = React.useState<string | null>("");
@@ -81,9 +81,6 @@ let CreateAndLoginAccount: React.FC<CreateAndLoginProps> = (props) => {
   const createOrLoginAccount = () => {
     let data: CreateAndLoginRequestObj = { email, password, name };
     
-
-    
-
     if (
       (buttonName == "Login" && ((!email && !password) || !email || !password)) || // login
       (buttonName == "Create" && (!name || !email || !password)) // create-account
@@ -214,7 +211,7 @@ let CreateAndLoginAccount: React.FC<CreateAndLoginProps> = (props) => {
               >
                 {redirectionScreen == "/login" ? "Login" : "Create Account"}
               </Typography>
-              <Typography sx={{ cursor: "pointer" }} color="blue">
+              <Typography sx={{ cursor: "pointer" }} color="blue" onClick={() => navgate(forgetPasswordScreen)}>
                 Forget Password
               </Typography>
             </Box>

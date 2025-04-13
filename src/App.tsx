@@ -14,6 +14,8 @@ import LandingPage from "./screens/landingPage"
 import Dashboard from "./screens/dashboard";
 import axios from "axios";
 import {ProtectedRoutes_col , ProtectedRoutes_dashboard } from "./middlewares/authentication";
+import ForgerPassword from "./screens/forgerPassword";
+import ResetPassword from "./screens/resetPassword";
 //import LandingPage2 from "./screens/landingPage2";
 
 const App : React.FC<any>  = (props)=>{
@@ -57,9 +59,11 @@ const App : React.FC<any>  = (props)=>{
         <BrowserRouter>
             <Routes>
               <Route path="/" element={ <ProtectedRoutes_col> <LandingPage /> </ProtectedRoutes_col> }></Route>
-              <Route path="/createaccount" element={ <ProtectedRoutes_col> <CreateAndLoginAccount headerName="Create Account" buttonName="Create" redirectionScreen="/login" /></ProtectedRoutes_col> }></Route>
-              <Route path="/login" element={ <ProtectedRoutes_col> <CreateAndLoginAccount headerName="Login" buttonName="Login" redirectionScreen="/createaccount" /> </ProtectedRoutes_col> }></Route>
+              <Route path="/createaccount" element={<ProtectedRoutes_col> <CreateAndLoginAccount headerName="Create Account" buttonName="Create" redirectionScreen="/login" forgetPasswordScreen="/forget_password" /></ProtectedRoutes_col> }></Route>
+              <Route path="/login" element={<ProtectedRoutes_col> <CreateAndLoginAccount headerName="Login" buttonName="Login" redirectionScreen="/createaccount" forgetPasswordScreen="/forget_password" /> </ProtectedRoutes_col> }></Route>
               <Route path="/otp" element={ <ProtectedRoutes_col> <Otp headerName="OTP" buttonName="Submit" redirectionScreen="/login"  /> </ProtectedRoutes_col> } />
+              <Route path="/forget_password" element={<ProtectedRoutes_col> <ForgerPassword headerName="Forget Password" buttonName="Submit" loginScreen="/login" createAccountAcreen="/createaccount" redirectionScreen={""} /> </ProtectedRoutes_col>} />
+              <Route path="/reset-password/:tokken" element={<ProtectedRoutes_col> <ResetPassword headerName="Reset Password" buttonName="Submit" redirectionScreen={""} /> </ProtectedRoutes_col>}  />
 
               <Route path="/resumebuilder" element={<MainApp />}>
                   <Route index path="dashboard" element={ <ProtectedRoutes_dashboard> <Dashboard /> </ProtectedRoutes_dashboard> } />

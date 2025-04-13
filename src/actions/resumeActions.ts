@@ -55,27 +55,15 @@ export const createMyResume = (resumeName : any , callBack : any)=>(dispatch:any
   })
 }
 
-export const createMyCloneResume = (resumeId : number | any, newResumeName : string | any , callBack : any)=>(dispatch : any)=> {
-  console.log(dispatch)
+export const createMyCloneResume = (resumeId : number | any, newResumeName : string | any , callBack : any)=>(_dispatch : any)=> {
+  // console.log(dispatch)
   let config = {
     headers : {
       "Authorization" : localStorage.getItem("tokken")
     }
   };
-
-
-  return axios.post<any>('/apis/cloneResume',{resumeId , newResumeName} , config)
-        .then((res)=>{
-          callBack(res);
-        })
-        .catch((err)=>{
-          callBack(err);
-        })
-        .finally(()=>{
-
-        })
+  return axios.post<any>('/apis/cloneResume',{resumeId , newResumeName} , config).then((res)=>{callBack(res);}).catch((err)=>{callBack(err);}).finally(()=>{})
 }
-
 
 export let deleteResume = (resumeId : number | null , resumeName : string | null , callBack : any)=>(dispatch:any)=>{
 
@@ -129,8 +117,8 @@ export const gotoOrginalState = ()=>(dispatch : any)=>{
   }); 
 }
 
-export const updateResume = (cv : any)=>(dispatch : any)=>{
-  console.log(dispatch);
+export const updateResume = (cv : any)=>(_dispatch : any)=>{
+  //console.log(dispatch);
   let config = {
     headers : {
       "Authorization" : localStorage.getItem("tokken")
@@ -146,8 +134,19 @@ export const updateResume = (cv : any)=>(dispatch : any)=>{
   }).finally(()=>{
     // dispatch(clearLoader())
   })
+}
 
+export const verifyResetPasswordTokken = (tokken: string | undefined | any , callBack : any) => (_dispatch : any)=>{
+  return axios.get(`/apis/reset-password/${tokken}`).then((res: any) => { callBack(res)},(err)=>{callBack(err)})
+}
 
+export const resetPassword = (password : any , tokken : any , callBack : any)=>(_dispatch : any) => {
+  let config = {
+    headers: {
+      "Authorization": tokken
+    }
+  }
+  return axios.post('/apis/reset-password-email', { password } , config ).then((res: any) => { callBack(res) }).catch(err=>callBack(err)); 
 }
 
 export let holdCustomeAccordianNumber = (accordianValue : number | boolean)=>(dispatch : any)=>{

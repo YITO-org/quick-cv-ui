@@ -18,7 +18,10 @@ export interface siderbarProps {
 export interface CreateAndLoginProps {
     headerName: string
     buttonName: string
-    redirectionScreen?: string
+    redirectionScreen: string
+    forgetPasswordScreen?: string
+    createAccountAcreen?: string
+    loginScreen?: string
     storeUsers?: any
     dispatch?: any
 }
