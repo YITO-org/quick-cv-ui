@@ -4,20 +4,9 @@
 import {grey  } from "@mui/material/colors"
 const drawerWidth = 190; // for medium screen and large screen
 const mobileswidth = 250; // for small and extra small screen
+const SwipeableDrawerWidth = 400
 // let Grey = grey["800"]
 let Gray2 = grey[400]
-
-// export const sidebarStyles = makeStyles({
-//    root : {
-//       display : 'flex'
-//    },  
-//    sidebarSize : {
-//         width : sidebarWidth,
-//      },
-//      sidebarPage : {
-//       width : sidebarWidth,
-//    },
-// });
 
 export const styles = {
    root : { display : 'flex' },
@@ -34,8 +23,14 @@ export const styles = {
     mobileDrowerStyles : {
       width: drawerWidth,
       flexShrink: 0,
-      [`& .MuiDrawer-paper`]: { width: mobileswidth, boxSizing: 'border-box' , backgroundColor : /* Grey */ "#3C4B64" },
+      [`& .MuiDrawer-paper`]: { width: mobileswidth, boxSizing: 'border-box' , backgroundColor : /* Grey */ "white" },
     },
+    // reuseble drower width
+    SwipeableDrawerStyles: {
+    width: drawerWidth,
+    flexShrink: 0,
+      [`& .MuiDrawer-paper`]: { width: SwipeableDrawerWidth , boxSizing: 'border-box', backgroundColor: /* Grey */ "white" },
+  },
 
    // appbar styles
      appbarIcon :  { mr: 2 , display : { xs : 'block' , sm:'block' , md : 'block' ,  lg: 'none', xl: 'none'  } },
@@ -49,8 +44,8 @@ export const styles = {
   
   // detailes screen
   input_lable : { /* '&::first-letter' : {textTransform : 'uppercase'}, */fontWeight :'450',/*color : 'gray' */},
-  detailes_box : {backgroundColor : 'white' , border : 0.5 , borderColor : Gray2 , height :'86vh' , overflow : 'scroll' , scrollbarWidth : 'none'},
-  detailes_resume_box : {backgroundColor : 'white' , border : 0.5 , borderColor : Gray2 , height :'86vh' , overflow : 'scroll' , scrollbarWidth : 'none'},
+  detailes_box : {backgroundColor : 'white' , border : 0.5 , borderColor : Gray2 , height :'81vh' , overflow : 'scroll' , scrollbarWidth : 'none'},
+  detailes_resume_box : {backgroundColor : 'white' , border : 0.5 , borderColor : Gray2 , height :'81vh' , overflow : 'scroll' , scrollbarWidth : 'none'},
   ordering_text : {display : 'flex' , flexDirection : 'column' , gap : 1.5  , alignItems : 'center' , mt : '4%' , mb : '4%'}
 }
 

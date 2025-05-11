@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { AppBar , Box, IconButton, Menu, MenuItem, Toolbar, Typography } from "@mui/material";
+import { AppBar , Box, Button, IconButton, Menu, MenuItem, Toolbar, Typography } from "@mui/material";
 // import {grey /*, yellow*/ } from "@mui/material/colors";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { CgProfile } from "react-icons/cg";
@@ -55,15 +55,16 @@ let Header : React.FC<any> = (props) =>{
         <React.Fragment>
                 <AppBar
                     position='fixed'
-                    sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 , backgroundColor : /*Grey*/ "#3C4B64" }}
-                    elevation={5}
+                     sx={{  zIndex: (theme) => theme.zIndex.drawer + 1 ,  backgroundColor : /*Grey*/ "#3C4B64" }}
+                     elevation={1}
                 >
                     <Toolbar>
                         <IconButton edge="start" color="inherit" aria-label="menu" sx={styles.appbarIcon} onClick={closeSidebar} >
                             <FaBarsStaggered color="white" />
                         </IconButton>
 
-                        <Typography variant={(screenSize == "md" || screenSize == "sm" || screenSize == "xs") ? "h6" : "h4"}  fontWeight={800} noWrap component="div" 
+                        <Typography variant={(screenSize == "md" || screenSize == "sm" || screenSize == "xs") ? "h6" : "h4"}  fontWeight={800} noWrap 
+                        // component="div" 
                             // sx={{ flexGrow: 1 , display : { xs : 'none' , sm : 'block' } }}
                                 sx={{flexGrow : 1 , cursor : 'pointer' }} onClick={moveToHomePage}
                             >Quick CV</Typography>
@@ -76,12 +77,10 @@ let Header : React.FC<any> = (props) =>{
                                         </IconButton>
                                 }
 
-
-                            {/* <Button color='info' variant='contained' size='small' sx={{ backgroundColor : Yellow  }}>
-                                <Typography variant='body1' component='div'  fontWeight={700} sx={{ color : 'black' , ':hover' : { color : 'white'}}} >
-                                    Donate
-                                </Typography>
-                            </Button> */}
+                              {
+                                  !selector.userTokken &&
+                                    <Button variant="text" color='inherit' onClick={() => nav("/login")} >Login</Button>
+                              }
 
                             <Menu
                                     id="menu-appbar"
@@ -91,28 +90,8 @@ let Header : React.FC<any> = (props) =>{
                                     onClose={handleClose}
                                     >
                                     <MenuItem onClick={logout_}>Logout</MenuItem>
-                                    <MenuItem onClick={handleClose}>Settings</MenuItem>
+                                    <MenuItem onClick={handleClose}>Profile</MenuItem>
                                 </Menu>
-
-                        
-                        {/* {
-                              selector.userTokken &&
-                              <Box>
-                                <IconButton size='large' color='inherit' onClick={handleMenu}>
-                                    <CgProfile />
-                                </IconButton>
-                                <Menu
-                                    id="menu-appbar"
-                                    anchorEl={anchorEl}
-                                    keepMounted
-                                    open={Boolean(anchorEl)}
-                                    onClose={handleClose}
-                                    >
-                                    <MenuItem onClick={logout_}>Logout</MenuItem>
-                                    <MenuItem onClick={handleClose}>Settings</MenuItem>
-                                </Menu>
-                              </Box>
-                        } */}
 
                           </Box>
                         

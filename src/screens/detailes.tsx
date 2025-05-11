@@ -9,6 +9,7 @@ import { setInformation } from "../actions";
 import { styles } from "../styles/styles";
 import 'react-quill/dist/quill.snow.css';
 import { detailesFieldsInterface } from "../interfaces/types";
+import ResumeHeader from "../components/resumeHeader/ResumeHeader";
 // import styles from "../styles/detailes.module.css";
 
 
@@ -57,6 +58,9 @@ let Detailes : React.FC<any> = (props)=>{
     return(
         <React.Fragment>
             {/* view Button => display in xs , sm , md screens only */}
+            
+            <ResumeHeader />
+
             <Box sx={{ mb : 1 ,  display : { lg :'none' , xl : 'none' }}}>
                 <Box sx={{display : 'flex' , justifyContent : 'flex-end'}} >
                     <Button size='small' variant='contained' color='success' onClick={viewResume}>View Resume</Button>
@@ -77,7 +81,9 @@ let Detailes : React.FC<any> = (props)=>{
                                                     <InputLabel
                                                       sx={styles.input_lable}
                                                     >{e['displayNameAndPlaceholder']}</InputLabel>
-                                                    <TextField type="text" size='small' placeholder={e['displayNameAndPlaceholder']} name={e.orginalName} value={cv[e.orginalName]} onChange={change} sx={{ marginBottom: 2, width: '100%' }} />
+                                                    <TextField type="text" size='small' 
+                                                        // placeholder={e['displayNameAndPlaceholder']} 
+                                                        name={e.orginalName} value={cv[e.orginalName]} onChange={change} sx={{ marginBottom: 2, width: '100%' }} />
                                                   </Grid>
                                                 ))
                                               }
