@@ -17,6 +17,7 @@ import Ordering from "./ordering";
 import { holdCustomeAccordianNumber, updateResume } from "../actions/resumeActions";
 import 'react-quill/dist/quill.snow.css';
 import CustomeAccordion from "../components/Accordion";
+import ResumeHeader from "../components/resumeHeader/ResumeHeader";
 
 
 const modules : any = {
@@ -89,9 +90,9 @@ let CVInfoData : React.FC<any> = (props)=>{
         props.dispatch(setInformation(e.target.name , e.target.value))
     }
 
-    let viewResume = ()=>{
-        nav("/resumebuilder/ViewResume")
-    }
+    // let viewResume = ()=>{
+    //     nav("/resumebuilder/ViewResume")
+    // }
 
     let saveAndDownload = ()=>{
         let {cv} = props; 
@@ -112,13 +113,8 @@ let CVInfoData : React.FC<any> = (props)=>{
 
     return(
         <React.Fragment>
-        {/* view Button => display in xs , sm , md screens only */}
-            <Box sx={{ mb : 1 ,  display : { lg :'none' , xl : 'none' }}}>
-                <Box sx={{display : 'flex' , justifyContent : 'flex-end'}} >
-                    <Button size='small' variant='contained' color='success' onClick={viewResume} >View Resume</Button>
-                </Box>
-            </Box>
-
+              
+              <ResumeHeader />
 
             <Grid container  columnGap={1} >
              <Grid xs={12} sm={12} md={12}  lg={5} xl={5}>
