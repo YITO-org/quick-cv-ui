@@ -8,6 +8,7 @@ import Res from "../resumes";
 import { setInformation } from "../actions";
 import { styles } from "../styles/styles";
 import 'react-quill/dist/quill.snow.css';
+import { detailesFieldsInterface } from "../interfaces/types";
 // import styles from "../styles/detailes.module.css";
 
 
@@ -51,6 +52,7 @@ let Detailes : React.FC<any> = (props)=>{
         nav("/resumebuilder/ViewResume")
     }
 
+  let fildes: detailesFieldsInterface[] = [/*'name'*/ { 'displayNameAndPlaceholder': 'Name', orginalName: 'name' }, { displayNameAndPlaceholder: 'Designation', orginalName: 'designation' }, { displayNameAndPlaceholder: 'DOB', orginalName: 'DOB' }, { displayNameAndPlaceholder: 'Phone Number', orginalName: 'phoneNumber' }, { displayNameAndPlaceholder: 'Email', orginalName: 'email' }, { displayNameAndPlaceholder: 'Github', orginalName: 'github' }, { displayNameAndPlaceholder: 'Linkedin', orginalName: 'linkedin' }]
 
     return(
         <React.Fragment>
@@ -63,21 +65,23 @@ let Detailes : React.FC<any> = (props)=>{
 
                 <Grid container  columnGap={1} >
                     <Grid xs={12} sm={12} md={12} lg={5} xl={5}>
-                            <Paper   sx={styles.detailes_box}>
+                            <Paper sx={styles.detailes_box}>
                                 <Typography sx={{mt : 1 /* , mb:0.5 */ }} textAlign='center' variant='h5' fontWeight='500' >{props.headerName}</Typography>
                                 {  
                                    props.headerName == "Details" &&
-                                        <Box sx={{p : 2}}>
-                                            {
-                                                [/*'name'*/ {'displayNameAndPlaceholder' : 'Name' , orginalName : 'name' }  , {displayNameAndPlaceholder : 'Designation' , orginalName : 'designation' } , {displayNameAndPlaceholder : 'DOB' , orginalName : 'DOB' } , {displayNameAndPlaceholder : 'Phone Number' , orginalName : 'phoneNumber' }  , {displayNameAndPlaceholder : 'Email' , orginalName : 'email' }  , {displayNameAndPlaceholder : 'Github' , orginalName : 'github' } , {displayNameAndPlaceholder : 'Linkedin' , orginalName : 'linkedin' } ].map((e,index)=>(
-                                                    <Box key={index}>
-                                                        <InputLabel  
-                                                         sx={styles.input_lable}
-                                                        >{e['displayNameAndPlaceholder']}</InputLabel>
-                                                        <TextField type="text" size='small' placeholder={e['displayNameAndPlaceholder']} name={e.orginalName} value={cv[e.orginalName]}  onChange={change} sx={{marginBottom : 2 , width : '100%'}} />
-                                                    </Box>
+                                        <Box sx={{ flexGrow: 1 , p : 1 }}>
+                                          <Grid container columnGap={0.6} rowGap={0.5} direction='row'>
+                                              {
+                                                fildes.map((e, index) => (
+                                                  <Grid xl={5.9} lg={5.9} md={12} sm={12} xs={12} key={index}>
+                                                    <InputLabel
+                                                      sx={styles.input_lable}
+                                                    >{e['displayNameAndPlaceholder']}</InputLabel>
+                                                    <TextField type="text" size='small' placeholder={e['displayNameAndPlaceholder']} name={e.orginalName} value={cv[e.orginalName]} onChange={change} sx={{ marginBottom: 2, width: '100%' }} />
+                                                  </Grid>
                                                 ))
-                                            }
+                                              }
+                                          </Grid>
                                         </Box>
                                 }
                                 {

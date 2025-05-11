@@ -44,6 +44,9 @@ export interface headertypes {
     tokken: string | null
 }
 
-
+export interface detailesFieldsInterface {
+  displayNameAndPlaceholder : string
+  orginalName : string
+}
 
 
