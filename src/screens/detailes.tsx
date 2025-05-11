@@ -49,10 +49,6 @@ let Detailes : React.FC<any> = (props)=>{
 		}
 	}
 
-    let viewResume = ()=>{
-        nav("/resumebuilder/ViewResume")
-    }
-
   let fildes: detailesFieldsInterface[] = [/*'name'*/ { 'displayNameAndPlaceholder': 'Name', orginalName: 'name' }, { displayNameAndPlaceholder: 'Designation', orginalName: 'designation' }, { displayNameAndPlaceholder: 'DOB', orginalName: 'DOB' }, { displayNameAndPlaceholder: 'Phone Number', orginalName: 'phoneNumber' }, { displayNameAndPlaceholder: 'Email', orginalName: 'email' }, { displayNameAndPlaceholder: 'Github', orginalName: 'github' }, { displayNameAndPlaceholder: 'Linkedin', orginalName: 'linkedin' }]
 
     return(
@@ -60,12 +56,6 @@ let Detailes : React.FC<any> = (props)=>{
             {/* view Button => display in xs , sm , md screens only */}
             
             <ResumeHeader />
-
-            <Box sx={{ mb : 1 ,  display : { lg :'none' , xl : 'none' }}}>
-                <Box sx={{display : 'flex' , justifyContent : 'flex-end'}} >
-                    <Button size='small' variant='contained' color='success' onClick={viewResume}>View Resume</Button>
-            </Box>
-                </Box>
 
                 <Grid container  columnGap={1} >
                     <Grid xs={12} sm={12} md={12} lg={5} xl={5}>
