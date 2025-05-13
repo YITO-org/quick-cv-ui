@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 // import {useWidth} from "../layout";
 import hairingimg from "../assets/hairingimg.avif";
+import Button from '@mui/material/Button';
 
 let LandingPage : React.FC<any> = (props)=>{
 
@@ -49,6 +50,10 @@ let LandingPage : React.FC<any> = (props)=>{
     <nav className="navbar sticky-top navbar-dark bg-dark">
             <div className="container-fluid">
               <div className="navbar-brand mb-0 h1">Quick CV</div>
+              <Button  sx={{backgroundColor:"white",color:"black",fontWeight:"700",paddingX:2, "&:hover": {
+      backgroundColor: "white",
+      color: "blue",
+    },}} onClick={redirect}>Go to App 👉</Button>
             </div>
           </nav>
     

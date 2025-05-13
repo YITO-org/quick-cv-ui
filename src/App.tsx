@@ -1,4 +1,3 @@
-// Hey Hey
 "use client"
 import React, { useEffect } from "react";
 import {BrowserRouter, Route, Routes , Outlet} from "react-router-dom";
