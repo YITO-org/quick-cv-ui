@@ -17,10 +17,10 @@ let ResumeHeader : React.FC<{}> = ()=>{
 
   return(
     <React.Fragment>
-      <Box sx={{ pb: 0.5, ml: 1 }} >
+      <Box sx={{ pb: 0.5, ml: 1  , mb : -1}} >
         <Grid container >
 
-          <Grid xs={8} sm={10} md={10} lg={10} xl={11}>
+          <Grid xs={8} sm={10} md={10} lg={11} xl={11}>
             <Tooltip title='Change Template' placement='right' TransitionComponent={Zoom} >
               <Button variant='text' color='primary' size='small' startIcon={<ImInsertTemplate />} >Templates</Button>
             </Tooltip>

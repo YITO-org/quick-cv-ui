@@ -49,7 +49,7 @@ let Detailes : React.FC<any> = (props)=>{
 		}
 	}
 
-  let fildes: detailesFieldsInterface[] = [/*'name'*/ { 'displayNameAndPlaceholder': 'Name', orginalName: 'name' }, { displayNameAndPlaceholder: 'Designation', orginalName: 'designation' }, { displayNameAndPlaceholder: 'DOB', orginalName: 'DOB' }, { displayNameAndPlaceholder: 'Phone Number', orginalName: 'phoneNumber' }, { displayNameAndPlaceholder: 'Email', orginalName: 'email' }, { displayNameAndPlaceholder: 'Github', orginalName: 'github' }, { displayNameAndPlaceholder: 'Linkedin', orginalName: 'linkedin' }]
+  let fildes: detailesFieldsInterface[] = [/*'name'*/ { 'displayNameAndPlaceholder': 'Name', orginalName: 'name' }, { displayNameAndPlaceholder: 'Designation', orginalName: 'designation' }, { displayNameAndPlaceholder: 'Birth Date', orginalName: 'DOB' }, { displayNameAndPlaceholder: 'Mobile Number', orginalName: 'phoneNumber' }, { displayNameAndPlaceholder: 'Email', orginalName: 'email' }, { displayNameAndPlaceholder: 'Github', orginalName: 'github' }, { displayNameAndPlaceholder: 'Linkedin', orginalName: 'linkedin' }]
 
     return(
         <React.Fragment>
@@ -64,16 +64,14 @@ let Detailes : React.FC<any> = (props)=>{
                                 {  
                                    props.headerName == "Details" &&
                                         <Box sx={{ flexGrow: 1 , p : 1 }}>
-                                          <Grid container columnGap={0.6} rowGap={0.5} direction='row'>
+                                          <Grid container columnGap={0.6} rowGap={1} direction='row'>
                                               {
                                                 fildes.map((e, index) => (
                                                   <Grid xl={5.9} lg={5.9} md={12} sm={12} xs={12} key={index}>
-                                                    <InputLabel
-                                                      sx={styles.input_lable}
-                                                    >{e['displayNameAndPlaceholder']}</InputLabel>
-                                                    <TextField type="text" size='small' 
-                                                        // placeholder={e['displayNameAndPlaceholder']} 
-                                                        name={e.orginalName} value={cv[e.orginalName]} onChange={change} sx={{ marginBottom: 2, width: '100%' }} />
+                                                    <InputLabel sx={styles.input_lable}>{e['displayNameAndPlaceholder']}</InputLabel>
+                                                    <TextField type="text" 
+                                                     size='small'
+                                                     name={e.orginalName} value={cv[e.orginalName]} onChange={change} />
                                                   </Grid>
                                                 ))
                                               }
@@ -99,7 +97,7 @@ let Detailes : React.FC<any> = (props)=>{
                 {
                     //  next button
                     nextButton &&
-                    <Box sx={{ textAlign : 'center' , marginBottom : 1  }} >
+                    <Box sx={{ textAlign : 'center' , marginBottom : 1, marginTop : 1  }} >
                         <Button sx={{width : '95%' }} variant="contained" color="secondary" startIcon={ <IoIosArrowDroprightCircle /> } onClick={()=>{nav("/resumebuilder/" + nextButton)}} > <Typography fontWeight='bold' variant="body1" >Next</Typography> </Button>
                     </Box>
                 }
