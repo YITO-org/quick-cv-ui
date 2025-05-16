@@ -50,11 +50,12 @@ export const styles = {
 
   // landing page header button
   navbar_go_app_button: {
-    backgroundColor: "white", color: "black", fontWeight: "700", px: 2,py:0.4, 
+    backgroundColor: "white", color: "black", fontWeight: "700", px: 2,py:0.4, display:"flex",alignItems:"center",
         "&:hover": {backgroundColor: "white",color: "#007bff"}
     },
+    navbar_container:{},
     navbar:{
-      backgroundColor:"black",color:"white", display:"flex",justifyContent:"space-between",alignItems:"center",px:2
+      backgroundColor:"black",color:"white",px:2,display: "flex", flexDirection: "row",justifyContent: "space-between",py:1
     },
     navbar_title:{
        fontWeight: '550'
