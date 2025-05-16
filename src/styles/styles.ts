@@ -52,6 +52,13 @@ export const styles = {
   navbar_go_app_button: {
     backgroundColor: "white", color: "black", fontWeight: "700", px: 2,py:0.4, 
         "&:hover": {backgroundColor: "white",color: "#007bff"}
+    },
+    navbar:{
+      backgroundColor:"black",color:"white", display:"flex",justifyContent:"space-between",alignItems:"center",px:2
+    },
+    navbar_title:{
+       fontWeight: '550'
     }
+  
 }
 
