@@ -53,7 +53,6 @@ export const styles = {
     backgroundColor: "white", color: "black", fontWeight: "700", px: 2,py:0.4, display:"flex",alignItems:"center",
         "&:hover": {backgroundColor: "white",color: "#007bff"}
     },
-    navbar_container:{},
     navbar:{
       backgroundColor:"black",color:"white",px:2,display: "flex", flexDirection: "row",justifyContent: "space-between",py:1
     },
