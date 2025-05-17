@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import hairingimg from "../assets/hairingimg.avif";
 import Button from '@mui/material/Button';
 import { styles } from "../styles/styles";
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import AppBar from '@mui/material/AppBar';
 
 let LandingPage : React.FC<any> = (props)=>{
@@ -49,13 +49,14 @@ let LandingPage : React.FC<any> = (props)=>{
 
   return(
     <React.Fragment>
-     <Box sx={styles.navbar_container} >
+     {/* <Box sx={styles.navbar_container} > */}
        <AppBar sx={styles.navbar} position="static">
               <Typography variant="h6" sx={styles.navbar_title}>
                            Quick CV
               </Typography>
           <Button sx={styles.navbar_go_app_button} size='small' onClick={redirect}>Go to App 👉</Button>
-       </AppBar></Box>
+       </AppBar>
+       {/* </Box> */}
     
           {/* body  */}
            <div className="bg-light text-dark" style={{height:"90vh"}}>
