@@ -125,9 +125,9 @@ export const updateResume = (cv : any)=>(_dispatch : any)=>{
     }
   }
 
-  return axios.post<any>('/apis/updateResume' , cv , config).then((res)=>{
+  return axios.post<any>('/apis/updateResume' , cv , config).then((_res)=>{
    // callBack(res)
-   console.log(res);
+  // console.log(res);
   }).catch((err)=>{
     console.log(err);
     //callBack(err)
@@ -155,4 +155,6 @@ export let holdCustomeAccordianNumber = (accordianValue : number | boolean)=>(di
     holdCustomeAccordianNumber: accordianValue
   })
 }
+
+
 

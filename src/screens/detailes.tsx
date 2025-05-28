@@ -5,11 +5,13 @@ import ReactQuill from 'react-quill';
 import { connect } from "react-redux";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
 import Res from "../resumes";
-import { setInformation } from "../actions";
+import { setInformation, setLoader } from "../actions";
 import { styles } from "../styles/styles";
 import 'react-quill/dist/quill.snow.css';
 import { detailesFieldsInterface } from "../interfaces/types";
 import ResumeHeader from "../components/resumeHeader/ResumeHeader";
+import { updateResume } from "../actions/resumeActions";
+import { resumeInfoConvertJsonToString } from "../utils";
 // import styles from "../styles/detailes.module.css";
 
 
@@ -49,13 +51,29 @@ let Detailes : React.FC<any> = (props)=>{
 		}
 	}
 
+  let saveAndDownload = ()=>{
+          let {cv} = props;
+  
+         props.dispatch(setLoader()); 
+         if(cv.resumeId){
+             props.dispatch(updateResume(resumeInfoConvertJsonToString(cv)))
+          }
+          cv.downloadFunction();
+      
+      }
+
+      let selectTempleate2 = (name :string , template : string): void => {
+          props.dispatch(setInformation(name , template))
+        }
+
+
   let fildes: detailesFieldsInterface[] = [/*'name'*/ { 'displayNameAndPlaceholder': 'Name', orginalName: 'name' }, { displayNameAndPlaceholder: 'Designation', orginalName: 'designation' }, { displayNameAndPlaceholder: 'Birth Date', orginalName: 'DOB' }, { displayNameAndPlaceholder: 'Mobile Number', orginalName: 'phoneNumber' }, { displayNameAndPlaceholder: 'Email', orginalName: 'email' }, { displayNameAndPlaceholder: 'Github', orginalName: 'github' }, { displayNameAndPlaceholder: 'Linkedin', orginalName: 'linkedin' }]
 
     return(
         <React.Fragment>
             {/* view Button => display in xs , sm , md screens only */}
             
-            <ResumeHeader />
+        <ResumeHeader saveAndDownload={saveAndDownload} cv={cv} selectedTemplate={selectTempleate2} />
 
                 <Grid container  columnGap={1} >
                     <Grid xs={12} sm={12} md={12} lg={5} xl={5}>
@@ -71,6 +89,7 @@ let Detailes : React.FC<any> = (props)=>{
                                                     <InputLabel sx={styles.input_lable}>{e['displayNameAndPlaceholder']}</InputLabel>
                                                     <TextField type="text" 
                                                      size='small'
+                                                     fullWidth={true}
                                                      name={e.orginalName} value={cv[e.orginalName]} onChange={change} />
                                                   </Grid>
                                                 ))

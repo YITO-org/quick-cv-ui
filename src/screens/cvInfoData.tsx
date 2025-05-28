@@ -90,20 +90,23 @@ let CVInfoData : React.FC<any> = (props)=>{
         props.dispatch(setInformation(e.target.name , e.target.value))
     }
 
+  let selectTempleate2 = (name :string , template : string): void => {
+    props.dispatch(setInformation(name , template))
+  }
+
     // let viewResume = ()=>{
     //     nav("/resumebuilder/ViewResume")
     // }
 
     let saveAndDownload = ()=>{
-        let {cv} = props; 
+        let {cv} = props;
 
-        // console.log({cv});
-
-        props.dispatch(setLoader()); 
+       props.dispatch(setLoader()); 
        if(cv.resumeId){
            props.dispatch(updateResume(resumeInfoConvertJsonToString(cv)))
-       }
-       cv.downloadFunction();
+        }
+        cv.downloadFunction();
+    
     }
 
     let accordionOpenClose = (index:boolean | number | null | undefined) : void=>{
@@ -114,7 +117,10 @@ let CVInfoData : React.FC<any> = (props)=>{
     return(
         <React.Fragment>
               
-              <ResumeHeader />
+        <ResumeHeader saveAndDownload={saveAndDownload} 
+                      cv={cv} 
+                      selectedTemplate={selectTempleate2}
+                      />
 
             <Grid container  columnGap={1} >
              <Grid xs={12} sm={12} md={12}  lg={5} xl={5}>

@@ -16,7 +16,7 @@ let Ordering : React.FC<any> = (props)=>{
     let dragOverField = useRef<number>(0)
 
 
-    React.useEffect(()=>{console.log(order)},[])
+//    React.useEffect(()=>{console.log(order)},[])
 
     let filterSpecialCharacter = (str : string)=>{
         return str.split('_').join(' ');
