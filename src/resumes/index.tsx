@@ -6,6 +6,7 @@ import React, { useEffect } from "react";
 import ResumeOne from "./resumeOne";
 import ResumeTwo from "./resumeTwo";
 import ResumeThree from "./resumeThree";
+import  ResumeFour  from "./resumeFour";
 
 
 // @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap'); new
@@ -21,7 +22,8 @@ let Res : React.FC<any> = (  props  )=>{
     let template : any = {
         "Template-1" : <ResumeOne />,
         "Template-2" : <ResumeTwo />,
-        "Template-3" : <ResumeThree />
+        "Template-3" : <ResumeThree />,
+        "Template-4":  <ResumeFour/>
     }
 
 
