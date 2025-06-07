@@ -66,13 +66,18 @@ let ResumeFour: React.FC<any> = (props)=>{
                    <div className="container-fluid p-3">
                        <div className="d-flex flex-column align-items-center">
                            {/* name */}
-                         <div className="fs-5 fw-normal">{cv.name || cv.tempName}</div>
+                            <div className="fs-2 fw-medium">{cv.name || cv.tempName}</div>
                            {/* cv */}
                            <div  className={`lh-sm text-center detailes_font_size`}>
                                <div>{cv.designation || cv.tempDesignation}</div>
-                               <div>{cv.phoneNumber || cv.tempPhoneNumber}</div>
-                               <div>{cv.email || cv.tempEmail}</div>
-                               <div> DOB : {cv.DOB || cv.tempDob}</div>
+
+
+                                <div className="d-flex gap-2" >
+                                  <div>{cv.phoneNumber || cv.tempPhoneNumber}</div>   <div className="fw-medium" >|</div>
+                                  <div>{cv.email || cv.tempEmail}</div>               <div className="fw-bold" >|</div>
+                                  <div> DOB : {cv.DOB || cv.tempDob}</div>            
+                      </div>
+
                                
                                {/* <div className="fst-italic fw-bolder text-body">
                                    {( cv && cv.github)} {(cv.github && cv.linkedin && "|")} {(cv && cv.linkedin)}
@@ -310,8 +315,16 @@ let Heading : React.FC<any> = (props)=>{
     let { heading } = props;
     return(
         <div className="d-flex align-items-center">
-            <span className="me-1 heading_first_letter fw-bold">{ heading }</span>
-            <hr className="flex-fill m-0 fw-bold" style={{height:"2px",color:"black"}} />
+        <div className="me-1 heading_first_letter heading_font fw-medium fs-5">{ heading }</div>
+        <hr className="flex-fill mt-4"
+            style={{
+              "height":"3px",
+              "borderWidth":0,
+              "color":"black",
+              "backgroundColor":"black"
+            }}
+            // style={{height:"2px",color:"black"}} 
+            />
         </div>
      )
 }
