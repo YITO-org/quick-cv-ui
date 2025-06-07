@@ -88,8 +88,8 @@ let ResumeHeader : React.FC<any> = (props)=>{
                              <DialogTitle>
                               <Stack direction='row' 
                                alignItems='center' 
-                              spacing={60}
-                              justifyContent='flex-end'
+                               spacing={60}
+                               justifyContent='flex-end'
                                // justifyContent='space-between'
                               >
                                <Typography variant='h5' fontFamily='revert' fontWeight='bold'> Select Template </Typography>

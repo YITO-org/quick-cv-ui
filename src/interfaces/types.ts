@@ -49,4 +49,16 @@ export interface detailesFieldsInterface {
   orginalName : string
 }
 
+export interface dashboardResumesInterface {
+  id?: number
+  resumeId?: number | undefined | any
+  resumeName : string
+  createdAt?: string
+  userId? : number
+  resumeInfo : any
+  func_editResume: (id: number)=>void
+  // deleteRes?: (openModel : boolean | null , resumeId: number | null, resumeName : string | null) => void
+  cloneResume: (resumeId: number | null, resumeName: string | null) => void
+  handelDeleteModel?: (showOrClose: boolean , resumeId?: number , resumeName?: string ) => void
+}
 

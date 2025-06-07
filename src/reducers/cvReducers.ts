@@ -29,6 +29,7 @@ const initialValue = {
     defaultTemplate : 'Template-1',
     resumeId : null,
     custome : null,
+    userInfoWithResumes: {},
     downloadFunction : ()=>{},
     holdCustomeAccordianNumber : 0 
 }
@@ -59,7 +60,7 @@ const resetValue = {
     projects : [{'projectName' : '' , 'role' : '' , 'description' : '' }],
     skills : [{'name' : "" , "skill set" : "" }],
     resumeArrangment : [ 'summary' , 'skills' ,  'education'  , 'work_history' , 'projects'],
-    templates:['Template-1' , 'Template-2','Template-3'],
+  templates: ['Template-1', 'Template-2', 'Template-3','Template-4'],
     selectedTemplate : '',
     defaultTemplate : 'Template-1',
     resumeId : null,
@@ -112,8 +113,10 @@ let cvReducer = (state = initialValue , action : any) : any=>{
             // return state;
             return resetValue;
         case "HOLD_ACCORDION_STATE":
-        return { ...state, holdCustomeAccordianNumber: action.holdCustomeAccordianNumber }
-        default:
+          return { ...state, holdCustomeAccordianNumber: action.holdCustomeAccordianNumber }
+       case "USER_INFO_WITH_RESUMES":
+          return { ...state, userInfoWithResumes: action.userInfoWithResumes }
+       default:
           return state;
     }
 }

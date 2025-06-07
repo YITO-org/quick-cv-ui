@@ -17,7 +17,7 @@ import Ordering from "./ordering";
 import { holdCustomeAccordianNumber, updateResume } from "../actions/resumeActions";
 import 'react-quill/dist/quill.snow.css';
 import CustomeAccordion from "../components/Accordion";
-import ResumeHeader from "../components/resumeHeader/ResumeHeader";
+// import ResumeHeader from "../components/resumeHeader/ResumeHeader";
 
 
 const modules : any = {
@@ -90,9 +90,9 @@ let CVInfoData : React.FC<any> = (props)=>{
         props.dispatch(setInformation(e.target.name , e.target.value))
     }
 
-  let selectTempleate2 = (name :string , template : string): void => {
-    props.dispatch(setInformation(name , template))
-  }
+  // let selectTempleate2 = (name :string , template : string): void => {
+  //   props.dispatch(setInformation(name , template))
+  // }
 
     // let viewResume = ()=>{
     //     nav("/resumebuilder/ViewResume")
@@ -117,10 +117,10 @@ let CVInfoData : React.FC<any> = (props)=>{
     return(
         <React.Fragment>
               
-        <ResumeHeader saveAndDownload={saveAndDownload} 
+        {/* <ResumeHeader saveAndDownload={saveAndDownload} 
                       cv={cv} 
                       selectedTemplate={selectTempleate2}
-                      />
+                      /> */}
 
             <Grid container  columnGap={1} >
              <Grid xs={12} sm={12} md={12}  lg={5} xl={5}>

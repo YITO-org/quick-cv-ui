@@ -2,17 +2,19 @@
 import React , { useEffect ,  useState } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { createMyResume, deleteResume, editResume, editResumeTesting, getResumes , createMyCloneResume, gotoOrginalState  } from "../actions/resumeActions";
-import { Box, Card, CardHeader, Container, Stack , Avatar, CardActions, Button, Paper, Dialog, DialogTitle ,  DialogActions  , DialogContent , TextField } from "@mui/material";
-import { FaEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
+import { createMyResume, deleteResume, editResume, editResumeTesting, getResumes , createMyCloneResume, gotoOrginalState, myResumes  } from "../actions/resumeActions";
+import { Box, Container, Stack , Button, Dialog, DialogTitle ,  DialogActions  , DialogContent , TextField, Typography, Divider } from "@mui/material";
+// import { FaEdit } from "react-icons/fa";
+// import { MdDelete } from "react-icons/md";
 import { MdAddCircle } from "react-icons/md";
-import { FaClone } from "react-icons/fa";
-import {red , blue } from "@mui/material/colors";
+// import { FaClone } from "react-icons/fa";
+// import {red , blue } from "@mui/material/colors";
 import toast from 'react-simple-toasts';
 import 'react-simple-toasts/dist/theme/info.css';
 import 'react-simple-toasts/dist/theme/success.css';
 import { clearLoader, setLoader } from "../actions";
+import DashboardResumes from "../components/dashboardResumes/DashboardResumes";
+import { dashboardResumesInterface } from "../interfaces/types";
 // import ResumeCard from "../components/resumeCard";
 
 let Dashboard : React.FC<any> = (props)=>{
@@ -25,10 +27,13 @@ let Dashboard : React.FC<any> = (props)=>{
 
     let [deleteModel , setDeleteModel] = useState<boolean>(false);
 
+  let { userInfoWithResumes } = props;
+
     let nav = useNavigate();
 
     useEffect(()=>{
-        props.dispatch(getResumes());
+         props.dispatch(getResumes());
+         props.dispatch(myResumes())
         props.dispatch(gotoOrginalState());
     },[]);
 
@@ -59,8 +64,9 @@ let Dashboard : React.FC<any> = (props)=>{
                 });
                 setResumeName("");
                 setDeleteModel(false);
-                props.dispatch(getResumes());
-        }else{
+                // props.dispatch(getResumes());
+                props.dispatch(myResumes())
+          }else{
             props.dispatch(clearLoader());
         }
     }
@@ -75,12 +81,6 @@ let Dashboard : React.FC<any> = (props)=>{
         setCreateResumeModel(false);setClone(false);setCloneResumeId(null);setCloneResumeName(null);
     }
 
-
-    const dateConvertion = (date : any):any=>{
-            let d = new Date(date) 
-            return d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
-    }
-
     const createResume = ():void=>{
         props.dispatch(setLoader())
         props.dispatch(createMyResume(resumeName , responsiveCallBack));
@@ -93,7 +93,7 @@ let Dashboard : React.FC<any> = (props)=>{
 
 
     const func_editResume = (e:any):void => {
-        props.dispatch(editResume(e.id , redirectionCallBack));
+        props.dispatch(editResume(e , redirectionCallBack));
     }
 
     const redirectionCallBack = (res : any)=>{
@@ -107,7 +107,7 @@ let Dashboard : React.FC<any> = (props)=>{
         props.dispatch(deleteResume(resumeId , resumeName , responsiveCallBackForDelete));
     }
 
-    const cloneResume = (id : number , name:string)=>{
+    const cloneResume = (id : number | null , name:string | null)=>{
         setClone(true);setCreateResumeModel(true);setResumeName("");
         setCloneResumeId(id);setCloneResumeName(name);
     }
@@ -115,46 +115,41 @@ let Dashboard : React.FC<any> = (props)=>{
     const handelDeleteModel = (showOrClose : boolean , resumeId? : number , resumeName? : string )=>{
         setDeleteModel(showOrClose);
         if(resumeId && resumeName){
-            setCloneResumeId(resumeId);setCloneResumeName(resumeName);
+            setCloneResumeId(resumeId);
+            setCloneResumeName(resumeName);
         }
     }
+
+
 
     return(
         <React.Fragment>
             <Container maxWidth='xl' sx={{p : 2}}>
-                <Box sx={{textAlign : 'right' , mb : 2 }}>
-                  <Button variant='contained' startIcon={<MdAddCircle />} onClick={func_openCreateResumeModel} >Create</Button>
-                </Box>
-                <Box sx={{ width : '100%'}} >
-                <Stack rowGap={2} direction='row' flexWrap='wrap'>
-                    {
-                        props?.resumes?.map((e : any,index : number)=>(
-                            <Paper key={index} elevation={10} sx={{ width : '100%' }} >
-                                    {/* <ResumeCard {...e} /> */}
-                                    <Card variant='outlined'>
-                                        <CardHeader 
-                                            avatar={
-                                                <Avatar sx={{ bgcolor: (index + 1 ) % 2 == 0 ? red[500] : blue[500] }} aria-label="recipe">
-                                                {index + 1}
-                                              </Avatar>
-                                            }
-                                            title={e?.resumeName}
-                                            subheader={"Created : " + dateConvertion(e?.createdAt)}
-                                        />
-                                        <CardActions sx={{ml:2}} >
-                                                <Button variant='contained' size='small' color='info' onClick={()=>{func_editResume(e)}} startIcon={<FaEdit style={{fontSize : 15}} />}>Edit</Button>
-                                                <Button variant='contained' size='small' color='secondary' startIcon={<FaClone style={{fontSize : 13.5}} />} onClick={()=>{cloneResume(e.id , e.resumeName)}}>Clone Resume</Button>
-                                                <Button variant='contained' size='small' color='error' startIcon={<MdDelete style={{fontSize : 17}} />} onClick={()=>{ handelDeleteModel(true , e.id , e.resumeName)}} >Delete</Button>
-                                        </CardActions>
-                                    </Card>
-                                </Paper>
-                            ))
-                        }
-                </Stack>
-                </Box>
+              <Box>
+                <Typography variant={'h3'} >Welcome back,{" "}{userInfoWithResumes?.name}! 🎉</Typography>
+                <Typography variant='subtitle1' >Ready to build your QuickCV?</Typography>
+              </Box>
+
+             <Divider sx={{my : 2 , width : '98%' }}  />
+
+          <Box display='flex' justifyContent='right' mt={1} >
+            <Button variant='contained' size='small' startIcon={<MdAddCircle />} onClick={func_openCreateResumeModel} >Create</Button>
+          </Box>
 
 
 
+            <Stack direction='row' spacing={3} useFlexGap sx={{flexWrap : 'wrap'}}>
+            {
+              userInfoWithResumes?.resumes?.map((e: dashboardResumesInterface) => <DashboardResumes 
+                                                                                    resumeId={e.id} 
+                                                                                    resumeName={e.resumeName} 
+                                                                                    createdAt={e.createdAt} 
+                                                                                    resumeInfo={e.resumeInfo} 
+                                                                                    func_editResume={func_editResume} 
+                                                                                    handelDeleteModel={handelDeleteModel}
+                                                                                    cloneResume={cloneResume} />)
+            }
+            </Stack>
 
             </Container>
 
@@ -230,6 +225,7 @@ let Dashboard : React.FC<any> = (props)=>{
 let stateToProps = (state:any) => ({
     // cv : state.cvReducer
     resumes : state.storeUsers.resumes,
+  userInfoWithResumes: state.cvReducer.userInfoWithResumes
     // s : state
 })
 

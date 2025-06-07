@@ -37,6 +37,36 @@ export let getResumes = ()=>(dispatch:any)=>{
 }
 
 
+export let myResumes = () => (dispatch: any) => {
+  dispatch(setLoader())
+  console.log(localStorage.getItem("tokken"));
+  let config = {
+    headers: {
+      "Authorization": localStorage.getItem("tokken")
+    }
+  }
+  return axios.post<any>('/apis/myResumes', {}, config)
+    .then((res) => {
+      dispatch({
+        type: 'USER_INFO_WITH_RESUMES',
+        userInfoWithResumes: res?.data?.data
+      })
+    //   console.log(res.data.data)
+    })
+    .catch((_err) => {
+      dispatch({
+        type: 'USER_INFO_WITH_RESUMES',
+        userInfoWithResumes: {}
+      })
+    }).finally(() => {
+      setTimeout(() => {
+        dispatch(clearLoader())
+      }, 800)
+    })
+}
+
+
+
 export const createMyResume = (resumeName : any , callBack : any)=>(dispatch:any)=>{
   let config = {
     headers : {

@@ -23,7 +23,7 @@ export const styles = {
     mobileDrowerStyles : {
       width: drawerWidth,
       flexShrink: 0,
-      [`& .MuiDrawer-paper`]: { width: mobileswidth, boxSizing: 'border-box' , backgroundColor : /* Grey */ "white" },
+      [`& .MuiDrawer-paper`]: { width: mobileswidth, boxSizing: 'border-box', backgroundColor: /* Grey */ "#3C4B64" },
     },
     // reuseble drower width
     SwipeableDrawerStyles: {
