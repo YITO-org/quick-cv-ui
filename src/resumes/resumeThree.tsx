@@ -82,7 +82,7 @@ let ResumeThree : React.FC<any> = (props)=>{
                                 {( cv && cv.github)} {(cv.github && cv.linkdin && "|")} {(cv && cv.linkdin)}
                             </div> */}
 
-<div className="">
+                      <div className="">
                                 {
                                     cv && cv.linkedin &&
                                     <a href={cv.linkedin} target="_blank" className="m-2">Linkedin</a>
@@ -381,58 +381,9 @@ let MainCV : React.FC<any> = (props)=>{
 }
 
 
-// let GenerateContent : React.FC<any> = (props)=>{
-
-//     let { content } = props;
-// //    console.log({content})
-
-//     let flag : boolean = content && Array.isArray(content) &&  content.length && content.length > 0 ? true : false;
-
-//     return(
-//         <div>
-//             {
-//                 flag == true ?
-//                 <GenerateContentArrayContent content={content} /> : content
-                    
-//             }
-//             {/* { content } */}
-//         </div>
-//     )
-// }
-
-
-// let GenerateContentArrayContent : React.FC<any> = (props) => {
-    
-//     // console.log(props);
-
-//     return(
-//         <div>
-//             done
-//         </div>
-//     )
-// }
-
-
 const mapStateToProps = (state : any ) => ({
     cv : state.cvReducer
   });
   
 export default connect(mapStateToProps, (dispatch:any) => ({ dispatch }))(ResumeThree);
-
-//   name : null,
-//   tempName : 'krishna',
-//   designation : null,
-//   tempDesignation : 'Software Engineers',
-//   dob : '',
-//   tempDob : '09-Jan-1998',
-//   phoneNumber : null,
-//   tempPhoneNumber : 12345678910,
-//   email : null,
-//   tempEmail : 'krishna@email.com',
-//   github : null,
-//   tempGithub : 'krishna@github.com',
-//   linkdin : null,
-//   tempLinkdin : 'krishna@linkdin.com',
-//   summary : null
-
 

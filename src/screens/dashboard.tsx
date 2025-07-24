@@ -126,13 +126,20 @@ let Dashboard : React.FC<any> = (props)=>{
         <React.Fragment>
             <Container maxWidth='xl' sx={{p : 2}}>
               <Box>
-                <Typography variant={'h3'} >Welcome back,{" "}{userInfoWithResumes?.name}! 🎉</Typography>
+                <Typography sx={{
+                  fontSize : {
+                    xs: '2.2rem',   // 0px and up
+                    sm: '3rem', // 600px and up
+                    md: '3rem',  // 900px and up
+                    lg: '3rem',    // 1200px and up
+                  }
+                }} >Welcome back,{" "}{userInfoWithResumes?.name}! 🎉</Typography>
                 <Typography variant='subtitle1' >Ready to build your QuickCV?</Typography>
               </Box>
 
-             <Divider sx={{my : 2 , width : '98%' }}  />
+             <Divider sx={{my : 2 , width : '98%' }} variant='middle' />
 
-          <Box display='flex' justifyContent='right' mt={1} >
+          <Box display='flex' justifyContent='right' my={2}>
             <Button variant='contained' size='small' startIcon={<MdAddCircle />} onClick={func_openCreateResumeModel} >Create</Button>
           </Box>
 

@@ -32,7 +32,7 @@ let DashboardResumes: React.FC<dashboardResumesInterface> = (props)=>{
           <CardContent>
 
             <Typography variant='h6' color='purple'>{resumeName}</Typography>
-           <Typography variant="caption">{dateConvertion(createdAt)}</Typography>
+           <Typography variant="caption" fontWeight={600} color='GrayText'> Create At : {dateConvertion(createdAt)}</Typography>
 
             {/* {resumeObject[props?.resumeInfo[0]?.template]} */}
           </CardContent>

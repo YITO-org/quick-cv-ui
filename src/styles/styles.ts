@@ -44,8 +44,8 @@ export const styles = {
   
   // detailes screen
   input_lable : { /* '&::first-letter' : {textTransform : 'uppercase'}, */fontWeight :'450' , fontSize : 12.8 ,/*color : 'gray' */},
-  detailes_box : {backgroundColor : 'white' , border : 0.5 , borderColor : Gray2 , height :'81vh' , overflow : 'scroll' , scrollbarWidth : 'none'},
-  detailes_resume_box : {backgroundColor : 'white' , border : 0.5 , borderColor : Gray2 , height :'81vh' , overflow : 'scroll' , scrollbarWidth : 'none'},
+  detailes_box : {backgroundColor : 'white' , border : 0.5 , borderColor : Gray2 , height :'83vh' , overflow : 'scroll' , scrollbarWidth : 'none'},
+  detailes_resume_box : {backgroundColor : 'white' , border : 0.5 , borderColor : Gray2 , height :'83vh' , overflow : 'scroll' , scrollbarWidth : 'none'},
   ordering_text : {display : 'flex' , flexDirection : 'column' , gap : 1.5  , alignItems : 'center' , mt : '4%' , mb : '4%'},
 
   // landing page header button
