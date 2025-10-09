@@ -69,6 +69,7 @@ let CVInfoData : React.FC<any> = (props)=>{
             name.splice(0,1)
         }
         props.dispatch(addNewRecord(name , screenName , 'ADD_REMOVE_RECORD'));
+        setExpanded(name.length - 1);
     }
 
     let change = (e : any , index : number)=>{
