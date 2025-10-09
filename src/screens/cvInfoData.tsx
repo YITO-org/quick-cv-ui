@@ -58,7 +58,7 @@ let CVInfoData : React.FC<any> = (props)=>{
         let name = [...cv[screenName]];
         name.push(addRecord);
         props.dispatch(addNewRecord(name , screenName , 'ADD_REMOVE_RECORD'));
-
+        setExpanded(name.length - 1);
     }
 
     let remove = (index : number)=>{
