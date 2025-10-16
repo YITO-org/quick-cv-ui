@@ -41,6 +41,10 @@ let CVInfoData : React.FC<any> = (props)=>{
     let { cv , screenName , nextButton  } = props;
     let nav = useNavigate();
 
+    let dragField = React.useRef<number>(0)
+    let dragOverField = React.useRef<number>(0)
+
+
     React.useEffect(()=>{
       setExpanded(props.holdCustomeAccordianNumber)
     }, [props.holdCustomeAccordianNumber])
@@ -115,6 +119,15 @@ let CVInfoData : React.FC<any> = (props)=>{
     }
 
 
+    let reOrder = () : void =>{
+        let fields = props.cv[screenName].map((e:any)=>({...e}));
+        let start = fields[dragField.current];
+        fields[dragField.current] = fields[dragOverField.current];
+        fields[dragOverField.current] = start;
+        props.dispatch(addNewRecord(fields, screenName , 'ADD_REMOVE_RECORD'));
+      }
+
+
     return(
         <React.Fragment>
               
@@ -135,6 +148,15 @@ let CVInfoData : React.FC<any> = (props)=>{
                         <Box sx={{m:0.9}}>
                         { screenName == "education" &&  cv?.education?.map((e : any  , index : number)=>{
                             return(
+                              <Box
+                                draggable
+                                onDragStart={() => (dragField.current = index)}
+                                onDragEnter={() => (dragOverField.current = index)}
+                                onDragEnd={() => {
+                                  reOrder();
+                                }}
+                                key={index}
+                              >
                               <CustomeAccordion index={index} expanded={expanded} remove={remove} accordionOpenClose={accordionOpenClose} accordionHeaderName={"Education"} holdCustomeAccordinanIndex={holdCustomeAccordinanIndex} >
                                   <Box sx={{border : 2 , borderRadius : 2 , p : 0.8  , borderColor : 'lightgray' , mb : 1.2 }}  key={index}>
                                                   <TextField size='small' fullWidth placeholder="School/University" name="School/University" value={e["School/University"]} onChange={(e)=>{ change(e , index ) }} />
@@ -157,6 +179,7 @@ let CVInfoData : React.FC<any> = (props)=>{
                                                   </div> */}
                                           </Box>
                                 </CustomeAccordion>
+                              </Box>
                                 )
                             })
                         }
@@ -186,7 +209,16 @@ let CVInfoData : React.FC<any> = (props)=>{
 
 
                               //   <AccordionDetails sx={{backgroundColor: 'white',/* p: -20 */ }}>
-                                 
+                                 <Box
+                                    draggable
+                                    onDragStart={() => (dragField.current = index)}
+                                    onDragEnter={() => (dragOverField.current = index)}
+                                    onDragEnd={() => { 
+                                      reOrder();
+                                    }}
+                                    key={index}
+                                 >
+
                               <CustomeAccordion index={index} expanded={expanded} remove={remove} accordionOpenClose={accordionOpenClose} accordionHeaderName={"Work History"} holdCustomeAccordinanIndex={holdCustomeAccordinanIndex} >
                                  <Box sx={{border : 2 , borderRadius : 2 , p : 0.5  , borderColor : 'lightgray'  }} >
                                             <TextField size='small' fullWidth placeholder="Employer" name="employer" value={e["employer"]}  onChange={(e)=>{ change(e , index ) }} />
@@ -214,16 +246,26 @@ let CVInfoData : React.FC<any> = (props)=>{
                                             </Box>
                                         </Box>
                                         </CustomeAccordion>
-
+                                      </Box>
                                 // </AccordionDetails>
 
                                 //       </Accordion>
                                 )
-                            })
+                              })
                         }
 
                         { screenName == "projects" &&  cv?.projects?.map((e : any  , index : number)=>{
                             return(
+                              <Box
+                                draggable
+                                onDragStart={() => (dragField.current = index)}
+                                onDragEnter={() => (dragOverField.current = index)}
+                                onDragEnd={() => {
+                                  reOrder();
+                                }}
+                                key={index}
+                              >
+
                               <CustomeAccordion index={index} expanded={expanded} remove={remove} accordionOpenClose={accordionOpenClose} accordionHeaderName={"Project"} holdCustomeAccordinanIndex={holdCustomeAccordinanIndex}>
                                   <Box sx={{border : 2 , borderRadius : 2 , borderColor : 'lightgray' , p : 0.5  }}  key={index}>
                                                   <TextField size='small' fullWidth placeholder="Project Name" value={e["projectName"]} name="projectName" onChange={(e)=>{ change(e , index ) }} />
@@ -245,7 +287,8 @@ let CVInfoData : React.FC<any> = (props)=>{
 
 
                                           </Box>
-                                </ CustomeAccordion>
+                                    </ CustomeAccordion>
+                                 </Box>
                                 )
                             })
                         }
