@@ -1,12 +1,14 @@
 "use client"
-import React , { useEffect ,  useState } from "react";
+import React , { useEffect ,  useState , useRef } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createMyResume, deleteResume, editResume, editResumeTesting, getResumes , createMyCloneResume, gotoOrginalState, myResumes  } from "../actions/resumeActions";
-import { Box, Container, Stack , Button, Dialog, DialogTitle ,  DialogActions  , DialogContent , TextField, Typography, Divider } from "@mui/material";
+import { Box, Container, Stack , Button, Dialog, DialogTitle ,  DialogActions  , DialogContent , TextField, Typography, Divider, IconButton, Tooltip } from "@mui/material";
 // import { FaEdit } from "react-icons/fa";
 // import { MdDelete } from "react-icons/md";
 import { MdAddCircle } from "react-icons/md";
+import { TbCopy } from "react-icons/tb";
+import { BsCheckCircleFill } from "react-icons/bs";
 // import { FaClone } from "react-icons/fa";
 // import {red , blue } from "@mui/material/colors";
 import toast from 'react-simple-toasts';
@@ -15,6 +17,7 @@ import 'react-simple-toasts/dist/theme/success.css';
 import { clearLoader, setLoader } from "../actions";
 import DashboardResumes from "../components/dashboardResumes/DashboardResumes";
 import { dashboardResumesInterface } from "../interfaces/types";
+import { IoIosCloseCircle } from "react-icons/io";
 // import ResumeCard from "../components/resumeCard";
 
 let Dashboard : React.FC<any> = (props)=>{
@@ -26,6 +29,10 @@ let Dashboard : React.FC<any> = (props)=>{
     let [cloneResumeId , setCloneResumeId] = useState<number | null>(null);
 
     let [deleteModel , setDeleteModel] = useState<boolean>(false);
+    let [shareModel , setShareModel] = useState<boolean>(false);
+    let [shareTitle , setShareTitle] = useState<string | null | undefined>(null);
+
+    let read = useRef<HTMLInputElement>(null)
 
   let { userInfoWithResumes } = props;
 
@@ -78,7 +85,7 @@ let Dashboard : React.FC<any> = (props)=>{
     }
 
     function func_closeCreateResumeModel(){
-        setCreateResumeModel(false);setClone(false);setCloneResumeId(null);setCloneResumeName(null);
+        setCreateResumeModel(false);setClone(false);setCloneResumeId(null);setCloneResumeName(null);setShareModel(false);
     }
 
     const createResume = ():void=>{
@@ -120,7 +127,20 @@ let Dashboard : React.FC<any> = (props)=>{
         }
     }
 
+  let copyShareLink = (resumeId : number | undefined | any ) => {
+      setShareModel(true)
+    setCloneResumeId(resumeId);
+  }
 
+
+  let showAndHideShareTitle = async () => {
+    // console.log(read?.current?.innerText)
+    let value : string = read?.current?.innerText || '';
+    await navigator.clipboard.writeText(value);
+    // console.log(location);
+    setShareTitle('share')
+    setTimeout(()=>{setShareTitle(null)},2000)
+  }
 
     return(
         <React.Fragment>
@@ -154,7 +174,9 @@ let Dashboard : React.FC<any> = (props)=>{
                                                                                     resumeInfo={e.resumeInfo} 
                                                                                     func_editResume={func_editResume} 
                                                                                     handelDeleteModel={handelDeleteModel}
-                                                                                    cloneResume={cloneResume} />)
+                                                                                    cloneResume={cloneResume} 
+                                                                                    copyShareLink={copyShareLink}
+                                                                                    />)
             }
             </Stack>
 
@@ -223,6 +245,44 @@ let Dashboard : React.FC<any> = (props)=>{
                         <Button variant='contained' size='small' color='error' onClick={()=>{handelDeleteModel(false)}}>Cancel</Button>
                         </DialogActions>
                     </Dialog>
+
+
+
+
+        <Dialog
+          open={shareModel}
+          onClose={func_closeCreateResumeModel}
+          fullWidth={true}
+          maxWidth={'md'}
+          >
+          <DialogTitle sx={{ fontSize: 18 }} display='flex' justifyContent='space-between' alignItems='center'>
+            <Typography variant='h5' fontFamily='revert' fontWeight='bold' >
+                Are you sure you want to share this resume ?
+              </Typography>
+            <IconButton color='error' onClick={func_closeCreateResumeModel}>
+              <IoIosCloseCircle size={30} />
+            </IconButton>
+            </DialogTitle>
+          <Divider/>
+          <DialogContent>
+
+              <Box sx={{ height : 50 , bgcolor : 'lightgray', borderRadius : 1  }} display='flex' justifyContent={'space-between'}  alignItems={'center'} padding={2} >
+              <Box ref={read}>{location.origin}/share-resume/{window.btoa(String(cloneResumeId))}</Box>
+                <Tooltip title={shareTitle} placement="top" >
+                  {
+                  shareTitle ?
+                    <IconButton size="large">
+                      <BsCheckCircleFill fontSize={20} color="green"/>
+                    </IconButton> 
+                    :
+                  <IconButton size="large" onClick={showAndHideShareTitle} >
+                      <TbCopy fontSize={20} color="black" />
+                    </IconButton>
+                  }
+                </Tooltip>
+              </Box>
+          </DialogContent>
+        </Dialog>
 
                 
         </React.Fragment>

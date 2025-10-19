@@ -6,7 +6,9 @@ export default defineConfig({
   server: {
     proxy: {
       // local
-       "/api": "http://127.0.0.1:8008/",
+         // "/api": "http://127.0.0.1:8008/",
+      //production
+        "/api": "https://quickcv.site/",
     } 
   } ,
   plugins: [react()],

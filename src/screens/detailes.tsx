@@ -56,13 +56,16 @@ let Detailes : React.FC<any> = (props)=>{
 	}
 
   let saveAndDownload = ()=>{
-          let {cv} = props;
+      
+        let {cv} = props;
   
-         props.dispatch(setLoader()); 
-         if(cv.resumeId){
+        props.dispatch(setLoader()); 
+
+        if(cv.resumeId){
              props.dispatch(updateResume(resumeInfoConvertJsonToString(cv)))
-          }
-          cv.downloadFunction();
+        }
+
+        cv.downloadFunction();
       
       }
 

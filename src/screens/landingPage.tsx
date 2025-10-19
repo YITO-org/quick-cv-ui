@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 // import {useWidth} from "../layout";
-import hairingimg from "../assets/hairingimg.avif";
+// import hairingimg from "../assets/hairingimg.avif";
 import Button from '@mui/material/Button';
 import { styles } from "../styles/styles";
 import { Box, Container, CssBaseline , Grid, Stack, Typography } from "@mui/material";
@@ -21,12 +21,13 @@ import resumeFourImage from "../utils/images/resumeFourImage.png"
 
 // video
 import dashboardVideo from "../utils/images/dashboard-video_.mp4"
+import { landingPageResumeCount } from "../actions/landingPageActions";
 
 
 let LandingPage : React.FC<any> = (props)=>{
 
-
   useEffect(()=>{
+    props.dispatch(landingPageResumeCount())
   },[])
   
   let nav = useNavigate();
@@ -67,8 +68,6 @@ let LandingPage : React.FC<any> = (props)=>{
 
 
 
-
-
   return(
     <React.Fragment>
      {/* <Box sx={styles.navbar_container} > */}
@@ -99,8 +98,17 @@ let LandingPage : React.FC<any> = (props)=>{
             A fast, easy-to-use resume builder for crafting modern CVs.
              <br />
             Perfect for freshers, professionals, and techies alike.
-            </Typography>
+          </Typography>
 
+
+           <Stack direction='row' justifyContent='center' alignItems='center' my={2} >
+              <Box py={0.8} px={0.8} bgcolor='#ececec' width={250} textAlign='center' borderRadius={2.4}>
+                <Typography variant='overline' fontStyle='unset' fontWeight='600' >
+                  Over {props.landingPageCount?.resumeCount} resumes created
+                </Typography>
+              </Box>
+            </Stack>
+            
 
             <Stack direction='row' justifyContent='center' alignItems='center' mt={1} gap={2} flexWrap='wrap' >
               <Box bgcolor='#373c44' width={200} textAlign='center' color='white' pr={2.5} pl={2.5} pt={1.5} pb={1.5} borderRadius={1} fontWeight={600} onClick={redirect} sx={{  cursor: 'pointer' }}>
@@ -129,7 +137,7 @@ let LandingPage : React.FC<any> = (props)=>{
             muted
             loop
             playsInline
-                style={{borderRadius : 10, width : 900 }}>
+                style={{borderRadius : 10, width : "80%" }}>
                     <source src={dashboardVideo} type="video/mp4"></source>
                 </video>
               </Box>
@@ -255,7 +263,8 @@ let LandingPage : React.FC<any> = (props)=>{
 
   const mapStateToProps = (state : any ) => ({
     cv : state.cvReducer,
-    user: state.storeUsers
+    user: state.storeUsers,
+    landingPageCount: state.landingReducer
   });
 
 

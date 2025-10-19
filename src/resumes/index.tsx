@@ -20,10 +20,10 @@ let Res : React.FC<any> = (  props  )=>{
 
 
     let template : any = {
-        "Template-1" : <ResumeOne />,
-        "Template-2" : <ResumeTwo />,
-        "Template-3" : <ResumeThree />,
-        "Template-4":  <ResumeFour/>
+      "Template-1": <ResumeOne shareResume={props.shareResume} />,
+      "Template-2": <ResumeTwo shareResume={props.shareResume} />,
+      "Template-3": <ResumeThree shareResume={props.shareResume} />,
+      "Template-4": <ResumeFour shareResume={props.shareResume} />
     }
 
 

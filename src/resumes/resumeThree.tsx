@@ -63,7 +63,7 @@ let ResumeThree : React.FC<any> = (props)=>{
 
     return(
         <Box>
-            <Paper sx={styles.detailes_resume_box}>
+        <Paper sx={props.shareResume  ? styles.detailes_resume_box_share :  styles.detailes_resume_box}>
 
                 {/* details */}
                 <div className="container-fluid pt-3 pb-3">

@@ -16,6 +16,7 @@ import axios from "axios";
 import {ProtectedRoutes_col , ProtectedRoutes_dashboard } from "./middlewares/authentication";
 import ForgerPassword from "./screens/forgerPassword";
 import ResetPassword from "./screens/resetPassword";
+import ShareViewResume from "./screens/viewShareResume";
 //import LandingPage2 from "./screens/landingPage2";
 
 const App : React.FC<any>  = (props)=>{
@@ -64,7 +65,8 @@ const App : React.FC<any>  = (props)=>{
               <Route path="/otp" element={ <ProtectedRoutes_col> <Otp headerName="OTP" buttonName="Submit" redirectionScreen="/login"  /> </ProtectedRoutes_col> } />
               <Route path="/forget_password" element={<ProtectedRoutes_col> <ForgerPassword headerName="Forget Password" buttonName="Submit" loginScreen="/login" createAccountAcreen="/createaccount" redirectionScreen={""} /> </ProtectedRoutes_col>} />
               <Route path="/reset-password/:tokken" element={<ProtectedRoutes_col> <ResetPassword headerName="Reset Password" buttonName="Submit" redirectionScreen={""} /> </ProtectedRoutes_col>}  />
-
+              <Route path="/share-resume/:resumeId" element={<ShareViewResume />} />
+              
               <Route path="/resumebuilder" element={<MainApp />}>
                   <Route index path="dashboard" element={ <ProtectedRoutes_dashboard> <Dashboard /> </ProtectedRoutes_dashboard> } />
                   <Route index path="detailes" element={ <Detailes headerName="Details" nextButton="summary" /> } />

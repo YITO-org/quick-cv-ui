@@ -60,7 +60,7 @@ let ResumeOne : React.FC<any> = (props)=>{
 
     return(
         <Box>
-            <Paper sx={styles.detailes_resume_box}>
+            <Paper sx={props.shareResume  ? styles.detailes_resume_box_share :  styles.detailes_resume_box}>
             <div id="template">
 
                 {/* details */}

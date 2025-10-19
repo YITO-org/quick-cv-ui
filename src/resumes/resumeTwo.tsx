@@ -188,7 +188,7 @@ let Projects : React.FC<any> = (props)=>{
 
     return(
         <React.Fragment>
-            <Heading heading={props.name} />
+            <Heading heading={props.shareResume  ? styles.detailes_resume_box_share :  styles.detailes_resume_box} />
             {
                 props?.projects?.map((e : any , index : number )=>{
 

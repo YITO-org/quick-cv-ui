@@ -60,5 +60,6 @@ export interface dashboardResumesInterface {
   // deleteRes?: (openModel : boolean | null , resumeId: number | null, resumeName : string | null) => void
   cloneResume: (resumeId: number | null, resumeName: string | null) => void
   handelDeleteModel?: (showOrClose: boolean , resumeId?: number , resumeName?: string ) => void
+  copyShareLink?: (copyShareLink? : number ) => void
 }
 

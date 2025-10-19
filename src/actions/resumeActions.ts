@@ -187,4 +187,21 @@ export let holdCustomeAccordianNumber = (accordianValue : number | boolean)=>(di
 }
 
 
+export let shareResume = (resumeId: number) => (dispatch: any) => {
+
+  return axios.post<any>('/apis/share-resume', { resumeId }).then((res) => {
+      // console.log(res);
+      dispatch({
+        type: 'GET_RESUME_FROM_SERVICE',
+        resumeData: res.data.data
+     });
+  }).catch((err) => {
+    console.log({ err })
+  }).finally(() => {
+
+  })
+}
+
+
+
 

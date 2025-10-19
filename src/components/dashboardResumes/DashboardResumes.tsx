@@ -5,6 +5,7 @@ import { dashboardResumesInterface } from "../../interfaces/types";
 // import DashboardTemplateOne from "./DashboardTemplateOne";
 import {  Card , CardActions, CardContent, IconButton, Tooltip, Typography, Zoom } from "@mui/material";
 import { BsPencilFill, BsTrashFill } from "react-icons/bs";
+import { PiShareFatFill } from "react-icons/pi";
 import { FaClone } from "react-icons/fa";
 
 
@@ -22,7 +23,9 @@ let DashboardResumes: React.FC<dashboardResumesInterface> = (props)=>{
   //   "Template-3": <DashboardTemplateOne resumeInfo={props.resumeInfo[0]} />
   // }
 
-  let { resumeName, func_editResume, handelDeleteModel, cloneResume, createdAt } = props;
+
+
+  let { resumeName, func_editResume, handelDeleteModel, cloneResume, createdAt , copyShareLink } = props;
 
   return (
     <React.Fragment>
@@ -62,6 +65,11 @@ let DashboardResumes: React.FC<dashboardResumesInterface> = (props)=>{
             </IconButton>
           </Tooltip>
 
+          <Tooltip title='Share' placement='bottom' TransitionComponent={Zoom}>
+            <IconButton color='primary' size='small' onClick={() => { copyShareLink?.(props.resumeId) }}>
+              <PiShareFatFill />
+            </IconButton>
+          </Tooltip>          
 
 
 
