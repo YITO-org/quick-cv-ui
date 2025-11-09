@@ -7,7 +7,8 @@ import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import { shareResume } from "../actions/resumeActions";
 import { Backdrop, Button, CircularProgress, Grid, Stack, Typography } from "@mui/material";
-
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
 import { RiDownloadCloudFill } from "react-icons/ri";
 import { useSelector } from 'react-redux';
 import { setLoader } from "../actions";
@@ -54,6 +55,9 @@ let ShareViewResume : React.FC<any> = (props)=>{
 
   return(<>
 
+
+    <ShareResumeHeader />
+
     <Backdrop
       sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
       open={selector.loader}
@@ -87,6 +91,19 @@ let ShareViewResume : React.FC<any> = (props)=>{
 }
 
 
+function ShareResumeHeader() {
+  return (
+    // <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="relative" color='transparent' elevation={1}>
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Quick CV
+          </Typography>
+        </Toolbar>
+      </AppBar>
+    // </Box>
+  );
+}
 
 let stateToProps = (state: any) => ({
   cv: state.cvReducer

@@ -3,12 +3,12 @@ import React , { useEffect ,  useState , useRef } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createMyResume, deleteResume, editResume, editResumeTesting, getResumes , createMyCloneResume, gotoOrginalState, myResumes  } from "../actions/resumeActions";
-import { Box, Container, Stack , Button, Dialog, DialogTitle ,  DialogActions  , DialogContent , TextField, Typography, Divider, IconButton, Tooltip } from "@mui/material";
+import { Box, Container, Stack , Button, Dialog, DialogTitle ,  DialogActions  , DialogContent , TextField, Typography, Divider, IconButton /* ,  Tooltip*/ } from "@mui/material";
 // import { FaEdit } from "react-icons/fa";
 // import { MdDelete } from "react-icons/md";
 import { MdAddCircle } from "react-icons/md";
-import { TbCopy } from "react-icons/tb";
-import { BsCheckCircleFill } from "react-icons/bs";
+// import { TbCopy } from "react-icons/tb";
+// import { BsCheckCircleFill } from "react-icons/bs";
 // import { FaClone } from "react-icons/fa";
 // import {red , blue } from "@mui/material/colors";
 import toast from 'react-simple-toasts';
@@ -30,7 +30,7 @@ let Dashboard : React.FC<any> = (props)=>{
 
     let [deleteModel , setDeleteModel] = useState<boolean>(false);
     let [shareModel , setShareModel] = useState<boolean>(false);
-    let [shareTitle , setShareTitle] = useState<string | null | undefined>(null);
+    let [_shareTitle , _setShareTitle] = useState<string | null | undefined>(null);
 
     let read = useRef<HTMLInputElement>(null)
 
@@ -133,14 +133,61 @@ let Dashboard : React.FC<any> = (props)=>{
   }
 
 
-  let showAndHideShareTitle = async () => {
-    // console.log(read?.current?.innerText)
-    let value : string = read?.current?.innerText || '';
-    await navigator.clipboard.writeText(value);
-    // console.log(location);
-    setShareTitle('share')
-    setTimeout(()=>{setShareTitle(null)},2000)
-  }
+  // let showAndHideShareTitle = async () => {
+  //   // console.log(read?.current?.innerText)
+  //   let value : string = read?.current?.innerText || '';
+  //  await navigator?.clipboard?.writeText(value);
+  //  // document.execCommand(value);
+  //  // console.log(location);
+
+  //   // const textarea = document.createElement("textarea");
+  //   // textarea.value = value;
+  //   // document.body.appendChild(textarea);
+  //   // textarea.select();
+  //   // document.execCommand('Surya teja');
+  //   // document.body.removeChild(textarea);
+   
+  //   setShareTitle('share')
+
+  //   setTimeout(()=>{setShareTitle(null)},2000)
+  // }
+
+  //  let showAndHideShareTitle = async () => {
+
+  //    let value: string = read?.current?.innerText || '';
+
+  //    if (navigator.clipboard && window.isSecureContext) {
+  //      // Modern API
+  //      await navigator?.clipboard?.writeText(value);
+  //      console.log("Copied using Clipboard API");
+  //    } else {
+  //      // Fallback for non-HTTPS or old browsers
+  //      const textarea = document.createElement("textarea");
+  //      textarea.value = value;
+  //      textarea.style.position = "fixed";
+  //      textarea.style.top = "0";
+  //      textarea.style.left = "0";
+  //      document.body.appendChild(textarea);
+  //      textarea.focus();
+  //      textarea.select();
+
+  //      try {
+  //        // @ts-ignore: execCommand is deprecated, used only as fallback
+  //        document.execCommand("copy");
+  //        console.log("Copied using fallback");
+  //      } catch (err) {
+  //        console.error("Fallback copy failed:", err);
+  //      } finally {
+  //        document.body.removeChild(textarea);
+  //        setShareTitle('share')
+  //        setTimeout(()=>{setShareTitle(null)},2000)
+  //       }
+  //    }
+
+     
+  //   }
+
+
 
     return(
         <React.Fragment>
@@ -266,9 +313,12 @@ let Dashboard : React.FC<any> = (props)=>{
           <Divider/>
           <DialogContent>
 
+              <Typography sx={{ml : 1 , mb : 1.5 }} >Kindly copy the URL and share it</Typography>
+
               <Box sx={{ height : 50 , bgcolor : 'lightgray', borderRadius : 1  }} display='flex' justifyContent={'space-between'}  alignItems={'center'} padding={2} >
+
               <Box ref={read}>{location.origin}/share-resume/{window.btoa(String(cloneResumeId))}</Box>
-                <Tooltip title={shareTitle} placement="top" >
+                {/* <Tooltip title={shareTitle} placement="top" >
                   {
                   shareTitle ?
                     <IconButton size="large">
@@ -279,7 +329,7 @@ let Dashboard : React.FC<any> = (props)=>{
                       <TbCopy fontSize={20} color="black" />
                     </IconButton>
                   }
-                </Tooltip>
+                </Tooltip> */}
               </Box>
           </DialogContent>
         </Dialog>
