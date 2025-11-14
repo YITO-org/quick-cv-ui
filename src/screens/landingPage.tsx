@@ -155,7 +155,39 @@ let LandingPage : React.FC<any> = (props)=>{
         </Typography>
 
 
-        <Grid container rowSpacing={4} 
+
+        <Stack
+            flexWrap="wrap"
+            useFlexGap
+            direction={{ xs: 'column', sm: 'column' , md : 'row' , lg : 'row' , xl : 'row'  }}
+            spacing={{ xs: 1, sm: 2, md: 12 }}
+            justifyContent={{ xs : 'center' , sm : 'center' , md : 'flex-start' , lg : 'flex-start' , xl : 'flex-start' }}
+            alignItems={{ xs: 'center', sm: 'center', md: 'flex-start', lg: 'flex-start', xl: 'flex-start' }}
+        >
+
+            <img src={templates['Template-1']}
+              width={320} height={350}
+              className="img-fluid rounded" style={{ border: "1px solid black", borderWidth: '1px' }} />
+
+
+            <img src={templates['Template-2']}
+              width={320} height={350}
+              className="img-fluid rounded" style={{ border: "1px solid black", borderWidth: '1px' }} />
+
+            
+            <img src={templates['Template-3']}
+              width={320} height={350}
+              className="img-fluid rounded" style={{ border: "1px solid black", borderWidth: '1px' }} />
+
+            <img src={templates['Template-4']}
+              width={320} height={350}
+              className="img-fluid rounded" style={{ border: "1px solid black", borderWidth: '1px' }} />
+
+            </Stack>
+
+            {/* old code */}
+
+        {/* <Grid container rowSpacing={4} 
         // justifyContent='center' alignItems='center' 
         direction='row' >
 
@@ -184,7 +216,8 @@ let LandingPage : React.FC<any> = (props)=>{
               className="img-fluid rounded" style={{ border: "1px solid black", borderWidth: '1px' }} />
           </Grid>
 
-          </Grid>
+          </Grid> */}
+
         </Container>
 
       <CssBaseline />
