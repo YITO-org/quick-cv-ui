@@ -17,6 +17,7 @@ import {ProtectedRoutes_col , ProtectedRoutes_dashboard } from "./middlewares/au
 import ForgerPassword from "./screens/forgerPassword";
 import ResetPassword from "./screens/resetPassword";
 import ShareViewResume from "./screens/viewShareResume";
+import DynamicSections from "./screens/dynamicSections";
 //import LandingPage2 from "./screens/landingPage2";
 
 const App : React.FC<any>  = (props)=>{
@@ -79,9 +80,9 @@ const App : React.FC<any>  = (props)=>{
                   <Route  path="template" element={<CVInfoData headerName="Template" screenName="template" /> } />
                   {/* <Route  path="ordering" element={<CVInfoData headerName="Template" screenName="template" /> } /> */}
 
+                  <Route path="DynamicSections" element={<DynamicSections headerName="Sections" screenName="sections" />} />
                   <Route  path="ViewResume" element={<ViewResume/>} />
                   
-
                   {/* <Route  path="addSection" element={<CVInfoData headerName="Add Section" screenName="custome" /> } /> */}
 
               </Route>
