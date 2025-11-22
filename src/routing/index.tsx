@@ -6,6 +6,7 @@ import { FaDiagramProject } from "react-icons/fa6";
 import { GiSkills } from "react-icons/gi";
 import { ImInsertTemplate } from "react-icons/im";
 import { AiOutlineUnorderedList } from "react-icons/ai";
+import { RiPlayListAddLine } from "react-icons/ri";
 // import { RiPlayListAddLine } from "react-icons/ri";
 
 var routing = [
@@ -40,6 +41,11 @@ var routing = [
         icon : <GiSkills />
     },
     {
+        name : 'Add Section',
+        path: "/resumebuilder/sections",
+        icon : <RiPlayListAddLine />
+    },
+    {
         name : 'Ordering',
         path : "/resumebuilder/ordering",
         icon : <AiOutlineUnorderedList />
@@ -49,13 +55,6 @@ var routing = [
         path : "/resumebuilder/template",
         icon : <ImInsertTemplate />
     },
-
-
-    // {
-    //     name : 'Add Section',
-    //     path : "/resumebuilder/summary",
-    //     icon : <RiPlayListAddLine />
-    // }
 ]
 
 

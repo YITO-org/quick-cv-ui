@@ -11,7 +11,7 @@ import { styles } from "../styles/styles";
 import CustomeDialog from "../components/customeDialog";
 import TextEditor from "../components/textEditor";
 import { SectionInterface } from "../interfaces/types";
-import { AddCustomeSection } from "../actions/sectionsActions";
+// import { AddCustomeSection } from "../actions/sectionsActions";
 import { setInformation } from "../actions";
 
 let DynamicSections : React.FC<any> = (props)=>{
