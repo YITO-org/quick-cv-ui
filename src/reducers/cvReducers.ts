@@ -116,7 +116,17 @@ let cvReducer = (state = initialValue , action : any) : any=>{
           return { ...state, holdCustomeAccordianNumber: action.holdCustomeAccordianNumber }
        case "USER_INFO_WITH_RESUMES":
           return { ...state, userInfoWithResumes: action.userInfoWithResumes }
-       default:
+
+    // custome sections.
+      case "ADD_NEW_CUSTOME_SECTION":
+        console.log(action);
+        return state;
+      case 'EDIT_INFO_CUSTOME_SECTION':
+        return state;
+      case 'DELETE_INFO_CUSTOME_SECTION':
+        return state;
+    // custome section
+      default:
           return state;
     }
 }

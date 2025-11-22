@@ -49,6 +49,11 @@ export interface detailesFieldsInterface {
   orginalName : string
 }
 
+export interface SectionInterface {
+  sectionName : string,
+  sectionInformation : string
+}
+
 export interface dashboardResumesInterface {
   id?: number
   resumeId?: number | undefined | any

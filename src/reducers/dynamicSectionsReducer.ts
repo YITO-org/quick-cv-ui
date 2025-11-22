@@ -1,7 +1,7 @@
 
 
 const initialValues: any = {
-  dynamicallyInformation : []
+  dynamicallyInformation: [{ name: 'hobbies', description: 'Coding , Boxing , Racing bike'}]
 };
 
 const dynamicSectionsReducer = (state = initialValues, action: any) => {
@@ -10,7 +10,11 @@ const dynamicSectionsReducer = (state = initialValues, action: any) => {
     //   state = { ...state, resumeCount: action.resumeCount }
     //   return state;
     case "ADD_NEW_INFO" :
-      console.log(state);
+      console.log(action);
+      return state;
+    case 'EDIT_INFO' :
+      return state;
+    case 'DELETE_INFO':
       return state;
     default:
       return state;
