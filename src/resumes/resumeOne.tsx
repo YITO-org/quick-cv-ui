@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 import { styles } from "../styles/styles";
 import { clearLoader, getPdf } from "../actions";
 import "../styles/resumeOne.css";
+import { SectionInterface } from "../interfaces/types";
 
 let ResumeOne : React.FC<any> = (props)=>{
     
@@ -104,6 +105,9 @@ let ResumeOne : React.FC<any> = (props)=>{
                     <div className='mt-2'>
                         <MainCV {...props.cv}/>
                     </div>
+
+
+
                 </div>
 
 
@@ -313,6 +317,8 @@ let Heading : React.FC<any> = (props)=>{
 
     let { heading } = props;
 
+    console.log({ heading })
+
 return(
     <div className={`fw-bold mt-3 heading_first_letter heading_font`}>
         { heading }
@@ -340,6 +346,16 @@ let MainCV : React.FC<any> = (props)=>{
                            </div>)
                 })
 
+            }
+
+        {/* {custome } */}
+            {
+               props?.custome?.map((e: SectionInterface,index:number)=>
+                    <div key={index} >
+                        <Heading heading={e.sectionName} />
+                        <div style={{ fontSize: "12px" }} className="react-text-editer mt-3" dangerouslySetInnerHTML={{ __html: e.sectionInformation }} ></div>
+                    </div>
+              )
             }
 
         </div>

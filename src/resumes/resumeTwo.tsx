@@ -6,6 +6,7 @@ import React, { useEffect } from "react";
 import { styles } from "../styles/styles";
 import "../styles/resumeOne.css";
 import { clearLoader, getPdf } from "../actions";
+import { SectionInterface } from "../interfaces/types";
 
 
 let ResumeTwo : React.FC<any> = (props)=>{
@@ -343,6 +344,16 @@ let MainCV : React.FC<any> = (props)=>{
                            </div>)
                 })
 
+            }
+
+
+            {
+                props?.custome?.map((e: SectionInterface ,index:number)=>
+                      <div key={index} >
+                          <Heading heading={e.sectionName} />
+                          <div style={{ fontSize: "12px" }} className="react-text-editer mt-3" dangerouslySetInnerHTML={{ __html: e.sectionInformation }} ></div>
+                      </div>
+                )
             }
 
         </div>
