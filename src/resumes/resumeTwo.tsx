@@ -172,11 +172,62 @@ let Education : React.FC<any> = (props)=>{
     )
 }
 
+// let Projects : React.FC<any> = (props)=>{
+//     // let { name } = props;
+
+//     useEffect(()=>{
+        
+//     },[props])
+
+
+//     if(props.projects.length == 0){
+//         return;
+//     }
+//     if(!props?.projects[0]["projectName"]){
+//         return;
+//     }
+
+//     return(
+//         <React.Fragment>
+//             <Heading heading={props.shareResume  ? styles.detailes_resume_box_share :  styles.detailes_resume_box} />
+//             {
+//                 props?.projects?.map((e : any , index : number )=>{
+
+
+//                     if(!e["projectName"]){
+//                         return;
+//                     }
+
+//                     return(
+//                         <div className="mb-1 px-1" key={index} >
+//                             <div className="d-flex justify-content-between" style={{fontSize : "13.5px"}} >
+//                                 <div className="d-flex gap-2"> <div className="fw-bold">{e["projectName"]}</div></div>
+//                             </div>
+//                             <div style={{fontSize : "12.6px"}}>{e.role ? "Role : " + e.role + '.' : ''}</div>
+//                             <div>
+//                               {
+//                                 e.description &&
+//                                 <>
+//                                     {/* <div style={{fontSize : "12.6px"}} className="fw-bold"> Role And Responsibilities: </div> */}
+//                                     {/* <div style={{fontSize : "12px"}}>{ e.description }</div> */}
+//                                     <div style={{fontSize : "12px"}} className="react-text-editer mx-1"  dangerouslySetInnerHTML={{ __html : e.description  }} ></div>
+//                                 </>
+//                               }
+                            
+//                             </div>
+//                         </div>
+//                     )
+//                 })
+//             }
+//         </React.Fragment>
+//     )
+// }
+
 let Projects : React.FC<any> = (props)=>{
     // let { name } = props;
 
     useEffect(()=>{
-        
+
     },[props])
 
 
@@ -189,17 +240,16 @@ let Projects : React.FC<any> = (props)=>{
 
     return(
         <React.Fragment>
-            <Heading heading={props.shareResume  ? styles.detailes_resume_box_share :  styles.detailes_resume_box} />
+            <Heading heading={props.name} />
             {
                 props?.projects?.map((e : any , index : number )=>{
-
 
                     if(!e["projectName"]){
                         return;
                     }
 
                     return(
-                        <div className="mb-1 px-1" key={index} >
+                        <div className="mb-1 px-1" key={index}>
                             <div className="d-flex justify-content-between" style={{fontSize : "13.5px"}} >
                                 <div className="d-flex gap-2"> <div className="fw-bold">{e["projectName"]}</div></div>
                             </div>
@@ -208,9 +258,10 @@ let Projects : React.FC<any> = (props)=>{
                               {
                                 e.description &&
                                 <>
-                                    {/* <div style={{fontSize : "12.6px"}} className="fw-bold"> Role And Responsibilities: </div> */}
+                                    {/* <div style={{fontSize : "12.6px"}} className="fw-bold"> description: </div> */}
                                     {/* <div style={{fontSize : "12px"}}>{ e.description }</div> */}
-                                    <div style={{fontSize : "12px"}} className="react-text-editer mx-1"  dangerouslySetInnerHTML={{ __html : e.description  }} ></div>
+                                    <div style={{fontSize : "12px"}} className="react-text-editer mx-1"  
+                                         dangerouslySetInnerHTML={{ __html : e.description  }} ></div>
                                 </>
                               }
                             
