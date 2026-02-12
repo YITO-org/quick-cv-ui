@@ -1,6 +1,6 @@
 import React from "react";
 
-let DashboardTemplateOne: React.FC<any> = (props) => {
+let DashboardTemplateOne: React.FC<any> = (_props) => {
   
 
   return (

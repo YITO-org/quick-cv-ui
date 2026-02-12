@@ -9,10 +9,13 @@ import Res from "../resumes";
 import { styles } from "../styles/styles";
 // import { AddCustomeSection } from "../actions/sectionsActions";
 import CustomeDialog from "../components/customeDialog";
-import TextEditor from "../components/textEditor";
+import TextEditor from "../components/TextEditor";
 import { SectionInterface } from "../interfaces/types";
 // import { AddCustomeSection } from "../actions/sectionsActions";
-import { setInformation } from "../actions";
+import { setInformation, setLoader } from "../actions";
+import ResumeHeader from "../components/resumeHeader/ResumeHeader";
+import { updateResume } from "../actions/resumeActions";
+import { resumeInfoConvertJsonToString } from "../utils";
 
 let DynamicSections : React.FC<any> = (props)=>{
 
@@ -81,7 +84,19 @@ let DynamicSections : React.FC<any> = (props)=>{
     setSectionInfo(selectedIndex)
   }
 
+  let saveAndDownload = ()=>{
+      let {cv} = props;
 
+      props.dispatch(setLoader()); 
+      if(cv.resumeId){
+          props.dispatch(updateResume(resumeInfoConvertJsonToString(cv)))
+      }
+      cv.downloadFunction();
+  }
+
+  let selectTempleate2 = (name :string , template : string): void => {
+    props.dispatch(setInformation(name , template))
+  }
 
     return(
         <React.Fragment>
@@ -90,6 +105,11 @@ let DynamicSections : React.FC<any> = (props)=>{
                       cv={cv} 
                       selectedTemplate={selectTempleate2}
                       /> */}
+
+                              <ResumeHeader saveAndDownload={saveAndDownload} 
+                                            cv={cv} 
+                                            selectedTemplate={selectTempleate2}
+                                            />
 
           <Grid container  columnGap={1} >
              <Grid xs={12} sm={12} md={12}  lg={5} xl={5}>

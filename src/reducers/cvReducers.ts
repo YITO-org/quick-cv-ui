@@ -106,7 +106,7 @@ let cvReducer = (state = initialValue , action : any) : any=>{
      "resumeArrangment" : action?.resumeData?.resumeArrangment ?  
                             JSON.parse(action?.resumeData?.resumeArrangment) : 
                             [ 'summary' , 'skills' ,  'education'  , 'work_history' , 'projects'],
-    // "custome" : action?.resumeData?.custome ? JSON.parse(action?.resumeData?.custome) : state.custome,
+     "custome" : action?.resumeData?.custome ? JSON.parse(action?.resumeData?.custome) : state.custome,
     };
         case "ORGINAL_STATE":
             // state = resetValue;

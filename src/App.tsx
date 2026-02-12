@@ -80,7 +80,7 @@ const App : React.FC<any>  = (props)=>{
                   <Route  path="template" element={<CVInfoData headerName="Template" screenName="template" /> } />
                   {/* <Route  path="ordering" element={<CVInfoData headerName="Template" screenName="template" /> } /> */}
 
-                  <Route path="DynamicSections" element={<DynamicSections headerName="Sections" screenName="sections" />} />
+                  <Route path="sections" element={<DynamicSections headerName="Sections" screenName="sections" />} />
                   <Route  path="ViewResume" element={<ViewResume/>} />
                   
                   {/* <Route  path="addSection" element={<CVInfoData headerName="Add Section" screenName="custome" /> } /> */}

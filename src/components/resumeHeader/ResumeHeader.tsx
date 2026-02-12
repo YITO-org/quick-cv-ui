@@ -5,6 +5,7 @@ import { FaCloudDownloadAlt } from "react-icons/fa";
 import { FiEye } from "react-icons/fi";
 import { IoIosCloseCircle } from "react-icons/io";
 import { ImInsertTemplate } from "react-icons/im";
+// import { FaSave } from "react-icons/fa";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import resumeOneImage from "../../utils/images/resumeOneImage.png"
@@ -62,7 +63,14 @@ let ResumeHeader : React.FC<any> = (props)=>{
           </Grid>
 
           <Grid xs={4} sm={2} md={2} lg={1} xl={1}>
-            <Tooltip title='Download' placement='right' TransitionComponent={Zoom}  >
+
+            {/* <Tooltip title='Save' placement='bottom' TransitionComponent={Zoom}  >
+              <IconButton onClick={saveAndDownload} >
+                <FaSave color='gray' />
+              </IconButton>
+            </Tooltip> */}
+
+            <Tooltip title='Download' placement='bottom' TransitionComponent={Zoom}  >
               <IconButton onClick={saveAndDownload} >
                 <FaCloudDownloadAlt color='#673ab7' />
               </IconButton>
