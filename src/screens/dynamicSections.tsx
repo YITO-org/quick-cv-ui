@@ -98,6 +98,11 @@ let DynamicSections : React.FC<any> = (props)=>{
     props.dispatch(setInformation(name , template))
   }
 
+  let saveResume = ()=>{
+          let {cv} = props;
+          props.dispatch(updateResume(resumeInfoConvertJsonToString(cv)))
+  }
+
     return(
         <React.Fragment>
               
@@ -109,6 +114,7 @@ let DynamicSections : React.FC<any> = (props)=>{
                               <ResumeHeader saveAndDownload={saveAndDownload} 
                                             cv={cv} 
                                             selectedTemplate={selectTempleate2}
+                                            saveResume={saveResume}
                                             />
 
           <Grid container  columnGap={1} >

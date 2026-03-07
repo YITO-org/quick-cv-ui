@@ -69,6 +69,13 @@ let Detailes : React.FC<any> = (props)=>{
       
       }
 
+    let saveResume = ()=>{
+
+        let {cv} = props;
+        props.dispatch(updateResume(resumeInfoConvertJsonToString(cv)))
+
+    }
+
       let selectTempleate2 = (name :string , template : string): void => {
           props.dispatch(setInformation(name , template))
         }
@@ -80,7 +87,7 @@ let Detailes : React.FC<any> = (props)=>{
         <React.Fragment>
             {/* view Button => display in xs , sm , md screens only */}
             
-        <ResumeHeader saveAndDownload={saveAndDownload} cv={cv} selectedTemplate={selectTempleate2} />
+        <ResumeHeader saveAndDownload={saveAndDownload} cv={cv} selectedTemplate={selectTempleate2} saveResume={saveResume}  />
 
                 <Grid container  columnGap={1} >
                     <Grid xs={12} sm={12} md={12} lg={5} xl={5}>

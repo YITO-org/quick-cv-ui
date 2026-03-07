@@ -5,6 +5,7 @@ import { FaCloudDownloadAlt } from "react-icons/fa";
 import { FiEye } from "react-icons/fi";
 import { IoIosCloseCircle } from "react-icons/io";
 import { ImInsertTemplate } from "react-icons/im";
+import { FaSave } from "react-icons/fa";
 // import { FaSave } from "react-icons/fa";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +18,7 @@ import resumeFourImage from "../../utils/images/resumeFourImage.png"
 
 let ResumeHeader : React.FC<any> = (props)=>{
 
-  let { saveAndDownload, cv, selectedTemplate } = props;
+  let { saveAndDownload, cv, selectedTemplate , saveResume } = props;
 
   let _selectedTemplate : string
 
@@ -70,10 +71,19 @@ let ResumeHeader : React.FC<any> = (props)=>{
               </IconButton>
             </Tooltip> */}
 
-            <Tooltip title='Download' placement='bottom' TransitionComponent={Zoom}  >
-              <IconButton onClick={saveAndDownload} >
-                <FaCloudDownloadAlt color='#673ab7' />
+{         
+      cv.resumeId &&  
+           <Tooltip title='Save' placement='bottom' TransitionComponent={Zoom}  >
+              <IconButton onClick={saveResume} >
+                <FaSave color='#673ab7' />
               </IconButton>
+            </Tooltip>
+            }
+
+            <Tooltip title='Download' placement='bottom' TransitionComponent={Zoom}  >
+                  <IconButton onClick={saveAndDownload} >
+                    <FaCloudDownloadAlt color='#673ab7' />
+                  </IconButton>
             </Tooltip>
 
             <Tooltip   title='View Resume' placement='bottom' TransitionComponent={Zoom} >
