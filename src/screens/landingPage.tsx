@@ -10,9 +10,9 @@ import AppBar from '@mui/material/AppBar';
 import { IoNewspaperOutline } from "react-icons/io5";
 import { PiTimerDuotone } from "react-icons/pi";
 import { LiaUserFriendsSolid } from "react-icons/lia";
-import { TbTemplate } from "react-icons/tb";
 import { FiEdit } from "react-icons/fi";
 import { FaRegFilePdf } from "react-icons/fa6";
+import { MdOutlineLockPerson } from "react-icons/md";
 import resumeOneImage from "../utils/images/resumeOneImage.png"
 import resumeTwoImage from "../utils/images/resumeTwoImage.png"
 import resumeThreeImage from "../utils/images/resumeThreeImage.png"
@@ -21,8 +21,8 @@ import resumeFourImage from "../utils/images/resumeFourImage.png"
 
 // video
 import dashboardVideo from "../utils/images/dashboard-video_.mp4"
+import "../utils/images/resumeFourImage.png";
 import { landingPageResumeCount } from "../actions/landingPageActions";
-
 
 let LandingPage : React.FC<any> = (props)=>{
 
@@ -55,7 +55,7 @@ let LandingPage : React.FC<any> = (props)=>{
   
   // return(
   //     <React.Fragment>
-  //         <div className="p-5 m-4">
+  //         <div classNameName="p-5 m-4">
   //               <Box>
   //               <Typography variant='h3' fontWeight={600}>Quick CV</Typography>
   //                 <Typography>Create Your ATC Friendly Resume, Just in five minutes.</Typography>
@@ -143,7 +143,6 @@ let LandingPage : React.FC<any> = (props)=>{
               </Box>
             </Container>
 
-
       <Container maxWidth='lg' sx={{my : 5 }} >
 
         <Typography mt={2.5} mb={0.5} textAlign='center' variant='h4' fontWeight={900} color='#333' > Free Resume Templates </Typography>
@@ -164,61 +163,16 @@ let LandingPage : React.FC<any> = (props)=>{
             justifyContent={{ xs : 'center' , sm : 'center' , md : 'flex-start' , lg : 'flex-start' , xl : 'flex-start' }}
             alignItems={{ xs: 'center', sm: 'center', md: 'flex-start', lg: 'flex-start', xl: 'flex-start' }}
         >
-
-            <img src={templates['Template-1']}
-              width={320} height={350}
-              className="img-fluid rounded" style={{ border: "1px solid black", borderWidth: '1px' }} />
-
-
-            <img src={templates['Template-2']}
-              width={320} height={350}
-              className="img-fluid rounded" style={{ border: "1px solid black", borderWidth: '1px' }} />
-
-            
-            <img src={templates['Template-3']}
-              width={320} height={350}
-              className="img-fluid rounded" style={{ border: "1px solid black", borderWidth: '1px' }} />
-
-            <img src={templates['Template-4']}
-              width={320} height={350}
-              className="img-fluid rounded" style={{ border: "1px solid black", borderWidth: '1px' }} />
-
-            </Stack>
-
-            {/* old code */}
-
-        {/* <Grid container rowSpacing={4} 
-        // justifyContent='center' alignItems='center' 
-        direction='row' >
-
-            <Grid item lg={4} xl={4} >
-                <img src={templates['Template-1']}
-                  width={320} height={350}
-                  className="img-fluid rounded" style={{ border:  "1px solid black",borderWidth: '1px' }} />
-          </Grid>
-
-          <Grid item lg={4} xl={4}>
-                <img src={templates['Template-2']}
-                  width={320} height={350}
-                  className="img-fluid rounded" style={{ border: "1px solid black", borderWidth: '1px' }} />
-          </Grid>
-
-          <Grid item lg={4} xl={4} >
-                <img src={templates['Template-3']}
-                  width={320} height={350}
-                  className="img-fluid rounded" style={{ border: "1px solid black", borderWidth: '1px' }} />
-          </Grid>
-
-
-          <Grid item lg={4} xl={4} >
-            <img src={templates['Template-4']}
-              width={320} height={350}
-              className="img-fluid rounded" style={{ border: "1px solid black", borderWidth: '1px' }} />
-          </Grid>
-
-          </Grid> */}
+              {
+                Object.keys(templates).map((e:any,index:number)=>
+                      <img key={index} src={templates[e]} width={320} height={350}
+                      className="img-fluid rounded" style={{ border: "1px solid black", borderWidth: '1px' }} />
+                )
+              }
+        </Stack>
 
         </Container>
+
 
       <CssBaseline />
 
@@ -234,7 +188,8 @@ let LandingPage : React.FC<any> = (props)=>{
                   }
                 }}
             >
-        <Typography mt={5} mb={4} textAlign='center' variant='h4' fontWeight={900} color='#333'> Why Quickcv.site 😌 </Typography>
+
+        <Typography mt={5} mb={4} textAlign='center' variant='h4' fontWeight={900} color='#333'> Why Quickcv 😌 </Typography>
               <Grid container columnSpacing={12} mb={10} >
                   <Grid item xl={6} sm={12} md={12} lg={6} xs={12} >
                       <Box bgcolor='white' color='#373c44' pr={2.5} pl={2.5} pt={1.5} pb={1.5} borderRadius={1} fontWeight={500} display='flex' gap={2} >
@@ -246,7 +201,7 @@ let LandingPage : React.FC<any> = (props)=>{
                   <Grid item xl={6} sm={12} md={12} lg={6} xs={12} >
                     <Box bgcolor='white' color='#373c44' pr={2.5} pl={2.5} pt={1.5} pb={1.5} borderRadius={1} fontWeight={500} display='flex' gap={2} >
                             <PiTimerDuotone style={{ fontSize: 60 }} />
-                            <Typography variant='h6' my={2} ml={1}>Create your ATC friendly resume</Typography>
+                            <Typography variant='h6' my={2} ml={1}>Create CV in 5 Minutes</Typography>
                     </Box>
                   </Grid>
 
@@ -259,8 +214,8 @@ let LandingPage : React.FC<any> = (props)=>{
 
           <Grid item xl={6} sm={12} md={12} lg={6} xs={12} >
             <Box bgcolor='white' color='#373c44' pr={2.5} pl={2.5} pt={1.5} pb={1.5} borderRadius={1} fontWeight={500} display='flex' gap={2} >
-                      <TbTemplate style={{ fontSize: 60 }} />
-                      <Typography variant='h6' my={2} ml={1}>User-Friendly Interface</Typography>
+                      <MdOutlineLockPerson style={{ fontSize: 60 }} />
+                      <Typography variant='h6' my={2} ml={1}>Secure Data</Typography>
                     </Box>
                 </Grid>
 
@@ -281,6 +236,21 @@ let LandingPage : React.FC<any> = (props)=>{
 
               </Grid>
 
+                <CssBaseline />
+
+              <Typography mt={20} mb={1} textAlign='center' variant='h4' fontWeight={900} color='#333'> About Us 🤟 </Typography>
+
+                <Typography textAlign='center'mb={1} fontSize={18} >
+                  ❤️ Our goal is to make resume building <strong>  fast , simple, and accessible </strong> for everyone. 🚀
+                </Typography>
+
+                  <Typography textAlign={'center'} color={'gray'}>
+                    Quick CV is an easy online resume builder that helps students and professionals create professional CVs in minutes.
+                  </Typography>
+
+                <Typography textAlign={'center'} color={'gray'} mb={8} >
+                  With modern templates and simple editing, users can quickly build and download their resumes without any design skills.
+                </Typography>
 
             </Container>
 
