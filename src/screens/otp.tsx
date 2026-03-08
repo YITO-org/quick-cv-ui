@@ -18,9 +18,9 @@ let Otp : React.FC<CreateAndLoginProps>= (props)=>{
     let [alertMessage , setAlertMessage] = React.useState<String|null>("")
     let [alertMessageColor , setAlertMessageColor] = React.useState<String | any>("")
 
-    // if(!storeUsers.userId){
-    //     return <Navigate to={"/createaccount"} />
-    // }
+    if(!storeUsers.userId){
+        return <Navigate to={"/createaccount"} />
+    }
 
 
     let navgate = (path : string | any):void=>{
