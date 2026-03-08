@@ -18,9 +18,9 @@ let Otp : React.FC<CreateAndLoginProps>= (props)=>{
     let [alertMessage , setAlertMessage] = React.useState<String|null>("")
     let [alertMessageColor , setAlertMessageColor] = React.useState<String | any>("")
 
-    if(!storeUsers.userId){
-        return <Navigate to={"/createaccount"} />
-    }
+    // if(!storeUsers.userId){
+    //     return <Navigate to={"/createaccount"} />
+    // }
 
 
     let navgate = (path : string | any):void=>{
@@ -71,9 +71,18 @@ let Otp : React.FC<CreateAndLoginProps>= (props)=>{
 
     return(
         <React.Fragment>
-            <Box sx={styles.cardPosition} >
-              <Grid container spacing={1} justifyContent="center" alignItems="center">
-              <Grid item  xs={12} sm={10} md={6} lg={4} xl={4}>
+            {/* <Box sx={styles.cardPosition} > */}
+
+                  <Grid
+                    container
+                    spacing={1}
+                    justifyContent="center"
+                    alignItems="center"
+                    sx={{ minHeight: "100vh" }}
+                  >
+
+              {/* <Grid container spacing={1} justifyContent="center" alignItems="center">
+              <Grid item  xs={12} sm={10} md={6} lg={4} xl={4}> */}
                 {/* <Card>
                     <CardContent> */}
                     <Paper sx={{ p : 4 , borderRadius : 5 }} elevation={15} >
@@ -108,9 +117,12 @@ let Otp : React.FC<CreateAndLoginProps>= (props)=>{
                      </Paper>
                     {/* </CardContent>
                 </Card> */}
-              </Grid>
-              </Grid>
-            </Box>
+              {/* </Grid>
+              </Grid> */}
+
+            {/* </Box> */}
+
+            </Grid>
         </React.Fragment>
     )
 }
