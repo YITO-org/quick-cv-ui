@@ -34,14 +34,20 @@ let Ordering : React.FC<any> = (props)=>{
         <React.Fragment>
             <Box sx={styles.ordering_text} >
             {
-                order.map((e,index)=><Box sx={{display : 'flex' , alignItems : 'center' ,  gap : 1 ,   backgroundColor : 'lightblue' , textAlign : 'center' , width : 180 , borderRadius : 2 , p : 0.5}}  key={index} 
+                order.map((e,index)=><Box sx={{display : 'flex' , alignItems : 'center' ,  gap : 1 , border : 2 ,   backgroundColor : '#C7BFBF'  , textAlign : 'center' , width : 180 , borderRadius : 2 , borderColor : '#5C5151' , p : 0.5}}  key={index} 
                                            draggable 
                                            onDragStart={()=>(dragField.current = index)}
                                            onDragEnter={()=>(dragOverField.current = index)}
                                            onDragEnd={()=>{reOrder()}}
                                           >
-                                            <TfiLayoutGrid2 style={{marginLeft : 12}} />
-                                            <Typography fontWeight={600} sx={styles.input_lable}>{filterSpecialCharacter(e)}</Typography></Box>)
+                                            {/* <TfiLayoutGrid2 style={{marginLeft : 12}} />
+                                             */}
+
+                                                <Typography fontWeight={600} sx={{ fontSize : 14 , ml : 1.5 , bgcolor : '#F0E6E6' , px:1 , py:0.3 , borderRadius : 6 , border : 1 , borderColor : '#BA9393' }} textAlign={'center'} alignContent={'center'} alignItems={'center'} >
+                                                    {index}
+                                                </Typography>
+
+                                            <Typography fontWeight={600} >{filterSpecialCharacter(e)}</Typography></Box>)
             }
             </Box>
         </React.Fragment>
