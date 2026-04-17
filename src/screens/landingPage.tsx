@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 // import hairingimg from "../assets/hairingimg.avif";
 import Button from '@mui/material/Button';
 import { styles } from "../styles/styles";
-import { Box, Container, CssBaseline , Grid, Stack, Typography } from "@mui/material";
+import { Alert, Box, Container, CssBaseline , Dialog, DialogContent, DialogTitle, Grid, Stack, Typography } from "@mui/material";
 import AppBar from '@mui/material/AppBar';
 import { IoNewspaperOutline } from "react-icons/io5";
 import { PiTimerDuotone } from "react-icons/pi";
@@ -13,6 +13,7 @@ import { LiaUserFriendsSolid } from "react-icons/lia";
 import { FiEdit } from "react-icons/fi";
 import { FaRegFilePdf } from "react-icons/fa6";
 import { MdOutlineLockPerson } from "react-icons/md";
+import { IoCreate } from "react-icons/io5";
 import resumeOneImage from "../utils/images/resumeOneImage.png"
 import resumeTwoImage from "../utils/images/resumeTwoImage.png"
 import resumeThreeImage from "../utils/images/resumeThreeImage.png"
@@ -23,8 +24,14 @@ import resumeFourImage from "../utils/images/resumeFourImage.png"
 import dashboardVideo from "../utils/images/dashboard-video_.mp4"
 import "../utils/images/resumeFourImage.png";
 import { landingPageResumeCount } from "../actions/landingPageActions";
+import ResumeFileUpload from "../components/ResumeFileUpload";
 
 let LandingPage : React.FC<any> = (props)=>{
+
+
+  let [openCreateResumeModel , setOpenCreateResumeModel] = React.useState(false);
+  let [createPopUpAlert , setCreatePopUpAlert  ] = React.useState('');
+  let [selectedImageIndex , setSelectedImageIndex ] = React.useState<number | null>(null);
 
   useEffect(()=>{
     props.dispatch(landingPageResumeCount())
@@ -44,6 +51,11 @@ let LandingPage : React.FC<any> = (props)=>{
     nav("/createaccount")
   }
 
+  let selectTempletAndDashBoard = (template : string)=>{
+      props.dispatch({ type : "SET_TEMPLATE_FROM_DASHBOARD" , selectedTemplate : template })
+      nav("/resumebuilder/detailes");
+  }
+
   let templates: any = {
     'Template-1': resumeOneImage,
     'Template-2': resumeTwoImage,
@@ -52,19 +64,6 @@ let LandingPage : React.FC<any> = (props)=>{
   }
 
  //  let screenSize = useWidth();
-  
-  // return(
-  //     <React.Fragment>
-  //         <div classNameName="p-5 m-4">
-  //               <Box>
-  //               <Typography variant='h3' fontWeight={600}>Quick CV</Typography>
-  //                 <Typography>Create Your ATC Friendly Resume, Just in five minutes.</Typography>
-  //                 <Typography>Free and Open Source Resume Builder.</Typography>
-  //                 <Button variant='contained'  sx={{mt : 1 , backgroundColor : 'black' , fontWeight : '800' }} onClick={redirect}>GET STARTED</Button>
-  //               </Box>
-  //         </div>
-  //     </React.Fragment>
-  //   )
 
 
 
@@ -75,9 +74,17 @@ let LandingPage : React.FC<any> = (props)=>{
               <Typography variant="h6" sx={styles.navbar_title}>
                            Quick CV
               </Typography>
-          <Button sx={styles.navbar_go_app_button} size='small' onClick={redirect}>
-            Go to App 👉
-            </Button>
+              <Box sx={{ display : 'flex' , gap : 2 }} >
+
+                  <Button sx={styles.navbar_go_app_button} size='small' onClick={redirect}>
+                      Go to App 👉
+                    </Button>
+
+                    {/* <Button sx={{ bgcolor : "#feac32" , color : "black" ,  fontWeight : 'bold' , border : '3px solid #feac32' , "&:hover": {backgroundColor: "#feac32" } }} size='small' onClick={()=>{nav("/donate")}} >
+                        Donate
+                    </Button> */}
+
+              </Box>
        </AppBar>
        {/* </Box> */}
 
@@ -111,12 +118,13 @@ let LandingPage : React.FC<any> = (props)=>{
             
 
             <Stack direction='row' justifyContent='center' alignItems='center' mt={1} gap={2} flexWrap='wrap' >
-              <Box bgcolor='#373c44' width={200} textAlign='center' color='white' pr={2.5} pl={2.5} pt={1.5} pb={1.5} borderRadius={1} fontWeight={600} onClick={redirect} sx={{  cursor: 'pointer' }}>
+              <Box bgcolor='#373c44' width={200} textAlign='center' color='white' pr={2.5} pl={2.5} pt={1.5} pb={1.5} borderRadius={1} fontWeight={600} onClick={()=>{ setOpenCreateResumeModel(true) }} sx={{  cursor: 'pointer' }}>
                   Create your Resume
               </Box>
              <Box bgcolor='white' width={200} textAlign='center' color='#373c44' pr={2.5} pl={2.5} pt={1.5} pb={1.5} border={2} borderRadius={1} fontWeight={600}  onClick={redirectTOSignUp} sx={{ cursor: 'pointer' }}>
                 Signup
              </Box>
+              {/* <ResumeFileUpload /> */}
             </Stack>
 
             {/* Need to add video */}
@@ -166,7 +174,10 @@ let LandingPage : React.FC<any> = (props)=>{
               {
                 Object.keys(templates).map((e:any,index:number)=>
                       <img key={index} src={templates[e]} width={320} height={350}
-                      className="img-fluid rounded" style={{ border: "1px solid black", borderWidth: '1px' }} />
+                            onClick={()=>{selectTempletAndDashBoard(e)}}
+                        onMouseEnter={() => setSelectedImageIndex(index)}
+                        onMouseLeave={() => setSelectedImageIndex(null)}
+                      className="img-fluid rounded" style={{ border: index == selectedImageIndex ? "4px solid" : "1px solid black", borderWidth: '1px' , borderColor : index == selectedImageIndex ? 'lightblue' : ''  }} />
                 )
               }
         </Stack>
@@ -253,6 +264,87 @@ let LandingPage : React.FC<any> = (props)=>{
                 </Typography>
 
             </Container>
+
+
+                
+                                    <Dialog
+                                        open={openCreateResumeModel}
+                                        onClose={()=>setOpenCreateResumeModel(false)}
+                                        fullWidth={true}
+                                        maxWidth={'lg'}
+                                        PaperProps={{
+                                        
+                                        component: 'form',
+                                        // onSubmit: (event : React.FormEvent<HTMLFormElement>) => {
+                                        //     event.preventDefault();
+                                        //     if(clone){
+                                        //         createCloneResume();
+                                        //     }else{
+                                        //         createResume();
+                                        //     }
+                                       // },
+                                        }}
+                                    >
+                                      <Box sx={{ backgroundColor : '#f8f7f9ff' }} >
+
+                                        <DialogTitle 
+                                            variant='h5'
+                                            fontWeight='bold'
+                                            align='center'
+                                        >
+                                            Upload Your Existing Resume Or Create From Scratch
+                                        </DialogTitle>
+                                        <DialogContent>
+
+                                                {
+                                                  createPopUpAlert &&
+                                                  <Box display={'flex'} justifyContent={'center'} mt={2} mb={2} >
+                                                    <Box maxWidth={1000} width={500} >
+                                                      <Alert severity="error" variant="filled" >{createPopUpAlert}</Alert>
+                                                    </Box>
+                                                  </Box>
+                                                
+                                                }
+
+
+                                                      <Box
+                                                         sx={{display : 'flex' , flexWrap : 'wrap' , gap : 2 , justifyContent : 'center' }}
+                                                      >
+
+                                                          <ResumeFileUpload setCreatePopUpAlert={setCreatePopUpAlert}  />
+
+                                                                    <Box   
+                                                                     width={450} height={200} 
+                                                                     textAlign='center' pr={2.5} pl={2.5} 
+                                                                     pt={1.5} pb={1.5} border={2}
+                                                                     borderRadius={1} fontWeight={600} 
+                                                                     display={'flex'}  
+                                                                     flexDirection={'column'}
+                                                                     gap={2} 
+                                                                     justifyContent={'center'} 
+                                                                     alignItems={'center'}
+                                                                     onClick={redirect}
+                                                                      sx={{ cursor: 'pointer' , backgroundColor : 'white' }}>
+
+                                                                          <IoCreate size={70} />
+
+
+                                                                        <Typography variant="inherit">Create New Resume From Scratch</Typography>
+                                                                        <Typography variant="body2" fontWeight={'bold'} color='#3686d8'>Build a standout resume with expert tips and real examples.</Typography>
+                                                                    </Box>
+
+
+                                                      </Box>                                          
+
+                                        </DialogContent>
+                                        {/* <DialogActions>
+                                        <Button variant='contained' size='small' type="submit">Create</Button>
+                                        <Button variant='contained' size='small' color='error' onClick={func_closeCreateResumeModel}>Cancel</Button>
+                                        </DialogActions> */}
+                                        </Box>
+                                    </Dialog>
+
+
 
     
             </React.Fragment>

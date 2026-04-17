@@ -84,7 +84,7 @@ let cvReducer = (state = initialValue , action : any) : any=>{
         case 'RESUME_ARRANGMENT':
             return {...state  , resumeArrangment : action.data };
         case 'GET_RESUME_FROM_SERVICE':
-            // console.log(action);
+            // console.log({action});
              return {...state , 
                 "name" : action?.resumeData?.name ? action.resumeData.name : state.name,
                 "designation" : action?.resumeData?.designation ? action.resumeData.designation : state.designation,
@@ -99,7 +99,7 @@ let cvReducer = (state = initialValue , action : any) : any=>{
     "summary" : action?.resumeData?.summary ? action?.resumeData?.summary : state.summary,
 
      "skills" : action?.resumeData?.skills ? JSON.parse(action?.resumeData?.skills) : state.skills,
-     "education" : action?.resumeData?.education ? JSON.parse(action?.resumeData?.education) : state.education,
+     // "education" : action?.resumeData?.education ? JSON.parse(action?.resumeData?.education) : state.education,
      "work_history" : action?.resumeData?.work_history ? JSON.parse(action?.resumeData?.work_history) : state.work_history,
      "projects" : action?.resumeData?.projects ? JSON.parse(action?.resumeData?.projects) : state.projects,
      "selectedTemplate" : action?.resumeData?.template ? action?.resumeData?.template : "Template-1",
@@ -116,7 +116,8 @@ let cvReducer = (state = initialValue , action : any) : any=>{
           return { ...state, holdCustomeAccordianNumber: action.holdCustomeAccordianNumber }
        case "USER_INFO_WITH_RESUMES":
           return { ...state, userInfoWithResumes: action.userInfoWithResumes }
-
+       case "SET_TEMPLATE_FROM_DASHBOARD":
+          return {...state , selectedTemplate : action.selectedTemplate }
     // custome sections.
       case "ADD_NEW_CUSTOME_SECTION":
         console.log(action);
