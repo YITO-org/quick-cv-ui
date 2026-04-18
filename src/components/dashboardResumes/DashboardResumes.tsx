@@ -26,7 +26,7 @@ let DashboardResumes: React.FC<dashboardResumesInterface> = (props)=>{
 
 
 
-  let { resumeName, func_editResume, handelDeleteModel, cloneResume, createdAt , copyShareLink , resume } = props;
+  let { resumeName, func_editResume, handelDeleteModel, cloneResume, createdAt , copyShareLink  } = props;
 
 
   // let  resumeInfo  = resume.resumeInfo[0];

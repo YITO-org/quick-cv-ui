@@ -35,7 +35,7 @@ export const Templates : React.FC<any> = (props) => {
 //     )
 // }
 
-export const DashboardResumeTemplateTwo : React.FC<any> = (props)=>{
+export const DashboardResumeTemplateTwo : React.FC<any> = (_props)=>{
     return(
         <React.Fragment>
             temp-2
@@ -43,7 +43,7 @@ export const DashboardResumeTemplateTwo : React.FC<any> = (props)=>{
     )
 }
 
-export const DashboardResumeTemplateThree : React.FC<any> = (props)=>{
+export const DashboardResumeTemplateThree : React.FC<any> = (_props)=>{
     return(
         <React.Fragment>
             temp-3
@@ -51,7 +51,7 @@ export const DashboardResumeTemplateThree : React.FC<any> = (props)=>{
     )
 }
 
-export const DashboardResumeTemplateFour : React.FC<any> = (props)=>{
+export const DashboardResumeTemplateFour : React.FC<any> = (_props)=>{
     return(
         <React.Fragment>
             temp-4

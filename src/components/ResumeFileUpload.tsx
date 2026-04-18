@@ -121,7 +121,7 @@ let ResumeFileUpload : React.FC<any> = (props)=>{
     )   
 }
 
-let stateToProps = (state:any) => ({
+let stateToProps = (_state:any) => ({
     // cv : state.cvReducer
   //   resumes : state.storeUsers.resumes,
   // userInfoWithResumes: state.cvReducer.userInfoWithResumes

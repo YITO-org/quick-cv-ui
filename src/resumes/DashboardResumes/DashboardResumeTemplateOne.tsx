@@ -81,44 +81,44 @@ let Summary : React.FC<any> = (props)=>{
             </>);
 }
 
-let Education : React.FC<any> = (props)=>{
+// let Education : React.FC<any> = (props)=>{
 
-    // let { name } = props;
+//     // let { name } = props;
 
 
-    if(props.resumeInfo.education.length == 0){
-        return;
-    }
-    if(!props?.education[0]["School/University"]){
-        return;
-    }
+//     if(props.resumeInfo.education.length == 0){
+//         return;
+//     }
+//     if(!props?.education[0]["School/University"]){
+//         return;
+//     }
 
-    return(
-        <React.Fragment>
-            <Heading heading={props.name} />
-            {
-                props?.education?.map((e : any , index : number )=>{
+//     return(
+//         <React.Fragment>
+//             <Heading heading={props.name} />
+//             {
+//                 props?.education?.map((e : any , index : number )=>{
 
-                    if(!e["School/University"]){
-                        return;
-                    }
+//                     if(!e["School/University"]){
+//                         return;
+//                     }
 
-                    return(
-                        <div className="mb-1 px-1" key={index}>
-                            <div className="d-flex justify-content-between" style={{fontSize : "13.5px"}} >
-                                <div className="d-flex gap-2"> <div className="fw-bold">{e["School/University"]}</div> <div>{ e['location'] ? e['location'] : ''}</div> </div>
-                                <div style={{fontSize : "13.5px"}}>{ e.startDate && e.endDate && e.startDate + ' - ' + e.endDate}</div>
-                            </div>
-                            <div style={{fontSize : "12.6px"}}>{e.course ? "Course : " + e.course + '.' : ''}</div>
-                            <div style={{fontSize : "12.6px"}}>{e.CGP ? "CGP : " + e.CGP + '.' : ''}</div>
-                            <div style={{fontSize : "11.2px"}}>{e.description ? e.description + '.' : ''}</div>
-                        </div>
-                    )
-                })
-            }
-        </React.Fragment>
-    )
-}
+//                     return(
+//                         <div className="mb-1 px-1" key={index}>
+//                             <div className="d-flex justify-content-between" style={{fontSize : "13.5px"}} >
+//                                 <div className="d-flex gap-2"> <div className="fw-bold">{e["School/University"]}</div> <div>{ e['location'] ? e['location'] : ''}</div> </div>
+//                                 <div style={{fontSize : "13.5px"}}>{ e.startDate && e.endDate && e.startDate + ' - ' + e.endDate}</div>
+//                             </div>
+//                             <div style={{fontSize : "12.6px"}}>{e.course ? "Course : " + e.course + '.' : ''}</div>
+//                             <div style={{fontSize : "12.6px"}}>{e.CGP ? "CGP : " + e.CGP + '.' : ''}</div>
+//                             <div style={{fontSize : "11.2px"}}>{e.description ? e.description + '.' : ''}</div>
+//                         </div>
+//                     )
+//                 })
+//             }
+//         </React.Fragment>
+//     )
+// }
 
 // let Projects : React.FC<any> = (props)=>{
 //     // let { name } = props;

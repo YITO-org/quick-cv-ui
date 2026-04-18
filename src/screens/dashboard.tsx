@@ -2,7 +2,7 @@
 import React , { useEffect ,  useState , useRef } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { createMyResume, deleteResume, editResume, editResumeTesting, getResumes , createMyCloneResume, gotoOrginalState, myResumes  } from "../actions/resumeActions";
+import { createMyResume, deleteResume, editResume, editResumeTesting /*, getResumes */, createMyCloneResume, gotoOrginalState, myResumes  } from "../actions/resumeActions";
 import { Box, Container, Stack , Button, Dialog, DialogTitle ,  DialogActions  , DialogContent , TextField, Typography, Divider, IconButton /* ,  Tooltip*/ } from "@mui/material";
 // import { FaEdit } from "react-icons/fa";
 // import { MdDelete } from "react-icons/md";
@@ -41,7 +41,7 @@ let Dashboard : React.FC<any> = (props)=>{
     useEffect(()=>{
          //  props.dispatch(getResumes());
          props.dispatch(myResumes())
-        props.dispatch(gotoOrginalState());
+         props.dispatch(gotoOrginalState());
     },[]);
 
     function responsiveCallBack(res:any){
