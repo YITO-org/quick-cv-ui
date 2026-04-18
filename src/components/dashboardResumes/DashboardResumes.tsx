@@ -7,6 +7,7 @@ import {  Card , CardActions, CardContent, IconButton, Tooltip, Typography, Zoom
 import { BsPencilFill, BsTrashFill } from "react-icons/bs";
 import { PiShareFatFill } from "react-icons/pi";
 import { FaClone } from "react-icons/fa";
+// import { Templates } from "../../resumes/resume";
 
 
 let DashboardResumes: React.FC<dashboardResumesInterface> = (props)=>{
@@ -25,20 +26,27 @@ let DashboardResumes: React.FC<dashboardResumesInterface> = (props)=>{
 
 
 
-  let { resumeName, func_editResume, handelDeleteModel, cloneResume, createdAt , copyShareLink } = props;
+  let { resumeName, func_editResume, handelDeleteModel, cloneResume, createdAt , copyShareLink , resume } = props;
+
+
+  // let  resumeInfo  = resume.resumeInfo[0];
 
   return (
+
+
     <React.Fragment>
 
       <Card sx={{ width: 300 , borderRadius : 2 }} variant='elevation' elevation={4}>
 
           <CardContent>
 
+            {/* <Templates resumeInfo={resumeInfo}  /> */}
+
             <Typography variant='h6' color='purple'>{resumeName}</Typography>
            <Typography variant="caption" fontWeight={600} color='GrayText'> Create At : {dateConvertion(createdAt)}</Typography>
 
-            {/* {resumeObject[props?.resumeInfo[0]?.template]} */}
           </CardContent>
+          
           <CardActions>
 
           {/* <IconButton color='info' size='small' >

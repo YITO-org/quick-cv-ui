@@ -61,6 +61,7 @@ export interface dashboardResumesInterface {
   createdAt?: string
   userId? : number
   resumeInfo : any
+  resume : any
   func_editResume: (id: number)=>void
   // deleteRes?: (openModel : boolean | null , resumeId: number | null, resumeName : string | null) => void
   cloneResume: (resumeId: number | null, resumeName: string | null) => void

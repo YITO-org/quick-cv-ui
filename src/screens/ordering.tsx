@@ -4,7 +4,7 @@ import React, { useRef } from "react";
 import {connect} from "react-redux";
 import { styles } from "../styles/styles";
 import { resumeRearrangment } from "../actions";
-import { TfiLayoutGrid2 } from "react-icons/tfi";
+// import { TfiLayoutGrid2 } from "react-icons/tfi";
 
 let Ordering : React.FC<any> = (props)=>{
 

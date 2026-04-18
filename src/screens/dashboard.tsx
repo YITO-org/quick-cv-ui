@@ -39,7 +39,7 @@ let Dashboard : React.FC<any> = (props)=>{
     let nav = useNavigate();
 
     useEffect(()=>{
-         props.dispatch(getResumes());
+         //  props.dispatch(getResumes());
          props.dispatch(myResumes())
         props.dispatch(gotoOrginalState());
     },[]);
@@ -215,6 +215,7 @@ let Dashboard : React.FC<any> = (props)=>{
             <Stack direction='row' spacing={3} useFlexGap sx={{flexWrap : 'wrap'}}>
             {
               userInfoWithResumes?.resumes?.map((e: dashboardResumesInterface) => <DashboardResumes 
+                                                                                    resume={e}
                                                                                     resumeId={e.id} 
                                                                                     resumeName={e.resumeName} 
                                                                                     createdAt={e.createdAt} 
