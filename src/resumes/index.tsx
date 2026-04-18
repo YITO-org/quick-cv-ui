@@ -7,6 +7,8 @@ import ResumeOne from "./resumeOne";
 import ResumeTwo from "./resumeTwo";
 import ResumeThree from "./resumeThree";
 import  ResumeFour  from "./resumeFour";
+import ResumeFive from "./resumeFive";
+import ResumeSix from "./resumeSix";
 
 
 // @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap'); new
@@ -23,7 +25,10 @@ let Res : React.FC<any> = (  props  )=>{
       "Template-1": <ResumeOne shareResume={props.shareResume} />,
       "Template-2": <ResumeTwo shareResume={props.shareResume} />,
       "Template-3": <ResumeThree shareResume={props.shareResume} />,
-      "Template-4": <ResumeFour shareResume={props.shareResume} />
+      "Template-4": <ResumeFour shareResume={props.shareResume} />,
+      "Template-5": <ResumeFive shareResume={props.shareResume} />,
+      "Template-6": <ResumeSix shareResume={props.shareResume} />
+
     }
 
 
