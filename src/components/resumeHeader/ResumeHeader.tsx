@@ -14,7 +14,8 @@ import resumeTwoImage from "../../utils/images/resumeTwoImage.png"
 import resumeThreeImage from "../../utils/images/resumeThreeImage.png"
 // import resumeFourImage from "../../../public/images/resumeFourImage.png"
 import resumeFourImage from "../../utils/images/resumeFourImage.png"
-
+import resumeFiveImage from "../../utils/images/resumeFiveImage.png"
+import resumeSixImage from "../../utils/images/resumeSixImage.png"
 
 let ResumeHeader : React.FC<any> = (props)=>{
 
@@ -48,7 +49,9 @@ let ResumeHeader : React.FC<any> = (props)=>{
     'Template-1': resumeOneImage,
     'Template-2' : resumeTwoImage,
     'Template-3': resumeThreeImage,
-    'Template-4': resumeFourImage
+    'Template-4': resumeFourImage,
+    'Template-5' : resumeFiveImage,
+    'Template-6' : resumeSixImage
   }
 
 

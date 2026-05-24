@@ -38,12 +38,15 @@ let Header : React.FC<any> = (props) =>{
         setAnchorEl(null);
     };
 
+    const navProfileScreen = ()=>{
+        nav("/profile")
+    }
+
     const logout_ = ()=>{
         props.dispatch(logout())
         props.dispatch(gotoOrginalState())
         localStorage.removeItem('tokken')
         nav("/")
-
     }
 
     const moveToHomePage = ()=>{
@@ -90,7 +93,7 @@ let Header : React.FC<any> = (props) =>{
                                     onClose={handleClose}
                                     >
                                     <MenuItem onClick={logout_}>Logout</MenuItem>
-                                    <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                    <MenuItem onClick={navProfileScreen}>Profile</MenuItem>
                                 </Menu>
 
                           </Box>

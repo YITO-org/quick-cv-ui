@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 // import hairingimg from "../assets/hairingimg.avif";
 import Button from '@mui/material/Button';
 import { styles } from "../styles/styles";
-import { Alert, Box, Container, CssBaseline , Dialog, DialogContent, DialogTitle, Grid, Stack, Typography } from "@mui/material";
+import { Alert, Box, Card, CardContent, Container, CssBaseline , Dialog, DialogContent, DialogTitle, Grid, Stack, Typography } from "@mui/material";
 import AppBar from '@mui/material/AppBar';
 import { IoNewspaperOutline } from "react-icons/io5";
 import { PiTimerDuotone } from "react-icons/pi";
@@ -19,12 +19,15 @@ import resumeTwoImage from "../utils/images/resumeTwoImage.png"
 import resumeThreeImage from "../utils/images/resumeThreeImage.png"
 // import resumeFourImage from "../../../public/images/resumeFourImage.png"
 import resumeFourImage from "../utils/images/resumeFourImage.png"
+import resumeFiveImage from "../utils/images/resumeFiveImage.png"
+import resumeSixImage from "../utils/images/resumeSixImage.png"
 
 // video
 import dashboardVideo from "../utils/images/dashboard-video_.mp4"
 import "../utils/images/resumeFourImage.png";
 import { landingPageResumeCount } from "../actions/landingPageActions";
 import ResumeFileUpload from "../components/ResumeFileUpload";
+import Slider from "react-slick";
 
 let LandingPage : React.FC<any> = (props)=>{
 
@@ -60,11 +63,43 @@ let LandingPage : React.FC<any> = (props)=>{
     'Template-1': resumeOneImage,
     'Template-2': resumeTwoImage,
     'Template-3': resumeThreeImage,
-    'Template-4': resumeFourImage
+    'Template-4': resumeFourImage,
+    'Template-5' : resumeFiveImage,
+    'Template-6' : resumeSixImage
   }
 
  //  let screenSize = useWidth();
 
+
+ const data = [
+    {
+      id: 1,
+      title: "Slide 1",
+      desc: "React Slick with MUI",
+    },
+    {
+      id: 2,
+      title: "Slide 2",
+      desc: "Vite + React + TypeScript",
+    },
+    {
+      id: 3,
+      title: "Slide 3",
+      desc: "Material UI Carousel",
+    },
+  ];
+
+
+ const settings :any = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 2,
+    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 2000,
+  };
 
 
   return(
@@ -118,7 +153,7 @@ let LandingPage : React.FC<any> = (props)=>{
             
 
             <Stack direction='row' justifyContent='center' alignItems='center' mt={1} gap={2} flexWrap='wrap' >
-              <Box bgcolor='#373c44' width={200} textAlign='center' color='white' pr={2.5} pl={2.5} pt={1.5} pb={1.5} borderRadius={1} fontWeight={600} onClick={()=>{ setOpenCreateResumeModel(true) }} sx={{  cursor: 'pointer' }}>
+              <Box bgcolor='#373c44' width={200} textAlign='center' color='white' pr={2.5} pl={2.5} pt={1.5} pb={1.5} borderRadius={1} fontWeight={600} onClick={redirect} sx={{  cursor: 'pointer' }}>
                   Create your Resume
               </Box>
              <Box bgcolor='white' width={200} textAlign='center' color='#373c44' pr={2.5} pl={2.5} pt={1.5} pb={1.5} border={2} borderRadius={1} fontWeight={600}  onClick={redirectTOSignUp} sx={{ cursor: 'pointer' }}>
@@ -163,7 +198,7 @@ let LandingPage : React.FC<any> = (props)=>{
 
 
 
-        <Stack
+        {/* <Stack
             flexWrap="wrap"
             useFlexGap
             direction={{ xs: 'column', sm: 'column' , md : 'row' , lg : 'row' , xl : 'row'  }}
@@ -171,16 +206,41 @@ let LandingPage : React.FC<any> = (props)=>{
             justifyContent={{ xs : 'center' , sm : 'center' , md : 'flex-start' , lg : 'flex-start' , xl : 'flex-start' }}
             alignItems={{ xs: 'center', sm: 'center', md: 'flex-start', lg: 'flex-start', xl: 'flex-start' }}
         >
-              {
-                Object.keys(templates).map((e:any,index:number)=>
-                      <img key={index} src={templates[e]} width={320} height={350}
-                            onClick={()=>{selectTempletAndDashBoard(e)}}
-                        onMouseEnter={() => setSelectedImageIndex(index)}
-                        onMouseLeave={() => setSelectedImageIndex(null)}
-                      className="img-fluid rounded" style={{ border: index == selectedImageIndex ? "4px solid" : "1px solid black", borderWidth: '1px' , borderColor : index == selectedImageIndex ? 'lightblue' : ''  }} />
-                )
-              }
-        </Stack>
+
+                            {
+                    Object.keys(templates).map((e:any,index:number)=>
+                          <img key={index} src={templates[e]} width={320} height={350}
+                                
+                                onClick={()=>{selectTempletAndDashBoard(e)}}
+                            onMouseEnter={() => setSelectedImageIndex(index)}
+                            onMouseLeave={() => setSelectedImageIndex(null)}
+                            className="img-fluid rounded" style={{ border: index == selectedImageIndex ? "4px solid" : "1px solid black", borderWidth: '1px' , borderColor : index == selectedImageIndex ? 'lightblue' : ''  }} />
+                          )
+                  }
+
+        </Stack> */}
+        
+        <div className="landing-page-slider" >
+            <Box width={"100%"} margin="50px" >
+              <Slider {...settings} >
+                  {
+                    Object.keys(templates).map((e:any,index:number)=>
+                      <Box key={index} px={2}>
+
+                          <img key={index} src={templates[e]} width={420} height={550}
+                                
+                                onClick={()=>{selectTempletAndDashBoard(e)}}
+                                onMouseEnter={() => setSelectedImageIndex(index)}
+                                onMouseLeave={() => setSelectedImageIndex(null)}
+                                className="img-fluid rounded" style={{ 
+                                  marginLeft : '2px',
+                                  border: index == selectedImageIndex ? "4px solid" : "1px solid black", borderWidth: '1px' , borderColor : index == selectedImageIndex ? 'lightblue' : ''  }} />
+                                  </Box>
+                          )
+                  }
+              </Slider>
+            </Box>    
+          </div>
 
         </Container>
 

@@ -19,7 +19,12 @@ import ResetPassword from "./screens/resetPassword";
 import ShareViewResume from "./screens/viewShareResume";
 import DynamicSections from "./screens/dynamicSections";
 import DonatePage from "./screens/donate";
+import ProfileScreen from "./screens/profileScreen";
 //import LandingPage2 from "./screens/landingPage2";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 const App : React.FC<any>  = (props)=>{
 
@@ -69,6 +74,7 @@ const App : React.FC<any>  = (props)=>{
               <Route path="/reset-password/:tokken" element={<ProtectedRoutes_col> <ResetPassword headerName="Reset Password" buttonName="Submit" redirectionScreen={""} /> </ProtectedRoutes_col>}  />
               <Route path="/share-resume/:resumeId" element={<ShareViewResume />} />
               <Route path="/donate" element={<DonatePage />} />
+              <Route path="/profile" element={<ProfileScreen />} />
               
               <Route path="/resumebuilder" element={<MainApp />}>
                   <Route index path="dashboard" element={ <ProtectedRoutes_dashboard> <Dashboard /> </ProtectedRoutes_dashboard> } />

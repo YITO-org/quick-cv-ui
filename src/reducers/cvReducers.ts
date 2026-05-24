@@ -99,7 +99,7 @@ let cvReducer = (state = initialValue , action : any) : any=>{
     "summary" : action?.resumeData?.summary ? action?.resumeData?.summary : state.summary,
 
      "skills" : action?.resumeData?.skills ? JSON.parse(action?.resumeData?.skills) : state.skills,
-     // "education" : action?.resumeData?.education ? JSON.parse(action?.resumeData?.education) : state.education,
+     "education" : action?.resumeData?.education ? JSON.parse(action?.resumeData?.education) : state.education,
      "work_history" : action?.resumeData?.work_history ? JSON.parse(action?.resumeData?.work_history) : state.work_history,
      "projects" : action?.resumeData?.projects ? JSON.parse(action?.resumeData?.projects) : state.projects,
      "selectedTemplate" : action?.resumeData?.template ? action?.resumeData?.template : "Template-1",
